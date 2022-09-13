@@ -13,6 +13,7 @@
     --nakodark: rgb(53, 88, 114);
     --yujindark: rgb(69, 89, 136);
     --sakuradark: rgb(120, 113, 118);
+    --minjudarkT: rgba(53, 53, 53, 0.53);
 
     color: var(--minju);
 }
@@ -46,9 +47,9 @@ main
 {
     display: block;
     min-height: 74vh;
-    background-color: var(--nakodark);
-    width: 90vw;
-    left: 5vw;
+    background-color: var(--minjudarkT);
+    width: 88vw;
+    left: 6vw;
     position: relative;
 }
 titlebar
