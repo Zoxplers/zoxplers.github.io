@@ -2,33 +2,54 @@
 
 :root
 {
-    
+    --color1: rgb(146, 205, 137);
+    --color2: rgb(55, 150, 110);
+    --nako: #B7D3E9;
+    --yujin: #567ace;
+    --chaewon: #CEE5D5;
+    --sakura: #f1d2e7;
+    --minju: #ffffff;
+
+    --nakodark: rgb(53, 88, 114);
+    --yujindark: rgb(69, 89, 136);
+    --sakuradark: rgb(120, 113, 118);
+
+    color: var(--minju);
 }
 
 /*Tags*/
 body
 {
     margin: 0;
+    background-image: linear-gradient(var(--nakodark), var(--nakodark), var(--nakodark), var(--nakodark), var(--yujindark));
 }
 navmenu
 {
     display: block;
-    height: 5vh;
+    height: 4vh;
+    background-color: var(--sakuradark);
 }
 heading
 {
     display: block;
     height: 17vh;
+    background-color: var(--color1);
 }
 navbar
 {
     display: block;
-    height: 7vh;
+    height: 5vh;
+    border-top: 4px solid var(--chaewon);
+    background-color: var(--color2);
 }
 main
 {
     display: block;
-    min-height: 71vh;
+    min-height: 74vh;
+    background-color: var(--nakodark);
+    width: 90vw;
+    left: 5vw;
+    position: relative;
 }
 titlebar
 {
