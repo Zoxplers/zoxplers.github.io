@@ -1,7 +1,39 @@
 /*Made by Matthew Amurao*/
 
+:root
+{
+    
+}
+
 /*Tags*/
 body
 {
     margin: 0;
+}
+navmenu
+{
+    display: block;
+    height: 5vh;
+}
+heading
+{
+    display: block;
+    height: 17vh;
+}
+navbar
+{
+    display: block;
+    height: 7vh;
+}
+main
+{
+    display: block;
+    min-height: 71vh;
+}
+titlebar
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
 }
