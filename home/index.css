@@ -65,12 +65,12 @@ heading *
 }
 heading1
 {
-    font-size: max(6.9vh, 38px);
+    font-size: clamp(38px, 6.9vh, 9.5vw);
     padding-top: 1.2vh;
 }
 heading2
 {
-    font-size: max(3vh, 15px);
+    font-size: clamp(15px, 3vh, 6vw);
 }
 navbar
 {
@@ -82,7 +82,6 @@ navbar
 navbar *
 {
     display: inline-block;
-    font-family: "Nerko One";
     font-size: max(2vh, 10.2333px);
     padding: max(1vh, 5.5px);
     min-height: 13px;
