@@ -42,6 +42,7 @@ body
     margin: 0;
     background-image: linear-gradient(var(--nakodark), var(--nakodark), var(--nakodark), var(--nakodark), var(--yujindark));
     overflow-y: scroll;
+    min-width: 302px;
 }
 navmenu
 {
@@ -83,7 +84,7 @@ navbar *
     display: inline-block;
     font-family: "Nerko One";
     font-size: max(2vh, 10.2333px);
-    padding: max(1vh, 5px);
+    padding: max(1vh, 5.5px);
     min-height: 13px;
     cursor: pointer;
     color: var(--minju)
@@ -101,8 +102,8 @@ main
     display: block;
     min-height: 75vh;
     background-color: var(--minjudarkT);
-    width: 88vw;
-    left: 6vw;
+    width: max(88vw, 264px);
+    left: max(6vw, 18px);
     position: relative;
 }
 titlebar
