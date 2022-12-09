@@ -42,7 +42,7 @@ body
     margin: 0;
     background-image: linear-gradient(var(--nakodark), var(--nakodark), var(--nakodark), var(--nakodark), var(--yujindark));
     overflow-y: scroll;
-    min-width: 302px;
+    min-width: 386px;
 }
 navmenu
 {
@@ -102,8 +102,8 @@ main
     display: block;
     min-height: 75vh;
     background-color: var(--minjudarkT);
-    width: max(88vw, 264px);
-    left: max(6vw, 18px);
+    width: max(88vw, 339.667px);
+    left: max(6vw, 23.15px);
     position: relative;
 }
 titlebar
