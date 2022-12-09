@@ -13,7 +13,7 @@
     font-family: 'Nerko One';
     font-style: normal;
     font-weight: 400;
-    src: url(../fonts/nerko_onev15.woff2);
+    src: url(https://fonts.gstatic.com/s/nerkoone/v15/m8JQjfZSc7OXlB3ZMOjDd5RA.woff2), url(../fonts/nerko_onev15.woff2);
 }
 
 :root
