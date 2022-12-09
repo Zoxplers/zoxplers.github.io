@@ -82,6 +82,7 @@ navbar
 navbar *
 {
     display: inline-block;
+    font-family: "Nerko One";
     font-size: max(2vh, 10.2333px);
     padding: max(1vh, 5.5px);
     min-height: 13px;
