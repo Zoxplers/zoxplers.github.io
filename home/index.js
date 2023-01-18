@@ -58,7 +58,7 @@ pageSelect(page);
 //Handle sites
 async function loadSites()
 {
-    cache = await fetch("http://zoxplers.com/zwebsite.json").then(response => response.json());
+    cache = await fetch("../zwebsite.json").then(response => response.json());
     try{
         cache.zwebsite.sites.forEach(site => {
             cache = document.createElement("a");
