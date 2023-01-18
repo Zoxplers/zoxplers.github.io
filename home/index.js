@@ -19,6 +19,8 @@ if(lockHeading)
 
 document.getElementById("heading2").innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
 
+document.getElementById("iframe").onload = function() {document.getElementById("iframe").remove();};
+
 //Handle pages
 function loadPage(page, data)
 {
