@@ -104,6 +104,7 @@ a:hover
 br
 {
     margin-bottom: 10px; /*fix me*/
+    content: "";
 }
 body
 {
