@@ -1,8 +1,8 @@
 /*Made by Matthew Amurao*/
 
 //Change all id to tagname patch
-zwebsite = 
-import("../zwebsite.json").then(dialog => dialog.show()).catch(err => console.log(err));
+import zwebsite from "../zwebsite.json";
+import("../zwebsite.json").then(dialog => console.log(dialog)).then(ptwo => console.log(ptwo)).catch(err => console.log(err));
 
 document.body.querySelectorAll("*").forEach(function(node)
 {
@@ -27,7 +27,8 @@ function loadPage(page, data)
 {
     page.innerHTML = data;
     Array.from(page.getElementsByClassName("image")).forEach(element => {
-        element.style = "font-size: initial; text-align: right; padding-left: 40px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
+        element.style = "margin: auto; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
+        element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
     });
 }
 
@@ -59,7 +60,7 @@ pageSelect(page);
 
 //Handle sites
 try{
-    sites.forEach(site => {
+    zwebsite.sites.forEach(site => {
         cache = document.createElement("a");
         cache.innerHTML = site;
         cache.style.display = "none";

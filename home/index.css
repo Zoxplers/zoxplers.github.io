@@ -206,7 +206,11 @@ pages *
 }
 pages *:first-child
 {
-    margin-bottom: 20px; /*fix me*/
+    margin-bottom: 30px; /*fix me*/
+}
+pages a
+{
+    font-size: 20px; /*fix me, not responsive*/
 }
 
 /*Animations*/
