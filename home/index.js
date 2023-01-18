@@ -1,9 +1,6 @@
 /*Made by Matthew Amurao*/
 
 //Change all id to tagname patch
-import zwebsite from "../zwebsite.json";
-import("../zwebsite.json").then(dialog => console.log(dialog)).then(ptwo => console.log(ptwo)).catch(err => console.log(err));
-
 document.body.querySelectorAll("*").forEach(function(node)
 {
     node.id = node.tagName.toLowerCase();
@@ -59,38 +56,25 @@ function pageSelect(page)
 pageSelect(page);
 
 //Handle sites
-try{
-    zwebsite.sites.forEach(site => {
-        cache = document.createElement("a");
-        cache.innerHTML = site;
-        cache.style.display = "none";
-        document.getElementById("navmenu").appendChild(cache);
-    });
-}
-catch(err)
+async function loadSites()
 {
-    console.log(err);
+    cache = await fetch("http://zoxplers.com/zwebsite.json").then(response => response.json());
+    try{
+        cache.zwebsite.sites.forEach(site => {
+            cache = document.createElement("a");
+            cache.innerHTML = site;
+            cache.style.display = "none";
+            cache.onclick = function() {location.href = "../"+site.toLowerCase()};
+            document.getElementById("navmenu").appendChild(cache);
+        });
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
 }
+loadSites();
 
 document.getElementById("navmenu").addEventListener("click", function() {
     this.classList.toggle("animate");
 });
-
-
-/*
-Array.from(document.getElementById("navmenu").children).forEach(element => {
-    element.style.display = "none";
-})
-document.getElementById("titlebar").style.display = null;
-
-function siteSelect(site)
-{
-
-}
-
-document.getElementById("navmenu").addEventListener("click", function() {
-    Array.from(document.getElementById("navmenu").children).forEach(element => {
-        element.style.display = element.style.display == "none" ? null : "none";
-    })
-});
-*/
