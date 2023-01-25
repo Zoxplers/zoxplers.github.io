@@ -6,11 +6,13 @@ document.body.querySelectorAll("*").forEach(function(node)
     node.id = node.tagName.toLowerCase();
 });
 
+//Variables
 subheaders = ["omgitsasubheader","verycoolsubheader","subheadergoeshere","justanotherpersonalsite"];
 page = 0;
 cache = 0;
 lockHeading = true;
 
+//Startup
 if(lockHeading)
 {
     document.body.insertBefore(document.getElementById("heading"), document.getElementById("main"));
@@ -22,9 +24,10 @@ document.getElementById("heading2").innerHTML = subheaders[Math.floor(Math.rando
 document.getElementById("iframe").onload = function() {document.getElementById("iframe").remove();};
 
 //Handle pages
+cache = document.URL.split('?')[1] === "showhidden" || document.URL.split('?')[1] === "showhidden=true";
 function loadPage(page, data)
 {
-    page.innerHTML = data;
+    page.innerHTML = cache ? data.replace("<!--","").replace("-->","") : data;
     Array.from(page.getElementsByClassName("image")).forEach(element => {
         element.style = "margin: auto; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
         element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
