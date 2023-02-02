@@ -1,4 +1,6 @@
 /*Made by Matthew Amurao*/
+//Maybe add soundcloud and/or artstation? in projects
+//Make website look better on phone with separate css activate via javascript and website useragent
 
 //Change all id to tagname patch
 document.body.querySelectorAll("*").forEach(function(node)
@@ -10,7 +12,20 @@ document.body.querySelectorAll("*").forEach(function(node)
 subheaders = ["omgitsasubheader","verycoolsubheader","subheadergoeshere","justanotherpersonalsite"];
 page = 0;
 cache = 0;
-lockHeading = true;
+lockHeading = true, showHidden = false, altColors = false;
+
+//Parse URL
+document.URL.split('?').forEach(function(i)
+{
+    if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")
+    {
+        showHidden = true;
+    }
+    else if(i.toLowerCase() === "altcolors=true" || i.toLowerCase() ==="altcolors")
+    {
+        altColors = true;
+    }
+});
 
 //Startup
 if(lockHeading)
@@ -19,15 +34,19 @@ if(lockHeading)
     document.body.insertBefore(document.getElementById("navbar"), document.getElementById("main"));
 }
 
-document.getElementById("heading2").innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
+if(altColors)
+{
+    document.getElementById("navmenu").style.backgroundColor = "var(--nakodark)";
+    document.getElementById("navmenu").style.color = "var(--chaewon)";
+}
 
+document.getElementById("heading2").innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
 document.getElementById("iframe").onload = function() {document.getElementById("iframe").remove();};
 
 //Handle pages
-cache = document.URL.split('?')[1] === "showhidden" || document.URL.split('?')[1] === "showhidden=true";
 function loadPage(page, data)
 {
-    page.innerHTML = cache ? data.replace("<!--","").replace("-->","") : data;
+    page.innerHTML = showHidden ? data.replace("<!--","").replace("-->","") : data;
     Array.from(page.getElementsByClassName("image")).forEach(element => {
         element.style = "margin: auto; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
         element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
