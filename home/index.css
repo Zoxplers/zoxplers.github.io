@@ -119,7 +119,7 @@ body
     margin: 0;
 }
 
-body wrap
+body > wrap
 {
     background: rgba(0,0,0,0.3);
     height: 100vh;
@@ -160,7 +160,7 @@ heading *
     text-shadow: 2px 1px var(--hitomi);
 }
 
-heading wrap
+heading > wrap
 {
     background-color: var(--sakura);
     opacity: 0.45;
