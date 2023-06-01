@@ -1,4 +1,4 @@
-/*Made by Matthew Amurao*/
+/*Made by Zoxplers*/
 
 /*Fonts*/
 @font-face
@@ -54,16 +54,20 @@ a:visited
     text-decoration: unset;
 }
 
+a:hover
+{
+    color: var(--yena);
+    text-shadow: unset;
+}
+
 :root
 {
-    --color1: rgb(146, 205, 137);
-    --color2: rgb(55, 150, 110);
-    --nako: #B7D3E9;
+    --nako: #b7d3e9;
     --yujin: #567ace;
-    --chaewon: #CEE5D5;
+    --chaewon: #cee5d5;
     --sakura: #f1d2e7;
     --minju: #ffffff;
-    --yuri: #f3Aaa51;
+    --yuri: #f3aa51;
     --hitomi: #f1c3aa;
     --hyewon: #db706c;
     --yena: #fcf695;
@@ -71,13 +75,10 @@ a:visited
     --wonyoung: #d9598c;
     --eunbi: #bbb0dc;
 
+    --headingglow: 8px;
 
-    --nakodark: rgb(53, 88, 114);
-    --yujindark: rgb(69, 89, 136);
-    --sakuradark: rgb(120, 113, 118);
-    --minjudarkT: rgba(53, 53, 53, 0.53);
-
-    color: var(--minju);  
+    color: var(--minju);
+    text-shadow: 20px var(--eunbi);  
     font-family: sans-serif;
     white-space: nowrap;
 }
@@ -101,145 +102,134 @@ a:visited
 }
 
 /*Tags*/
-a
+wrap
 {
-    font-size: 20px; /*Change me, also change pages * font size too both have to be synced */
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    user-select: none;
+    pointer-events: none; 
 }
-a:hover
-{
-    text-decoration: underline;
-}
-br
-{
-    margin-bottom: 10px; /*fix me*/
-    content: "";
-}
+
 body
 {
+    height: 100vh;
+    background: repeating-conic-gradient(var(--chaewon), var(--chaeyeon), var(--yujin), var(--yujin), var(--yujin), var(--chaeyeon), var(--chaewon));
     margin: 0;
-    background-image: linear-gradient(var(--nakodark), var(--nakodark), var(--nakodark), var(--nakodark), var(--yujindark));
-    overflow-y: scroll;
-    min-width: 386px;
 }
-navmenu
+
+body wrap
 {
-    position: absolute;
-    display: block;
-    height: max(3.7vh, 19.5333px);
-    background-color: var(--sakuradark);
-    font-family: "Carter One";
-    font-size: calc(max(3.7vh, 19.5333px)/2);
-    cursor: pointer;
-    width: 100%;
-    z-index: 1;
-    transition: 1s;
+    background: rgba(0,0,0,0.3);
 }
-heading
-{
-    display: block;
-    height: max(17vh, 88.5px);
-    background-color: var(--color1);
-    font-family: "Bubblegum Sans";
-    text-shadow: 5px 2px var(--minjudarkT);
-    padding-top: max(3.7vh, 19.5333px);
-}
-heading *
-{
-    display: block;
-    margin-left: 5vw;
-}
-heading1
-{
-    font-size: clamp(38px, 6.9vh, 9.5vw);
-    padding-top: 1.2vh;
-}
-heading2
-{
-    font-size: clamp(15px, 3vh, 6vw);
-}
-navbar
-{
-    display: block;
-    height: max(4.5vh, 23.4333px);
-    border-top: 4px solid var(--chaewon);
-    border-bottom: 1px solid var(--color2);
-    background-color: var(--color2);
-}
-navbar *
-{
-    display: inline-block;
-    font-family: "Nerko One";
-    font-size: max(2vh, 10.2333px);
-    padding: max(1vh, 5.5px) max(2vh, 5.5px);
-    min-height: 13px;
-    cursor: pointer;
-    color: var(--minju);
-    margin-left: -0.25vh;
-}
-navbar a:hover
-{
-    color: var(--nako);
-}
-navbar a:first-child
-{
-    margin-left: max(3vw, 2vw);
-}
+
 main
 {
     display: block;
-    min-height: 75vh;
-    background-color: var(--minjudarkT);
-    width: max(88vw, 339.667px);
-    left: max(6vw, 23.15px);
     position: relative;
+    overflow: hidden;
+    width: 70vw;
+    height: 84vh;
+    left: 15vw;
+    top: 8vh;
+    border-radius: calc((1vw + 1vh) / 2);
+    background: rgba(0,0,0,0.6);
 }
-titlebar
+
+main wrap
+{
+    background: linear-gradient(to right, transparent, var(--eunbi), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--eunbi), transparent);
+    opacity: 0.2;
+}
+
+heading
 {
     display: block;
-    width: 100%;
-    text-align: center;
-    padding-top: calc(max(3.7vh, 19.5333px)/8);
+    position: relative;
+    font-family: "Bubblegum Sans";
+    height: 12.5vh;
+    padding-bottom: 1vh;
+    box-shadow: 0px 3px var(--headingglow) var(--wonyoung);
 }
+
+heading *
+{
+    padding-left: 2.5vw;
+    text-shadow: 2px 1px var(--hitomi);
+}
+
+heading wrap
+{
+    background-color: var(--sakura);
+    opacity: 0.45;
+}
+
+heading1
+{
+    display: block;
+    font-size: min(6vh, 5vw);
+    padding-top: calc(12.5vh / 2 - (min(6.9vh, 5vw) / 2 + min(3vh, 2vw) / 2));
+}
+
+heading2
+{
+    display: block;
+    font-size: min(3vh, 2vw);
+}
+
+navbar
+{
+    display: flex;
+    margin-top: var(--headingglow);
+    height: 5vh;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    --selectBarX: 0px;
+    --selectBarY: 0px;
+    --selectBarW: 0px;
+    --selectBarH: 0px;
+}
+
+navbar a
+{
+    display: inline-block;
+    font-family: "Nerko One";
+    font-size: min(2.5vh, 2vw);
+    cursor: pointer;
+    color: var(--minju);
+    text-shadow: 0.5px 0.25px var(--hyewon);
+    margin: 0 1vw;
+}
+
+navbar::before
+{
+    display: inline-block;
+    position: fixed;
+    content: "";
+    width: var(--selectBarW);
+    height: var(--selectBarH);
+    left: var(--selectBarX);
+    top: var(--selectBarY);
+    background: var(--yuri);
+    transition: 0.5s;
+    box-shadow: 1px 1px 2px var(--yuri);
+}
+
 pages
 {
     display: block;
-    width: 100%;
-    height: 100%;
-    white-space: normal !important;
-    padding: min(1.5vw, 25px);
+    height: 60vh;
+    padding: 1vh 2.5vw;
+    overflow: scroll;
+    font-size: 20px;
 }
-pages *
-{
-    display: block;
-    font-size: 25px; /*fix me, not responsive*/
-}
+
 pages *:first-child
 {
-    margin-bottom: 30px; /*fix me*/
-}
-pages a
-{
-    font-size: 20px; /*fix me, not responsive*/
+    margin-bottom: 1.75vh;
 }
 
 /*Animations*/
-navmenu.animate
-{
-    text-align: center;
-    transition: 1s;
-    height: 100%;
-}
-navmenu.animate *
-{
-    display: block !important;
-    font-size: max(2.5vh, 19.5333px);
-}
-navmenu.animate *:nth-child(2)
-{
-    margin-top: 24%;
-    transition: 1s;
-}
-navmenu.animate *:first-child
-{
-    display: none !important;
-}

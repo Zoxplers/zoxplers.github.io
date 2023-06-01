@@ -1,18 +1,9 @@
-/*Made by Matthew Amurao*/
-//Maybe add soundcloud and/or artstation? in projects
-//Make website look better on phone with separate css activate via javascript and website useragent
-
-//Change all id to tagname patch
-document.body.querySelectorAll("*").forEach(function(node)
-{
-    node.id = node.tagName.toLowerCase();
-});
+/*Made by Zoxplers*/
 
 //Variables
 subheaders = ["omgitsasubheader","verycoolsubheader","subheadergoeshere","justanotherpersonalsite"];
-page = 0;
-cache = 0;
-lockHeading = true, showHidden = false, altColors = false;
+showHidden = false;
+altColors = false;
 
 //Parse URL
 document.URL.split('?').forEach(function(i)
@@ -27,78 +18,70 @@ document.URL.split('?').forEach(function(i)
     }
 });
 
-//Startup
-if(lockHeading)
-{
-    document.body.insertBefore(document.getElementById("heading"), document.getElementById("main"));
-    document.body.insertBefore(document.getElementById("navbar"), document.getElementById("main"));
-}
+//Generate subheader
+document.getElementsByTagName("heading2")[0].innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
 
-if(altColors)
-{
-    document.getElementById("navmenu").style.backgroundColor = "var(--nakodark)";
-    document.getElementById("navmenu").style.color = "var(--chaewon)";
-}
+//Tracker
+document.getElementsByTagName("iframe")[0].onload = function() {document.getElementsByTagName("iframe")[0].remove();};
 
-document.getElementById("heading2").innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
-document.getElementById("iframe").onload = function() {document.getElementById("iframe").remove();};
+//Pages handler
+Array.from(document.getElementsByTagName("pages")[0].children).forEach(page => {
+    //Navbar buttons
+    let button = document.createElement("a");
+    button.onclick = function(){pageSelect(page, button);};
+    button.innerHTML = "<span class = \"material-symbols-rounded\">" + page.getAttribute("icon") + "</span>\n<span>"+page.getAttribute("name") + "</span>";
+    document.getElementsByTagName("navbar")[0].appendChild(button);
 
-//Handle pages
-function loadPage(page, data)
-{
-    page.innerHTML = showHidden ? data.replace("<!--","").replace("-->","") : data;
-    Array.from(page.getElementsByClassName("image")).forEach(element => {
-        element.style = "margin: auto; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
-        element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
+    //Page content
+    page.innerHTML = "Unable to fetch data.";
+    fetch("http://zoxplers.com/home/"+page.tagName.toLowerCase()).then(response => {
+        response.text().then(content => {
+            page.innerHTML = showHidden ? content.replace("<!--","").replace("-->","") : content;
+            Array.from(page.getElementsByClassName("image")).forEach(element => {
+                //fix line below
+                element.style = "margin-top: 10px; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
+                element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
+            });
+        })
     });
-}
-
-Array.from(document.getElementById("pages").children).forEach(element => {
-    fetch(element.id).then(response => response.text()).then(textString => loadPage(element, textString)).catch(function() {
-        fetch("http://zoxplers.com/home/"+element.id).then(response => response.text()).then(textString => loadPage(element, textString)).catch(function() {
-            element.innerHTML = "Unable to fetch data.";
-        });
-    });
-    page = document.createElement("a");
-    page.onclick = function(){pageSelect(Array.from(document.getElementById("navbar").children).indexOf(this))};
-    page.innerHTML = "<span style = \"padding: initial\" class = \"material-symbols-rounded\">" + element.getAttribute("icon") + "</span> " + element.getAttribute("name");
-    document.getElementById("navbar").appendChild(page);
 });
 
-function pageSelect(page)
+//Selection bar
+function moveSelBar()
 {
-    Array.from(document.getElementById("navbar").children).forEach(element => {
-        element.style.backgroundColor = "initial";
-    });
-    Array.from(document.getElementById("pages").children).forEach(element => {
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarX", selectedButton.getBoundingClientRect().left-3 + "px");
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarY", selectedButton.getBoundingClientRect().bottom + "px");
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarW", selectedButton.getBoundingClientRect().width+10 + "px");
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarH", "1px");
+}
+
+function pageSelect(page, button)
+{
+    Array.from(document.getElementsByTagName("pages")[0].children).forEach(element => {
         element.style.display = "none";
     });
-    document.getElementById("pages").children.item(page).style.display = "initial";
-    document.getElementById("navbar").children.item(page).style.backgroundColor = "var(--minjudarkT)";
+    Array.from(document.getElementsByTagName("navbar")[0].children).forEach(element => {
+        element.style.color = null;
+        
+    });
+
+    button.style.color = "var(--yuri)";
+    button.style.textShadow = "unset";
+    page.style.display = "initial";
+    selectedButton = button;    
+    moveSelBar();
 }
 
-pageSelect(page);
+pageSelect(document.getElementsByTagName("pages")[0].firstElementChild, document.getElementsByTagName("navbar")[0].firstElementChild);
 
-//Handle sites
-async function loadSites()
+//Resize function
+window.onresize = function()
 {
-    cache = await fetch("../zwebsite.json").then(response => response.json());
-    try{
-        cache.zwebsite.sites.forEach(site => {
-            cache = document.createElement("a");
-            cache.innerHTML = site;
-            cache.style.display = "none";
-            cache.onclick = function() {location.href = "../"+site.toLowerCase()};
-            document.getElementById("navmenu").appendChild(cache);
-        });
-    }
-    catch(err)
-    {
-        console.log(err);
-    }
-}
-loadSites();
+    moveSelBar();
+};
 
-document.getElementById("navmenu").addEventListener("click", function() {
-    this.classList.toggle("animate");
-});
+//Load function
+window.onload = function()
+{
+    moveSelBar();
+};

@@ -1,5 +1,6 @@
 {
-    "zwebsite": {
+    "zwebsite":
+    {
         "sites": ["Home", "Mashed"]
     }
 }
