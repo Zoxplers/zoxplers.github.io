@@ -70,31 +70,40 @@ navmenu
     display: block;
     background: #5E8084;
     height: 5vh;
-    border-top: 4px solid #C5EAEE;
+    border-top: 4px solid #C0DCDE;
     font-family: "Secular One";
     text-align: center;
+    font-size: min(6vw, 2.5vh);
 }
 
 navitem
 {
-    font-size: 2.5vh;
-    margin: 0 20px;
+    display: inline-block;
+    margin: 0 1vw;
     cursor: pointer;
+    transform: translateY(-50%);
+}
+
+navitem span
+{
+    position: relative;
+    top: 2.8vh;
+    font-size: min(4vw, 3vh);
 }
 
 navitem text
 {
     position: relative;
     left: 0.1vw;
-    top: -0.25vh;
+    top: 2.5vh;
 }
 
 /*Classes*/
-.material-symbols-rounded {
+.material-symbols-rounded
+{
     font-family: 'Material Symbols Rounded';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;
@@ -105,7 +114,6 @@ navitem text
     font-feature-settings: "liga";
     -moz-font-feature-settings: 'liga';
     -moz-osx-font-smoothing: grayscale;
-    margin-top: 1.1vh;
   }
 
   
