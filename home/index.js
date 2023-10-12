@@ -31,6 +31,7 @@ window.addEventListener("resize", function()
 //NameClick
 nameToggle = true;
 nameElem = document.getElementsByTagName("name")[0];
+
 function nameClick()
 {
     nameToggle = !nameToggle;
@@ -47,10 +48,19 @@ function nameClick()
         nameElem.style.setProperty("color", "white");
     }
 }
-nameElem.onclick = nameClick;
 
+nameElem.onclick = nameClick;
 //NameClick End
 
 //Logo
 logoAmount = 6;
+
+function logoClick()
+{
+    document.getElementsByTagName("logo")[1].children.item(0).setAttribute("src", "../assets/logo"+Math.ceil(Math.random() * logoAmount)+".png");
+}
+
+logoClick();
+
+document.getElementsByTagName("logo")[0].onclick = logoClick;
 //Logo End
