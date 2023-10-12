@@ -1,0 +1,181 @@
+/*Made by Zoxplers*/
+
+/*Fonts*/
+
+/*Pseudo*/
+:root
+{
+    --nako: #b7d3e9;
+    --chaeyeon: #a6dcde;
+    --chaewon: #cee5d5;
+    --yujin: #567ace;
+    --minju: #ffffff;
+    --sakura: #f1d2e7;
+    --hitomi: #f1c3aa;
+    --yena: #fcf695;
+    --yuri: #f3aa51;
+    --hyewon: #db706c;
+    --wonyoung: #d9598c;
+    --eunbi: #bbb0dc;
+
+    --headingSize: min(96px,10vh);
+    --nameSize: 10vw;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    --color1: #adbac4;
+    user-select: none;
+    font-family: sans-serif;
+    color: var(--color1);
+}
+
+/*Tags*/
+body
+{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: no-repeat linear-gradient(to bottom right, var(--nako), var(--chaeyeon), var(--chaewon), var(--yujin), var(--minju), var(--sakura), var(--hitomi), var(--yena), var(--hyewon), var(--wonyoung), var(--eunbi));
+    background-size: 360% 360%;
+    animation: background 24s ease-out infinite;
+}
+
+mainbg
+{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    position: relative;
+    clip-path: polygon(
+        evenodd,
+        0% 0%,
+        22.1% 0%,
+        22.1% 5.1%,
+        77.9% 5.1%,
+        77.9% 94.9%,
+        22.1% 94.9%,
+        22.1% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    );
+}
+
+main
+{
+    display: block;
+    position: absolute;
+    width: 56vw;
+    margin: 0 22vw;
+    top: 5vh;
+    height: 90vh;
+    background: rgba(0,0,0,0);
+    overflow-y: hidden;
+}
+
+heading
+{
+    display: block;
+    overflow: hidden;
+    height: calc(var(--headingSize) + 1vh);
+    text-align: right;
+}
+
+name
+{
+    font-weight: bold;
+    background: black;
+    padding: 1vh 1vw 50vh 1vw;
+}
+
+name text:hover
+{
+    cursor: pointer;
+}
+
+headingfill
+{
+    display: inline-block;
+    position: absolute;
+    height: 50vh;
+    width: calc(49vw - var(--headingSize));
+    margin-left: calc(-49vw + var(--headingSize));
+    background: black;
+}
+
+logo
+{
+    position: absolute;
+    height: var(--headingSize);
+    margin-left: -49vw;
+}
+
+logo > img
+{
+    margin-top: 0.85vh;
+    height: var(--headingSize);
+}
+
+logo > imgbg
+{
+    display: block;
+    position: absolute;
+    top: 0.85vh;
+    width: var(--headingSize);
+    background: rgba(0,0,0,0);
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px black, 0 0 0 calc(1vw + 3vh) black;
+    height: var(--headingSize);
+}
+
+page
+{
+    overflow: scroll;
+}
+
+mainfill
+{
+    display: block;
+    background: black;
+    min-height: 100vh;
+}
+
+
+
+/*Classes*/
+
+.portrait
+{
+    width: 98vw;
+    left: 1vw;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), black 2%, black 96%, rgba(255, 255, 255, 0) 100%);
+    background-size: 100vw 100vh;
+}
+
+.landscape
+{
+    height: 99vh;
+    top: 0.5vh;
+    background: linear-gradient(rgba(255, 255, 255, 0), black 1%, black 98%, rgba(255, 255, 255, 0) 100%);
+    background-size: 100vw 100vh;
+}
+
+
+
+/*Animations*/
+@keyframes background
+{
+    0%
+    {
+        background-position: 0% 0%;
+    }
+    50%
+    {
+        background-position: 100% 100%;
+    }
+    100%
+    {
+        background-position: 0% 0%;
+    }
+}
