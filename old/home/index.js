@@ -34,7 +34,7 @@ Array.from(document.getElementsByTagName("pages")[0].children).forEach(page => {
 
     //Page content
     page.innerHTML = "Unable to fetch data.";
-    fetch("http://zoxplers.com/home/"+page.tagName.toLowerCase()).then(response => {
+    fetch("http://zoxplers.com/old/home/"+page.tagName.toLowerCase()).then(response => {
         response.text().then(content => {
             page.innerHTML = showHidden ? content.replace("<!--","").replace("-->","") : content;
             Array.from(page.getElementsByClassName("image")).forEach(element => {
