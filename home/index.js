@@ -1,5 +1,17 @@
 /*Made by Zoxplers*/
 
+//URL Parse
+showHidden = false;
+
+document.URL.split('?').forEach(function(i)
+{
+    if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")
+    {
+        showHidden = true;
+    }
+});
+//URL Parse End
+
 //Resize
 resize = false;
 
@@ -29,10 +41,35 @@ window.addEventListener("resize", function()
 //Resize End
 
 //Audio
-Array.from(document.getElementsByTagName("audio")).forEach(audio => audio.volume = 0.2);
+audioAmount = 5;
+audioArray = [];
+currentAudio = 0;
+
+while(audioArray.length < audioAmount)
+{
+    randInt = Math.ceil(Math.random() * audioAmount);
+    if(!(randInt == 1 && audioArray.length == 0) && !audioArray.includes(document.getElementById("audio" + randInt)))
+    {
+        audioArray.push(document.getElementById("audio" + randInt));
+    }
+}
+
+Array.from(document.getElementsByTagName("audio")).forEach(audio => 
+{
+    audio.volume = 0.2;
+    audio.onended = function()
+    {
+        currentAudio++;
+        if(currentAudio > audioArray.length)
+        {
+            currentAudio = 0;
+        }
+    }
+});
+
 function playAudio()
 {
-    document.getElementById("audio3").play();
+    audioArray.at(currentAudio).play();
 }
 
 function stopAudio()
@@ -113,9 +150,35 @@ function updateStatus(data)
 }
 
 
-lanyard({
+lanyard(
+{
     userId: "224288033950662656",
     socket: true,
     onPresenceUpdate: updateStatus
 })
 //Status End
+
+//Socials
+fetch("https://zoxplers.com/home/socials").then(response => {
+    response.text().then(content => {
+        document.getElementsByTagName("socials")[0].innerHTML = content;
+        Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem =>
+        {
+            socialImage = document.createElement("img");
+            socialImage.setAttribute("src", "../assets/"+socialItem.getAttribute("src"));
+            socialItem.appendChild(socialImage);
+            if(showHidden)
+            {
+                socialItem.classList.remove("hidden");
+            }
+            if(socialItem.getAttribute("href") != null)
+            {
+                socialItem.onclick = function()
+                {
+                    window.open(socialItem.getAttribute("href"));
+                };
+            }
+        })
+    });
+});
+//Socials End

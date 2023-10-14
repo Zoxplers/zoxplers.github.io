@@ -171,13 +171,50 @@ footer
 
 indicator
 {
-    display:inline-block;
+    display: inline-block;
     height: var(--fontSize);
     width: var(--fontSize);
     margin-right: calc(var(--fontSize) / 3);
     background-image: radial-gradient(white 50%, rgba(255, 255, 255, 0.69) 69%);
     border-radius: 50%;
 }
+
+socials
+{
+    display: block;
+    width: 100%;
+    text-align: right;
+    max-height: var(--fontSize);
+    height: 100%;
+    float: right;
+}
+
+socials *
+{
+    height: inherit;
+    pointer-events: auto;
+}
+
+socials:last-child
+{
+    padding-right: 1px;
+}
+
+socialitem
+{
+    margin-left: 0.1vw;
+    position: relative;
+    transition: 0.25s;
+    top: 0;
+    cursor: pointer;
+}
+
+socialitem:hover
+{
+    top: -1vh;
+}
+
+
 
 /*IDs*/
 #foreground
@@ -190,6 +227,11 @@ indicator
 }
 
 /*Classes*/
+.hidden
+{
+    display: none;
+}
+
 .portrait
 {
     width: 98vw;
