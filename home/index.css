@@ -3,10 +3,34 @@
 /*Fonts*/
 @font-face 
 {
-    font-family: 'Material Symbols Outlined';
+    font-family: "Material Symbols Outlined";
     font-style: normal;
     font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v138/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format('woff2');
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v138/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format("woff2");
+}
+
+@font-face
+{
+    font-family: 'Bubblegum Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/bubblegumsans/v20/AYCSpXb_Z9EORv1M5QTjEzMEteaAxII.woff2) format('woff2'), url(../assets/bubblegum_sansv20.woff2);
+}
+
+@font-face
+{
+    font-family: 'Gochi Hand';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/gochihand/v23/hES06XlsOjtJsgCkx1Pkfon_-w.woff2) format('woff2'), url(../assets/gochi_handv23.woff2);
+}
+
+@font-face
+{
+    font-family: 'Carter One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2) format('woff2'), url(../fonts/carter_onev17.woff2);
 }
 
 /*Pseudo*/
@@ -37,6 +61,7 @@
     color: white;
     text-shadow: 0 0 3px white;
     font-size: var(--fontSize);
+    font-family: "Carter One";
 }
 
 indicator::before
@@ -120,6 +145,7 @@ name
     background: black;
     color: var(--color1);
     pointer-events: auto;
+    font-family: "Bubblegum Sans";
 }
 
 logo
@@ -167,6 +193,12 @@ footer
     display: flex;
     font-size: calc(var(--fontSize) * 0.7);
     align-items: center;
+    font-family: "Bubblegum Sans";
+}
+
+footer p
+{
+    padding-top: 3px;
 }
 
 indicator
@@ -214,7 +246,16 @@ socialitem:hover
     top: -1vh;
 }
 
-
+tooltip
+{
+    position: absolute;
+    z-index: 1;
+    height: var(--fontSize);
+    pointer-events: none;
+    font-size: calc(var(--fontSize) * 0.69);
+    font-family: "Gochi Hand";
+    white-space: nowrap;
+}
 
 /*IDs*/
 #foreground

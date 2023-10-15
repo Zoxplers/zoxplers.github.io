@@ -12,6 +12,39 @@ document.URL.split('?').forEach(function(i)
 });
 //URL Parse End
 
+//Tooltips
+tooltipElem = document.getElementsByTagName("tooltip")[0];
+enabledTooltips = [];
+function tooltip(obj, text, align)
+{
+    function enableTooltip()
+    {
+        if(align == "right")
+        {
+            objRect = obj.getBoundingClientRect();
+            tooltipElem.innerHTML = text;
+            tooltipElem.style = "top: calc(" + (objRect.top + (objRect.bottom - objRect.top) /2) + "px - 7vh);";
+        }
+        else
+        {
+            objRect = obj.getBoundingClientRect();
+            objRect.top = objRect.top < 0 ? 0 : objRect.top;
+            tooltipElem.innerHTML = text;
+            tooltipElem.style = "top: calc(" + objRect.top + "px - var(--fontSize) - 7vh); left: calc(" + (objRect.left - (tooltipElem.getBoundingClientRect().right - tooltipElem.getBoundingClientRect().left - (objRect.right - objRect.left)) / 2) + "px - 23vw);";
+        }
+    }
+
+    obj.onmouseover = enableTooltip;
+    obj.onfocus = enableTooltip;
+    obj.onmouseout = function()
+    {
+        tooltipElem.innerHTML = "";
+    }
+}
+tooltip(document.getElementById("midground").getElementsByTagName("heading")[0].getElementsByTagName("line")[0], "Welcome to my website!", "right");
+
+//Tooltips End
+
 //Resize
 resize = false;
 
@@ -64,6 +97,7 @@ Array.from(document.getElementsByTagName("audio")).forEach(audio =>
         {
             currentAudio = 0;
         }
+        playAudio();
     }
 });
 
@@ -159,6 +193,8 @@ lanyard(
 //Status End
 
 //Socials
+document.getElementsByTagName("socials")[0].innerHTML = "Unable to fetch data.";
+
 fetch("https://zoxplers.com/home/socials").then(response => {
     response.text().then(content => {
         document.getElementsByTagName("socials")[0].innerHTML = content;
@@ -177,6 +213,7 @@ fetch("https://zoxplers.com/home/socials").then(response => {
                 {
                     window.open(socialItem.getAttribute("href"));
                 };
+                tooltip(socialItem, socialItem.getAttribute("text"));
             }
         })
     });
