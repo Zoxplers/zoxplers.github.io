@@ -52,6 +52,7 @@
     --headingSize: min(96px,10vh);
     --nameSize: 10vw;
     --fontSize: max(1vw, 1.5vh, 18px);
+    --mainWidthMargin: 10vw;
     --color1: white;
     --statusColor: white;
     -webkit-tap-highlight-color: transparent;
@@ -110,12 +111,12 @@ mainbg
     clip-path: polygon(
         evenodd,
         0% 0%,
-        22% 0%,
-        22% 5.05%,
-        78% 5.05%,
-        78% 94.95%,
-        22% 94.95%,
-        22% 0%,
+        5.1% 0%,
+        5.1% 5.05%,
+        94.9% 5.05%,
+        94.9% 94.95%,
+        5.1% 94.95%,
+        5.1% 0%,
         100% 0%,
         100% 100%,
         0% 100%
@@ -126,8 +127,8 @@ main
 {
     display: block;
     position: absolute;
-    width: 58vw;
-    left: 21vw;
+    width: 90vw;
+    left: 5vw;
     top: 5vh;
     height: 90vh;
     background: black;
@@ -136,7 +137,7 @@ main
 
 main > *
 {
-    margin: 1vh 2vw;
+    margin: 1vh var(--mainWidthMargin);
 }
 
 name
@@ -255,6 +256,7 @@ tooltip
     font-size: calc(var(--fontSize) * 0.69);
     font-family: "Gochi Hand";
     white-space: nowrap;
+    margin: 0;
 }
 
 /*IDs*/

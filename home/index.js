@@ -19,19 +19,17 @@ function tooltip(obj, text, align)
 {
     function enableTooltip()
     {
+        objRect = obj.getBoundingClientRect();
+        tooltipElem.innerHTML = text;
         if(align == "right")
         {
-            objRect = obj.getBoundingClientRect();
-            tooltipElem.innerHTML = text;
-            tooltipElem.style = "top: calc(" + (objRect.top + (objRect.bottom - objRect.top) /2) + "px - 7vh);";
+            tooltipElem.style = "top: calc(" + objRect.top + "px - 5vh + " + tooltipElem.offsetHeight/3 + "px); left: calc(" + objRect.right + "px - 5vw);";
         }
         else
         {
-            objRect = obj.getBoundingClientRect();
-            objRect.top = objRect.top < 0 ? 0 : objRect.top;
-            tooltipElem.innerHTML = text;
-            tooltipElem.style = "top: calc(" + objRect.top + "px - var(--fontSize) - 7vh); left: calc(" + (objRect.left - (tooltipElem.getBoundingClientRect().right - tooltipElem.getBoundingClientRect().left - (objRect.right - objRect.left)) / 2) + "px - 23vw);";
-        }
+            console.log(tooltipElem.offsetWidth);
+            tooltipElem.style = "top: calc(" + objRect.top + "px - 5vh - " + objRect.height + "px); left: calc(" + objRect.left + "px - 5vw - " + tooltipElem.offsetWidth/2 + "px + " + objRect.width/2 + "px);";
+        } 
     }
 
     obj.onmouseover = enableTooltip;
@@ -55,12 +53,14 @@ function resizeBody()
         document.getElementsByTagName("mainbg")[0].className = "portrait";
         document.documentElement.style.setProperty("--headingSize", "10vw");
         document.documentElement.style.setProperty("--fontSize", "max(2.1vw, 2.15vh, 16px)");
+        document.documentElement.style.setProperty("--mainWidthMargin", "10vw");
     }
     else
     {
         document.getElementsByTagName("mainbg")[0].className = "landscape";
         document.documentElement.style.setProperty("--headingSize", "10vh");
         document.documentElement.style.setProperty("--fontSize", "max(1.1vw, 2.1vh, 22px)");
+        document.documentElement.style.setProperty("--mainWidthMargin", "16vw");
     }
 }
 
