@@ -98,6 +98,8 @@ body
     background: no-repeat linear-gradient(to bottom right, var(--nako), var(--chaeyeon), var(--chaewon), var(--yujin), var(--minju), var(--sakura), var(--hitomi), var(--yena), var(--hyewon), var(--wonyoung), var(--eunbi));
     background-size: 360% 360%;
     animation: background 24s ease-out infinite;
+    min-width: 450px;
+    min-height: 451px;
 }
 
 mainbg
@@ -111,12 +113,12 @@ mainbg
     clip-path: polygon(
         evenodd,
         0% 0%,
-        5.1% 0%,
-        5.1% 5.05%,
-        94.9% 5.05%,
-        94.9% 94.95%,
-        5.1% 94.95%,
-        5.1% 0%,
+        5.2% 0%,
+        5.2% 5.2%,
+        94.8% 5.2%,
+        94.8% 94.8%,
+        5.2% 94.8%,
+        5.2% 0%,
         100% 0%,
         100% 100%,
         0% 100%
@@ -133,6 +135,7 @@ main
     height: 90vh;
     background: black;
     mix-blend-mode: multiply;
+    overflow: hidden;
 }
 
 main > *
@@ -178,7 +181,6 @@ infoitem
 heading
 {
     display: block;
-    width: 100%;
     margin-top: 20vh;
     margin-bottom: 0;
     line-height: 1.75;
