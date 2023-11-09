@@ -27,7 +27,6 @@ function tooltip(obj, text, align)
         }
         else
         {
-            console.log(tooltipElem.offsetWidth);
             tooltipElem.style = "top: calc(" + objRect.top + "px - 5vh - " + objRect.height + "px); left: calc(" + objRect.left + "px - 5vw - " + tooltipElem.offsetWidth/2 + "px + " + objRect.width/2 + "px);";
         } 
     }

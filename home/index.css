@@ -95,7 +95,7 @@ body
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background: no-repeat linear-gradient(to bottom right, var(--nako), var(--chaeyeon), var(--chaewon), var(--yujin), var(--minju), var(--sakura), var(--hitomi), var(--yena), var(--hyewon), var(--wonyoung), var(--eunbi));
+    background: no-repeat linear-gradient(to bottom right, var(--nako), var(--chaeyeon), var(--chaewon), var(--yujin), var(--minju), var(--sakura), var(--hitomi), var(--yena), var(--yuri), var(--hyewon), var(--wonyoung), var(--eunbi));
     background-size: 360% 360%;
     animation: background 24s ease-out infinite;
     min-width: 450px;
