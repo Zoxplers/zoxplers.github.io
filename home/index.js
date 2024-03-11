@@ -158,11 +158,36 @@ document.getElementsByTagName("logo")[0].onclick = logoClick;
 //Status
 function updateStatus(data)
 {
+    hasActivity = false;
     if(data["discord_status"] == "online")
     {
         string = data["discord_status"];
-        data["activities"].forEach(activity => string += " on " + activity.name);
-        string = string == data["discord_status"] ? data["discord_status"] + " on Discord" : string;
+        data["activities"].forEach(activity => 
+        {
+            if(hasActivity)
+            {
+                string += " and on ";
+            }
+            else
+            {
+                hasActivity = true;
+                string += " on ";
+            }
+            if(activity.name == "Custom Status")
+            {
+                string += "Discord: "
+                string = activity.hasOwnProperty("emoji") ? string + "<img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\">" : string;
+                string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
+            }
+            else
+            {
+                string += activity.name;
+            }
+        });
+        if(!hasActivity)
+        {
+            string = data["discord_status"] + " on Discord";
+        }
         document.documentElement.style.setProperty("--statusColor", "green");
     }
     else if(data["discord_status"] == "dnd")
@@ -195,6 +220,8 @@ lanyard(
 document.getElementsByTagName("socials")[0].innerHTML = "Unable to fetch data.";
 
 fetch("https://zoxplers.com/home/socials").then(response => {
+    document.getElementsByTagName("socials")[0].style.setProperty("transition", "2s");
+    document.getElementsByTagName("socials")[0].style.setProperty("height", "120%");
     response.text().then(content => {
         document.getElementsByTagName("socials")[0].innerHTML = content;
         Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem =>
