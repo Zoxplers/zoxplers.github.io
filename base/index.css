@@ -1,0 +1,143 @@
+/*Made by Zoxplers*/
+
+/*Fonts*/
+@font-face 
+{
+    font-family: "Material Symbols Outlined";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v138/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format("woff2");
+}
+
+@font-face
+{
+    font-family: 'Bubblegum Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/bubblegumsans/v20/AYCSpXb_Z9EORv1M5QTjEzMEteaAxII.woff2) format('woff2'), url(../assets/bubblegum_sansv20.woff2);
+}
+
+@font-face
+{
+    font-family: 'Gochi Hand';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/gochihand/v23/hES06XlsOjtJsgCkx1Pkfon_-w.woff2) format('woff2'), url(../assets/gochi_handv23.woff2);
+}
+
+@font-face
+{
+    font-family: 'Carter One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2) format('woff2'), url(../fonts/carter_onev17.woff2);
+}
+
+/*Pseudo*/
+:root
+{
+    --nako: #b7d3e9;
+    --chaeyeon: #a6dcde;
+    --chaewon: #cee5d5;
+    --yujin: #567ace;
+    --minju: #ffffff;
+    --sakura: #f1d2e7;
+    --hitomi: #f1c3aa;
+    --yena: #fcf695;
+    --yuri: #f3aa51;
+    --hyewon: #db706c;
+    --wonyoung: #d9598c;
+    --eunbi: #bbb0dc;
+
+    --minWidth: 600px;
+    --minHeight: 450px;
+    --fontSize: max(1vw, 1.5vh, 18px);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+
+
+    color: white;
+    user-select: none;
+    font-size: var(--fontSize);
+    font-family: "Carter One", sans-serif;
+    text-shadow: 0 0 3px white;
+}
+
+/*Tags*/
+body
+{
+    display: block;
+    width: max(100vw, var(--minWidth));
+    height: max(100vh, var(--minHeight));
+    margin: 0;
+    background: white;
+    animation: background 8s linear infinite;
+    overflow: scroll;
+}
+
+blur
+{
+    display: block;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(69px);
+}
+
+main
+{
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: pre;
+}
+
+/*IDs*/
+#background
+{
+
+    background: black;
+    box-shadow: 0 0 calc(1vh + 1vw) black;
+    mix-blend-mode: multiply;
+}
+
+#midground
+{
+    background: none;
+}
+
+/*Classes*/
+.portrait
+{
+    left: 1.5%;
+    top: 0;
+    width: 97%;
+    height: 100%; 
+    min-width: calc(0.97 * var(--minWidth));
+    min-height: var(--minHeight);
+}
+
+.landscape
+{
+    left: 0;
+    top: 1.5%;
+    width: 100%;
+    height: 97%;
+    min-width: var(--minWidth);
+    min-height: calc(0.97 * var(--minHeight));
+}
+
+/*Animations*/
+@keyframes background
+{
+    0%
+    {
+        background-position: 0% 100%;
+    }
+    100%
+    {
+        background-position: 100% 0%;
+    }
+}

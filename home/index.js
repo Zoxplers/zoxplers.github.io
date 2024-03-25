@@ -217,6 +217,7 @@ lanyard(
 //Status End
 
 //Socials
+//make socials jump randomly
 document.getElementsByTagName("socials")[0].innerHTML = "Unable to fetch data.";
 
 fetch("https://zoxplers.com/home/socials").then(response => {

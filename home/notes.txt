@@ -1,0 +1,5 @@
+move /home to /legacy
+in /home:
+add an iframe that displays /base with old /home information
+inside the iframe, add a redirect to /legacy
+add a check to see if iframe loaded -> remove the redirect to legacy
