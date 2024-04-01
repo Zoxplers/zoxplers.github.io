@@ -9,5 +9,6 @@ main
 a
 {
     color: white;
-    text-decoration: solid underline white 1vh;
+    text-decoration: solid underline white 0.225vh;
+    text-underline-offset: 0.35vh;
 }
