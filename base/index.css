@@ -71,7 +71,7 @@ body
     height: max(100vh, var(--minHeight));
     margin: 0;
     background: white;
-    animation: background 8s linear infinite;
+    animation: background 16s linear infinite;
     overflow: scroll;
 }
 
@@ -99,7 +99,7 @@ main
 {
 
     background: black;
-    box-shadow: 0 0 calc(1vh + 1vw) black;
+    box-shadow: 0 0 calc((1vh + 1vw) / 5) calc((1vh + 1vw) / 10) black;
     mix-blend-mode: multiply;
 }
 
