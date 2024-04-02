@@ -1,143 +1,16 @@
 /*Made by Zoxplers*/
 
-/*Fonts*/
-@font-face 
-{
-    font-family: "Material Symbols Outlined";
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v138/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2) format("woff2");
-}
-
-@font-face
-{
-    font-family: 'Bubblegum Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/bubblegumsans/v20/AYCSpXb_Z9EORv1M5QTjEzMEteaAxII.woff2) format('woff2'), url(../assets/bubblegum_sansv20.woff2);
-}
-
-@font-face
-{
-    font-family: 'Gochi Hand';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/gochihand/v23/hES06XlsOjtJsgCkx1Pkfon_-w.woff2) format('woff2'), url(../assets/gochi_handv23.woff2);
-}
-
-@font-face
-{
-    font-family: 'Carter One';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2) format('woff2'), url(../fonts/carter_onev17.woff2);
-}
-
 /*Pseudo*/
 :root
 {
-    --nako: #b7d3e9;
-    --chaeyeon: #a6dcde;
-    --chaewon: #cee5d5;
-    --yujin: #567ace;
-    --minju: #ffffff;
-    --sakura: #f1d2e7;
-    --hitomi: #f1c3aa;
-    --yena: #fcf695;
-    --yuri: #f3aa51;
-    --hyewon: #db706c;
-    --wonyoung: #d9598c;
-    --eunbi: #bbb0dc;
-
-    --headingSize: min(96px,10vh);
-    --nameSize: 10vw;
-    --fontSize: max(1vw, 1.5vh, 18px);
-    --mainWidthMargin: 10vw;
-    --color1: white;
-    --statusColor: white;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none;
-    user-select: none;
-    font-family: sans-serif;
-    color: white;
-    text-shadow: 0 0 3px white;
-    font-size: var(--fontSize);
-    font-family: "Carter One";
-}
-
-indicator::before
-{
-    display: block;
-    content: "";
-    height: var(--fontSize);
-    width: var(--fontSize);
-    background: var(--statusColor);
-    opacity: 50%;
-    animation: glow 3s ease infinite;
-    border-radius: 50%;
-}
-
-infoitem *:first-child
-{
-    font-size: var(--fontSize);
-}
-
-infoitem *:nth-child(2)
-{
-    position: relative;
-    top: calc(var(--fontSize) * -0.2);
+    --mainWidthMargin: 22vw;
 }
 
 /*Tags*/
-body
-{
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    background: no-repeat linear-gradient(to bottom right, var(--nako), var(--chaeyeon), var(--chaewon), var(--yujin), var(--minju), var(--sakura), var(--hitomi), var(--yena), var(--yuri), var(--hyewon), var(--wonyoung), var(--eunbi));
-    background-size: 360% 360%;
-    animation: background 24s ease-out infinite;
-    min-width: 450px;
-    min-height: 451px;
-}
-
-mainbg
-{
-    content: "";
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    position: relative;
-    clip-path: polygon(
-        evenodd,
-        0% 0%,
-        5.2% 0%,
-        5.2% 5.2%,
-        94.8% 5.2%,
-        94.8% 94.8%,
-        5.2% 94.8%,
-        5.2% 0%,
-        100% 0%,
-        100% 100%,
-        0% 100%
-    );
-}
-
 main
 {
-    display: block;
-    position: absolute;
-    width: 90vw;
-    left: 5vw;
-    top: 5vh;
-    height: 90vh;
-    background: black;
-    mix-blend-mode: multiply;
-    overflow: hidden;
+    white-space: unset;
 }
-
 main > *
 {
     margin: 1vh var(--mainWidthMargin);
@@ -145,23 +18,26 @@ main > *
 
 name
 {
-    float: right;
-    background: black;
-    color: var(--color1);
+    display: block;
+    position: absolute;
+    width: calc(100% - var(--mainWidthMargin) * 2);
+    text-align: right;
     pointer-events: auto;
+    margin-top: 5vh;
     font-family: "Bubblegum Sans";
 }
 
 logo
 {
-    float: left;
+    position: absolute;
+    margin-top: 5vh;
 }
 
 logo > img
 {
     height: 10vh;
     border-radius: 50%;
-    box-shadow: inset 0 0 20px black;
+    box-shadow: inset 0 0 calc(1vw + 1vh) black;
 }
 
 infobar
@@ -188,94 +64,7 @@ heading
 
 heading *
 {
-    white-space: pre;
-}
-
-footer
-{
-    display: flex;
-    font-size: calc(var(--fontSize) * 0.7);
-    align-items: center;
-    font-family: "Bubblegum Sans";
-}
-
-footer p
-{
-    display: flex;
-    align-items: center;
-    padding-top: 3px;
-}
-
-footer p > img
-{
-    position: relative;
-    top: -3px;
-    border-radius: 12px;
-    padding: 0 0.5vw;
-    height: 5vh;
-}
-
-indicator
-{
-    display: inline-block;
-    height: var(--fontSize);
-    width: var(--fontSize);
-    margin-right: calc(var(--fontSize) / 3);
-    background-image: radial-gradient(white 50%, rgba(255, 255, 255, 0.69) 69%);
-    border-radius: 50%;
-}
-
-socials
-{
-    display: block;
-    width: 100%;
-    text-align: right;
-    max-height: var(--fontSize);
-    height: 100%;
-    float: right;
-}
-
-socials *
-{
-    height: inherit;
-    pointer-events: auto;
-}
-
-socials:last-child
-{
-    padding-right: 1px;
-}
-
-socialitem
-{
-    margin-left: 0.1vw;
-    position: relative;
-    top: 0;
-    cursor: pointer;
-}
-
-socialitem img
-{
-    top: 0;
-    position: relative;
-    transition: 0.25s;
-}
-
-socialitem:hover img
-{
-    top: -1vh;
-}
-
-tooltip
-{
-    position: absolute;
-    z-index: 1;
-    height: var(--fontSize);
-    pointer-events: none;
-    font-size: calc(var(--fontSize) * 0.69);
-    font-family: "Gochi Hand";
-    white-space: nowrap;
-    margin: 0;
+    white-space:    ;
 }
 
 /*IDs*/
@@ -292,22 +81,6 @@ tooltip
 .hidden
 {
     display: none;
-}
-
-.portrait
-{
-    width: 98vw;
-    left: 1vw;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), black 2%, black 96%, rgba(255, 255, 255, 0) 100%);
-    background-size: 100vw 100vh;
-}
-
-.landscape
-{
-    height: 99vh;
-    top: 0.5vh;
-    background: linear-gradient(rgba(255, 255, 255, 0), black 1%, black 98%, rgba(255, 255, 255, 0) 100%);
-    background-size: 100vw 100vh;
 }
 
 .material-symbols-rounded 
@@ -342,37 +115,4 @@ tooltip
     font-feature-settings: "liga";
     -moz-font-feature-settings: 'liga';
     -moz-osx-font-smoothing: grayscale;
-}
-
-/*Animations*/
-@keyframes glow
-{
-    0%
-    {
-        opacity: 50%;
-    }
-    50%
-    {
-        opacity: 100%;
-    }
-    100%
-    {
-        opacity: 50%;
-    }
-}
-
-@keyframes background
-{
-    0%
-    {
-        background-position: 0% 0%;
-    }
-    50%
-    {
-        background-position: 100% 100%;
-    }
-    100%
-    {
-        background-position: 0% 0%;
-    }
 }
