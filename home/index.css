@@ -3,7 +3,19 @@
 /*Pseudo*/
 :root
 {
-    --mainWidthMargin: 22vw;
+    --mainWidthMargin: 21vw;
+}
+
+indicator::before
+{
+    display: block;
+    content: "";
+    height: var(--fontSize);
+    width: var(--fontSize);
+    background: var(--statusColor);
+    opacity: 50%;
+    animation: glow 3s ease infinite;
+    border-radius: 50%;
 }
 
 /*Tags*/
@@ -35,7 +47,7 @@ logo
 
 logo > img
 {
-    height: 10vh;
+    height: 12vh;
     border-radius: 50%;
     box-shadow: inset 0 0 calc(1vw + 1vh) black;
 }
@@ -54,17 +66,108 @@ infoitem
     margin-right: 0.3vw;
 }
 
+infoitem *
+{
+    white-space: pre !important;
+}
+
 heading
 {
     display: block;
-    margin-top: 20vh;
+    margin-top: 22vh;
     margin-bottom: 0;
     line-height: 1.75;
 }
 
 heading *
 {
-    white-space:    ;
+    white-space: pre;
+}
+
+footer
+{
+    display: flex;
+    font-size: calc(var(--fontSize) * 0.7);
+    align-items: center;
+    font-family: "Bubblegum Sans";
+}
+
+footer p
+{
+    display: flex;
+    align-items: center;
+    padding-top: 3px;
+}
+
+footer p > img
+{
+    position: relative;
+    top: -3px;
+    border-radius: 12px;
+    padding: 0 0.5vw;
+    height: 5vh;
+}
+
+indicator
+{
+    display: inline-block;
+    height: var(--fontSize);
+    width: var(--fontSize);
+    margin-right: calc(var(--fontSize) / 3);
+    background-image: radial-gradient(white 50%, rgba(255, 255, 255, 0.69) 69%);
+    border-radius: 50%;
+}
+
+socials
+{
+    display: block;
+    width: 100%;
+    text-align: right;
+    max-height: var(--fontSize);
+    height: 100%;
+    float: right;
+}
+
+socials *
+{
+    height: inherit;
+    pointer-events: auto;
+}
+
+socials:last-child
+{
+    padding-right: 1px;
+}
+
+socialitem
+{
+    margin-left: 0.1vw;
+    position: relative;
+    top: 0;
+    cursor: pointer;
+}
+
+socialitem img
+{
+    top: 0;
+    position: relative;
+    transition: 0.25s;
+}
+
+socialitem:hover img
+{
+    top: -1vh;
+}
+
+tooltip
+{
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    font-size: calc(var(--fontSize) * 0.69);
+    font-family: "Gochi Hand";
+    white-space: nowrap;
+    margin: 0;
 }
 
 /*IDs*/
@@ -75,6 +178,11 @@ heading *
     pointer-events: none;
     color: var(--color1);
     text-shadow: none;
+}
+
+#background infoitem
+{
+    font-size: calc(var(--fontSize) * 0.9);
 }
 
 /*Classes*/
@@ -115,4 +223,21 @@ heading *
     font-feature-settings: "liga";
     -moz-font-feature-settings: 'liga';
     -moz-osx-font-smoothing: grayscale;
+}
+
+/*Animations*/
+@keyframes glow
+{
+    0%
+    {
+        opacity: 50%;
+    }
+    50%
+    {
+        opacity: 100%;
+    }
+    100%
+    {
+        opacity: 50%;
+    }
 }

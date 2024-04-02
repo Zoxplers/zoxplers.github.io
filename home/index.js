@@ -1,5 +1,17 @@
 /*Made by Zoxplers*/
 
+//URL Parse
+showHidden = false;
+
+document.URL.split('?').forEach(function(i)
+{
+    if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")
+    {
+        showHidden = true;
+    }
+});
+//URL Parse End
+
 //Audio
 audioAmount = 5;
 audioArray = [];
@@ -82,3 +94,135 @@ logoClick();
 
 document.getElementsByTagName("logo")[0].onclick = logoClick;
 //Logo End
+
+//Tooltips
+/*FUCKING TOOLTIPS
+enabledTooltips = [];
+function tooltip(obj, text, align)
+{
+    tooltipElem = document.createElement("tooltip");
+    document.getElementById("background").append(tooltipElem);
+    function enableTooltip()
+    {
+        objRect = obj.getBoundingClientRect();
+        tooltipElem.innerHTML = text;
+        console.log(objRect);
+        if(align == "right")
+        {
+            tooltipElem.style = "top: " + (objRect.top) + "px; left: calc(" + objRect.right + "px + 1vw);";
+            tooltipElem.style.setProperty("text-align", "left");
+        }
+        else if(align == "left")
+        {
+            tooltipElem.style = "top: " + (objRect.top + objRect.height/2 - tooltipElem.offsetHeight/2) + "px; left: calc(" + (objRect.left - tooltipElem.offsetWidth) + "px - 1vw);";
+            tooltipElem.style.setProperty("text-align", "right");
+        }
+        else
+        {
+            tooltipElem.style = "top: calc(" + objRect.top + "px - 5vh - " + objRect.height + "px); left: calc(" + objRect.left + "px - 5vw - " + tooltipElem.offsetWidth/2 + "px + " + objRect.width/2 + "px);";
+        } 
+    }
+
+    obj.onmouseover = enableTooltip;
+    obj.onfocus = enableTooltip;
+    obj.onmouseout = function()
+    {
+        tooltipElem.innerHTML = "";
+    }
+}
+tooltip(document.getElementById("background").getElementsByTagName("heading")[0].getElementsByTagName("line")[0], "Welcome to my website!", "right");
+//Tooltips End
+*/
+
+//Status
+function updateStatus(data)
+{
+    hasActivity = false;
+    if(data["discord_status"] == "online")
+    {
+        string = data["discord_status"];
+        data["activities"].forEach(activity => 
+        {
+            if(hasActivity)
+            {
+                string += " and on ";
+            }
+            else
+            {
+                hasActivity = true;
+                string += " on ";
+            }
+            if(activity.name == "Custom Status")
+            {
+                string += "Discord: "
+                string = activity.hasOwnProperty("emoji") ? string + "<img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\">" : string;
+                string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
+            }
+            else
+            {
+                string += activity.name;
+            }
+        });
+        if(!hasActivity)
+        {
+            string = data["discord_status"] + " on Discord";
+        }
+        document.documentElement.style.setProperty("--statusColor", "green");
+    }
+    else if(data["discord_status"] == "dnd")
+    {
+        string = "Do Not Disturb";
+        document.documentElement.style.setProperty("--statusColor", "red");
+    }
+    else
+    {
+        string = data["discord_status"];
+        document.documentElement.style.setProperty("--statusColor", "white");
+        if(string == "idle")
+        {
+            document.documentElement.style.setProperty("--statusColor", "orange");
+        }
+    }
+    document.getElementsByTagName("footer")[0].innerHTML = "<indicator></indicator><p>"+string.charAt(0).toUpperCase() + string.slice(1) + "</p>";
+}
+
+
+lanyard(
+{
+    userId: "224288033950662656",
+    socket: true,
+    onPresenceUpdate: updateStatus
+})
+//Status End
+
+
+//Socials
+//make socials jump randomly
+document.getElementsByTagName("socials")[0].innerHTML = "Unable to fetch data.";
+
+fetch("https://zoxplers.com/home/socials").then(response => {
+    document.getElementsByTagName("socials")[0].style.setProperty("transition", "2s");
+    document.getElementsByTagName("socials")[0].style.setProperty("height", "120%");
+    response.text().then(content => {
+        document.getElementsByTagName("socials")[0].innerHTML = content;
+        Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem =>
+        {
+            socialImage = document.createElement("img");
+            socialImage.setAttribute("src", "../assets/"+socialItem.getAttribute("src"));
+            socialItem.appendChild(socialImage);
+            if(showHidden)
+            {
+                socialItem.classList.remove("hidden");
+            }
+            if(socialItem.getAttribute("href") != null)
+            {
+                socialItem.onclick = function()
+                {
+                    window.open(socialItem.getAttribute("href"));
+                };
+                //tooltip(socialItem, socialItem.getAttribute("text"));
+            }
+        })
+    });
+});
+//Socials End
