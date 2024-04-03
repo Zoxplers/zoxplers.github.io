@@ -49,7 +49,7 @@ function stopAudio()
 {
     Array.from(document.getElementsByTagName("audio")).forEach(audio => audio.pause());
 }
-//AudioEnd
+//Audio End
 
 //NameClick
 nameToggle = true;
@@ -83,11 +83,11 @@ logoAmount = 6;
 function logoClick()
 {
     randInt = Math.ceil(Math.random() * logoAmount);
-    while ("../assets/logo"+randInt+".png" == document.getElementsByTagName("logo")[1].children.item(0).getAttribute("src"))
+    while ("/assets/logo"+randInt+".png" == document.getElementsByTagName("logo")[1].children.item(0).getAttribute("src"))
     {
         randInt = Math.ceil(Math.random() * logoAmount);
     }
-    document.getElementsByTagName("logo")[1].children.item(0).setAttribute("src", "../assets/logo"+randInt+".png");
+    document.getElementsByTagName("logo")[1].children.item(0).setAttribute("src", "/assets/logo"+randInt+".png");
 }
 
 logoClick();
@@ -96,43 +96,57 @@ document.getElementsByTagName("logo")[0].onclick = logoClick;
 //Logo End
 
 //Tooltips
-/*FUCKING TOOLTIPS
 enabledTooltips = [];
-function tooltip(obj, text, align)
+function tooltip(obj, parent, text, align)
 {
-    tooltipElem = document.createElement("tooltip");
-    document.getElementById("background").append(tooltipElem);
+    let tooltipElem = document.createElement("tooltip");
+    tooltipParent = parent;
+    tooltipElem.innerHTML = text;
+    tooltipParent.append(tooltipElem);
     function enableTooltip()
     {
+        tooltipElem.classList.remove("hidden");
         objRect = obj.getBoundingClientRect();
-        tooltipElem.innerHTML = text;
-        console.log(objRect);
-        if(align == "right")
+        if(align == "left")
         {
-            tooltipElem.style = "top: " + (objRect.top) + "px; left: calc(" + objRect.right + "px + 1vw);";
-            tooltipElem.style.setProperty("text-align", "left");
+            tooltipElem.style.setProperty("left", (objRect.left - tooltipElem.offsetWidth) + "px");
+            tooltipElem.style.setProperty("top", objRect.top + "px");
         }
-        else if(align == "left")
+        else if(align == "right")
         {
-            tooltipElem.style = "top: " + (objRect.top + objRect.height/2 - tooltipElem.offsetHeight/2) + "px; left: calc(" + (objRect.left - tooltipElem.offsetWidth) + "px - 1vw);";
-            tooltipElem.style.setProperty("text-align", "right");
+            tooltipElem.style.setProperty("left", objRect.right + "px");
+            tooltipElem.style.setProperty("top", objRect.top + "px");
+        }
+        else if(align == "top")
+        {
+            tooltipElem.style.setProperty("left", (objRect.left + objRect.width / 2 - tooltipElem.offsetWidth / 2) + "px");
+            tooltipElem.style.setProperty("top", (objRect.top - tooltipElem.offsetHeight) + "px");
+        }
+        else if(align == "bottom")
+        {
+            tooltipElem.style.setProperty("left", (objRect.left + objRect.width / 2 - tooltipElem.offsetWidth / 2) + "px");
+            tooltipElem.style.setProperty("top", objRect.bottom + "px");
         }
         else
         {
-            tooltipElem.style = "top: calc(" + objRect.top + "px - 5vh - " + objRect.height + "px); left: calc(" + objRect.left + "px - 5vw - " + tooltipElem.offsetWidth/2 + "px + " + objRect.width/2 + "px);";
-        } 
+            tooltipElem.style.setProperty("left", objRect.left + "px");
+            tooltipElem.style.setProperty("top", objRect.top + "px");
+        }
+    }
+
+    function disableTooltip()
+    {
+        tooltipElem.classList.add("hidden");
     }
 
     obj.onmouseover = enableTooltip;
     obj.onfocus = enableTooltip;
-    obj.onmouseout = function()
-    {
-        tooltipElem.innerHTML = "";
-    }
+    obj.onmouseout = disableTooltip;
+    disableTooltip();
 }
-tooltip(document.getElementById("background").getElementsByTagName("heading")[0].getElementsByTagName("line")[0], "Welcome to my website!", "right");
+tooltip(document.getElementById("background").getElementsByTagName("heading")[0].getElementsByTagName("line")[0], document.getElementById("background"), "<span style = \"left: 1vw\">Welcome to my website!</span>", "right");
+tooltip(document.getElementById("background").getElementsByTagName("heading")[0].getElementsByTagName("line")[1], document.getElementById("foreground"), "<img style = \"height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)\" src = \"/assets/wave.png\"/>", "right");
 //Tooltips End
-*/
 
 //Status
 function updateStatus(data)
@@ -195,7 +209,6 @@ lanyard(
 })
 //Status End
 
-
 //Socials
 //make socials jump randomly
 document.getElementsByTagName("socials")[0].innerHTML = "Unable to fetch data.";
@@ -208,7 +221,7 @@ fetch("https://zoxplers.com/home/socials").then(response => {
         Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem =>
         {
             socialImage = document.createElement("img");
-            socialImage.setAttribute("src", "../assets/"+socialItem.getAttribute("src"));
+            socialImage.setAttribute("src", "/assets/"+socialItem.getAttribute("src"));
             socialItem.appendChild(socialImage);
             if(showHidden)
             {
@@ -220,7 +233,7 @@ fetch("https://zoxplers.com/home/socials").then(response => {
                 {
                     window.open(socialItem.getAttribute("href"));
                 };
-                //tooltip(socialItem, socialItem.getAttribute("text"));
+                tooltip(socialItem, document.getElementById("background"), "<span style = \"top: -1.5vh; vertical-align: text-top;\">" + socialItem.getAttribute("text") + "</span>", "bottom");
             }
         })
     });

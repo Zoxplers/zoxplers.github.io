@@ -12,3 +12,9 @@ a
     text-decoration: solid underline white 0.225vh;
     text-underline-offset: 0.35vh;
 }
+
+a span
+{
+    color: #00000000;
+    text-shadow: none !important;
+}

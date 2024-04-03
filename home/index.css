@@ -76,7 +76,6 @@ heading
     display: block;
     margin-top: 22vh;
     margin-bottom: 0;
-    line-height: 1.75;
 }
 
 heading *
@@ -168,6 +167,12 @@ tooltip
     font-family: "Gochi Hand";
     white-space: nowrap;
     margin: 0;
+    overflow: visible;
+}
+
+tooltip *
+{
+    position: relative;
 }
 
 /*IDs*/
