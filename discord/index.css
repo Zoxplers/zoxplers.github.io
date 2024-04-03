@@ -1,5 +1,11 @@
 /*Made by Zoxplers*/
 
+/*Pseudo*/
+a:hover
+{
+    text-decoration: solid underline white 0.225vh;
+}
+
 /*Tags*/
 main
 {
@@ -9,7 +15,7 @@ main
 a
 {
     color: white;
-    text-decoration: solid underline white 0.225vh;
+    text-decoration: unset;
     text-underline-offset: 0.35vh;
 }
 
