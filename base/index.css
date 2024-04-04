@@ -100,6 +100,26 @@ main
     top: 0;
 }
 
+homebutton
+{
+    position: absolute;
+    z-index: 1;
+    top: 1vh;
+    left: 0.5vw;
+}
+
+homebutton span
+{
+    position:absolute;
+    margin-top: calc(var(--fontSize) * 0.35);
+}
+
+homebutton a
+{
+    white-space: pre;
+    font-size: calc(var(--fontSize) * 0.7);
+}
+
 /*IDs*/
 #background
 {

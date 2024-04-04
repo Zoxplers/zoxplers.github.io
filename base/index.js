@@ -45,6 +45,5 @@ if(window.location.protocol == "http:" || window.location.protocol == "https:")
 //Title End
 
 //HomeButton
-document.getElementById("background").innerHTML = "<span class=\"isHomeButton\" style=\"margin-top: calc(var(--fontSize) * 0.35);\" class=\"material-symbols-outlined\">House</span>" + document.getElementById("background").innerHTML;
-document.getElementById("foreground").innerHTML = "<a class=\"isHomeButton\" style=\"white-space: pre; font-size: calc(var(--fontSize) * 0.7);\" href=\"/\">       Home </a>" + document.getElementById("foreground").innerHTML;
+document.body.innerHTML = "<homebutton><span class=\"material-symbols-outlined\">House</span><a href=\"/\">       Home </a></homebutton>" + document.body.innerHTML;
 //HomeButton End

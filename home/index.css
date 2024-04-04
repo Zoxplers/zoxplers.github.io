@@ -175,6 +175,11 @@ tooltip *
     position: relative;
 }
 
+homebutton
+{
+    display: none;
+}
+
 /*IDs*/
 #foreground
 {
@@ -191,10 +196,6 @@ tooltip *
 }
 
 /*Classes*/
-.isHomeButton
-{
-    display: none;
-}
 
 /*Animations*/
 @keyframes glow
