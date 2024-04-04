@@ -191,7 +191,10 @@ tooltip *
 }
 
 /*Classes*/
-
+.isHomeButton
+{
+    display: none;
+}
 
 /*Animations*/
 @keyframes glow
