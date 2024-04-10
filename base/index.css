@@ -63,6 +63,11 @@
     text-shadow: 0 0 3px white;
 }
 
+homebutton a:hover
+{
+    text-decoration: solid underline white 0.225vh;
+}
+
 /*Tags*/
 body
 {
@@ -154,9 +159,15 @@ homebutton a
     min-width: var(--minWidth);
     min-height: calc(0.97 * var(--minHeight));
 }
+
 .hidden
 {
     display: none;
+}
+
+.invis
+{
+    opacity: 0;
 }
 
 .material-symbols-rounded 

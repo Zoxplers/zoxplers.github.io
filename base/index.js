@@ -47,3 +47,17 @@ if(window.location.protocol == "http:" || window.location.protocol == "https:")
 //HomeButton
 document.body.innerHTML = "<homebutton><span class=\"material-symbols-outlined\">House</span><a href=\"/\">       Home </a></homebutton>" + document.body.innerHTML;
 //HomeButton End
+
+//AssetsFix
+function assetsFix()
+{
+    //if(window.location.protocol != "https:" || window.location.protocol != "http:")
+    Array.from(document.body.getElementsByTagName("*")).forEach(element =>
+    {
+        if(element.getAttribute("src") != null && element.getAttribute("src").substring(0, 8) == "/assets/")
+        {
+            element.setAttribute("src", "https://zoxplers.com" + element.getAttribute("src"));
+        }
+    });
+}
+//AssetsFix End
