@@ -105,7 +105,7 @@ function tooltip(obj, parent, text, align)
     tooltipParent.append(tooltipElem);
     function enableTooltip()
     {
-        tooltipElem.classList.remove("hidden");
+        tooltipElem.classList.remove("invis");
         objRect = obj.getBoundingClientRect();
         if(align == "left")
         {
@@ -136,7 +136,7 @@ function tooltip(obj, parent, text, align)
 
     function disableTooltip()
     {
-        tooltipElem.classList.add("hidden");
+        tooltipElem.classList.add("invis");
     }
 
     obj.onmouseover = enableTooltip;
@@ -169,8 +169,30 @@ function updateStatus(data)
             if(activity.name == "Custom Status")
             {
                 string += "Discord: "
-                string = activity.hasOwnProperty("emoji") ? string + "<img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\">" : string;
+                if(activity.hasOwnProperty("emoji"))
+                {
+                    if(activity["emoji"].hasOwnProperty("id"))
+                    {
+                        string += "<img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\">"
+                    }
+                    else
+                    {
+                        string += activity["emoji"]["name"];
+                    }                    
+                }
                 string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
+            }
+            else if(activity.name == "Hang Status")
+            {
+                string += "Discord: "
+                if(activity.state == "custom")
+                {
+                    string = activity.hasOwnProperty("details") ? string + " " + activity["details"] : string;
+                }
+                else
+                {
+                    string += " " + activity["state"];
+                }
             }
             else
             {
