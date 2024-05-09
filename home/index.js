@@ -26,8 +26,7 @@ while(audioArray.length < audioAmount)
     }
 }
 
-Array.from(document.getElementsByTagName("audio")).forEach(audio => 
-{
+Array.from(document.getElementsByTagName("audio")).forEach(audio => {
     audio.volume = 0.2;
     audio.onended = function()
     {
@@ -155,8 +154,7 @@ function updateStatus(data)
     if(data["discord_status"] == "online")
     {
         string = data["discord_status"];
-        data["activities"].forEach(activity => 
-        {
+        data["activities"].forEach(activity => {
             if(hasActivity)
             {
                 string += " and on ";
@@ -240,8 +238,7 @@ fetch("https://zoxplers.com/home/socials").then(response => {
     document.getElementsByTagName("socials")[0].style.setProperty("height", "120%");
     response.text().then(content => {
         document.getElementsByTagName("socials")[0].innerHTML = content;
-        Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem =>
-        {
+        Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem => {
             socialImage = document.createElement("img");
             socialImage.setAttribute("src", "/assets/"+socialItem.getAttribute("src"));
             socialItem.appendChild(socialImage);

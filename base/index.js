@@ -13,15 +13,13 @@ function resizeBody()
 {
     if(window.innerHeight > window.innerWidth)
     {
-        Array.from(document.getElementsByTagName("main")).forEach(main =>
-        {
+        Array.from(document.getElementsByTagName("main")).forEach(main => {
             main.className = "portrait";
         });
     }
     else
     {
-        Array.from(document.getElementsByTagName("main")).forEach(main =>
-        {
+        Array.from(document.getElementsByTagName("main")).forEach(main => {
             main.className = "landscape";
         });
     }
@@ -52,8 +50,7 @@ document.body.innerHTML = "<homebutton><span class=\"material-symbols-outlined\"
 function assetsFix()
 {
     //if(window.location.protocol != "https:" || window.location.protocol != "http:")
-    Array.from(document.body.getElementsByTagName("*")).forEach(element =>
-    {
+    Array.from(document.body.getElementsByTagName("*")).forEach(element => {
         if(element.getAttribute("src") != null && element.getAttribute("src").substring(0, 8) == "/assets/")
         {
             element.setAttribute("src", "https://zoxplers.com" + element.getAttribute("src"));

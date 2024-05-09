@@ -22,8 +22,7 @@ function finishedLoading()
 inviteCodes.forEach(invite => {
     fetch("https://discordapp.com/api/v9/invites/" + invite)
     .then((response) => response.json())
-    .then((data) => 
-    {
+    .then((data) => {
         backgroundElems[inviteCodes.indexOf(invite)] = "<br/> " + data.guild.name + "<br/>";
         foregroundElems[inviteCodes.indexOf(invite)] = "<br/><a href=\"https://discord.com/invite/" + invite + "\"> Join the <span>" + data.guild.name + "</span> Discord </a><br/>";
         invitesRemaining -= 1;

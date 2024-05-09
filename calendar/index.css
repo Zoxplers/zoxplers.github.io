@@ -1,0 +1,90 @@
+/*Made by Zoxplers*/
+
+/*Pseudo*/
+:root
+{
+    text-shadow: 0 0 2px white;
+}
+
+/*Tags*/
+main
+{
+    text-align: center;
+}
+
+table
+{
+    border: calc((1vw + 1vh)/6) solid;
+    border-collapse: collapse;
+    padding: calc(1vw + 1vh);
+    position: relative;
+    left: 3%;
+    width: 94%;
+    height: 90%;
+    font-size: calc(var(--fontSize) * 0.8);
+    table-layout: fixed;
+}
+
+th, td
+{
+    border: calc((1vw + 1vh)/6) solid;
+}
+
+td
+{
+    white-space: pre-wrap;
+    line-height: 0;
+}
+
+temp
+{
+    display: none;
+}
+
+daynumber
+{
+    position: absolute;
+    float: left;
+}
+
+/*IDs*/
+#foreground td
+{
+    vertical-align: top;
+    text-align: left;
+    padding: calc(2vh) calc(1vw / 2);
+}
+
+#foreground table, #foreground th, #foreground td
+{
+    border: calc((1vw + 1vh)/6) solid transparent;
+}
+
+#background table
+{
+    box-shadow: 0 0 1px 1px white;   
+}
+
+#background th, #background td
+{
+    box-shadow: inset 0 0 1px 1px white;
+}
+
+#background td
+{
+
+}
+
+/*Classes*/
+.titlerow
+{
+    height: 8vh;
+    font-size: calc(var(--fontSize) * 1.1);
+}
+
+.weekrow
+{
+    height: 1vh;
+    font-size: calc(var(--fontSize) * 0.85);
+    text-shadow: none;
+}
