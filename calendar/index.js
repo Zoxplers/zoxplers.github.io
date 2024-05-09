@@ -9,9 +9,10 @@ data = [[],[],[],[],[],[],[],[],[],[],[],[]];
 function loadMonth(year, month)
 {
     currentDay = new Date(year, month);
-    document.getElementsByClassName("titlerow")[0].firstElementChild.innerHTML = currentDay.toLocaleString("default", { month: "long" }) + " " + year;
     document.getElementById("background").innerHTML = document.getElementsByTagName("temp")[0].innerHTML;
-    document.getElementById("foreground").innerHTML = document.getElementsByTagName("temp")[0].innerHTML;
+    document.getElementsByClassName("titlerow")[0].firstElementChild.innerHTML = currentDay.toLocaleString("default", { month: "long" }) + " " + year;
+    //document.getElementsByClassName("titlerow")[0].innerHTML = "<prevmonthbutton><<</prevmonthbutton>" + document.getElementsByClassName("titlerow")[0].innerHTML + "<nextmonthbutton>>></nextmonthbutton>";
+    document.getElementById("foreground").innerHTML = document.getElementById("background").innerHTML;
     currentDay.setDate(currentDay.getDate() - currentDay.getDay());
     gray = true;
     bg = "";
