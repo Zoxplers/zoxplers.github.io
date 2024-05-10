@@ -5,14 +5,14 @@ currentDate = new Date();
 data = [[],[],[],[],[],[],[],[],[],[],[],[]];
 
 //LoadMonth
-
 function loadMonth(year, month)
 {
     currentDay = new Date(year, month);
     document.getElementById("background").innerHTML = document.getElementsByTagName("temp")[0].innerHTML;
     document.getElementsByClassName("titlerow")[0].firstElementChild.innerHTML = currentDay.toLocaleString("default", { month: "long" }) + " " + year;
-    //document.getElementsByClassName("titlerow")[0].innerHTML = "<prevmonthbutton><<</prevmonthbutton>" + document.getElementsByClassName("titlerow")[0].innerHTML + "<nextmonthbutton>>></nextmonthbutton>";
     document.getElementById("foreground").innerHTML = document.getElementById("background").innerHTML;
+    document.getElementsByClassName("titlerow")[1].innerHTML = "<prevmonthbutton onclick=\"loadMonth("+(month < 1 ? year-1 : year)+","+(month < 1 ? 11 : month-1)+")\"><<</prevmonthbutton>" + document.getElementsByClassName("titlerow")[1].innerHTML + "<nextmonthbutton onclick=\"loadMonth("+(month > 10 ? year+1 : year)+","+(month > 10 ? 0 : month+1)+")\">>></nextmonthbutton>";
+    document.getElementsByClassName("titlerow")[1].children[1].setAttribute("colspan", "5");
     currentDay.setDate(currentDay.getDate() - currentDay.getDay());
     gray = true;
     bg = "";
@@ -50,11 +50,9 @@ function loadMonth(year, month)
     document.getElementById("background").getElementsByTagName("tbody")[0].innerHTML = bg;
     document.getElementById("foreground").getElementsByTagName("tbody")[0].innerHTML = fg;
 }
-
 //LoadMonth End
 
 //Database
-
 fetch(calendarDB).then(response => {
     response.json().then(rawData => {
         rawData[0][1].forEach(birthday => {
@@ -70,5 +68,4 @@ fetch(calendarDB).then(response => {
         });
     });
 });
-
 //Database End

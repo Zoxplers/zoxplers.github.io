@@ -32,8 +32,8 @@ th, td
 
 td
 {
-    white-space: pre-wrap;
     line-height: 0;
+    text-wrap: nowrap;
 }
 
 temp
@@ -45,6 +45,30 @@ daynumber
 {
     position: absolute;
     float: left;
+}
+
+prevmonthbutton
+{
+    display: table-cell;
+    text-align: left;
+    line-height: 0;
+    vertical-align: middle;
+    padding-left: 2.5vw;
+    cursor: pointer;
+}
+
+nextmonthbutton
+{
+    display: table-cell;
+    text-align: right;
+    line-height: 0;
+    vertical-align: middle;
+    padding-right: 2.5vw;
+}
+
+nextmonthbutton:hover
+{
+    cursor: pointer;
 }
 
 /*IDs*/
@@ -68,11 +92,6 @@ daynumber
 #background th, #background td
 {
     box-shadow: inset 0 0 3px white;
-}
-
-#background td
-{
-
 }
 
 /*Classes*/
