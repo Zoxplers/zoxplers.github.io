@@ -107,3 +107,8 @@ nextmonthbutton:hover
     font-size: calc(var(--fontSize) * 0.85);
     text-shadow: none;
 }
+
+.click:hover
+{
+    cursor: pointer;
+}

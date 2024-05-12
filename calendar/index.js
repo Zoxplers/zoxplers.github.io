@@ -1,10 +1,27 @@
 /*Made by Zoxplers*/
 
-calendarDB = "https://script.google.com/macros/s/AKfycbw0SksuJ1su75zfo7DLwwmdYiqK2k1l318_BYcSK4VaUprqAsPQdxAEqpjYVBp2vCUp/exec";
+//URL Parse
+listMode = false;
+showHidden = false;
+URLParams = document.URL.split("?")[1].replaceAll("?","&").split("&");
+URLParams.forEach(function(i)
+{
+    if(i.toLowerCase() === "list=true" || i.toLowerCase() === "list")
+    {
+        listMode = true;
+    }
+    else if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")
+    {
+        showHidden = true;
+    }
+});
+//URL Parse End
+
+//LoadMonth
+calendarDB = "https://script.google.com/macros/s/AKfycbw0SksuJ1su75zfo7DLwwmdYiqK2k1l318_BYcSK4VaUprqAsPQdxAEqpjYVBp2vCUp/exec?"+document.URL.substring(document.URL.indexOf('?')+1);
 currentDate = new Date();
 data = [[],[],[],[],[],[],[],[],[],[],[],[]];
 
-//LoadMonth
 function loadMonth(year, month)
 {
     currentDay = new Date(year, month);
@@ -17,6 +34,10 @@ function loadMonth(year, month)
     gray = true;
     bg = "";
     fg = "";
+
+    Array.from(document.getElementsByClassName("hidden")).forEach(hiddenElem => {
+        hiddenElem.classList.remove("hidden");
+    });
     
     for(week = 0; week < 6; week++)
     {
@@ -24,20 +45,32 @@ function loadMonth(year, month)
         bg += "<tr>";
         for(day = 0; day < 7; day++)
         {
+            hasBday = 0;
+
             if(currentDay.getDate() == 1)
             {
                 gray = !gray;
             }
             fg += gray ? "<td style=\"color: rgb(222, 222, 222); text-shadow: 0 0 2px rgb(160, 160, 160)\">" : "<td>";
-            bg += "<td> ";
+            bg += "<td>";
 
             fg += currentDay.getDate();
             data[month].forEach(birthday => {
-                if(!gray && birthday[3].split('-')[2].substring(0,2) == currentDay.getDate())
+                if(!gray && birthday[2].split('-')[2].substring(0,2) == currentDay.getDate() && (birthday[7] >= 0 || (birthday[7] < 0 && showHidden)))
                 {
+                    bg += hasBday > 0 ? "<text class=\"hidden\">" : "<text>";
                     bg += birthday[1] + "<br/>";
+                    bg += "</text>";
+                    hasBday++;
                 }
             });
+            if(hasBday > 1)
+            {
+                temp = bg.toLowerCase().lastIndexOf("<td");
+                bg = bg.slice(0, temp) + bg.slice(temp).replace(new RegExp("<td", 'i'), "<td style=\"box-shadow: inset 0 0 7px 3px white; cursor: pointer;\"");
+                temp = fg.toLowerCase().lastIndexOf("<td");
+                fg = fg.slice(0, temp) + fg.slice(temp).replace(new RegExp("<td", 'i'), "<td onhover=\"\" onclick=\"\" class=\"click\"");//here
+            }
 
             currentDay.setDate(currentDay.getDate() + 1);
             fg += "</td>";
@@ -49,23 +82,42 @@ function loadMonth(year, month)
     
     document.getElementById("background").getElementsByTagName("tbody")[0].innerHTML = bg;
     document.getElementById("foreground").getElementsByTagName("tbody")[0].innerHTML = fg;
+    if(listMode)
+    {
+        toggleListMode();
+    }
 }
 //LoadMonth End
 
 //Database
 fetch(calendarDB).then(response => {
     response.json().then(rawData => {
-        rawData[0][1].forEach(birthday => {
-            if(Number.isInteger(birthday[2]))
-            {
-                data[parseInt(birthday[3].substring(5,7))-1].push(birthday);
-            }
-        });
-        
-        loadMonth(currentDate.getFullYear(), currentDate.getMonth());
-        Array.from(document.getElementsByClassName("hidden")).forEach(hiddenElem => {
-            hiddenElem.classList.remove("hidden");
-        });
+        if(rawData[0] != null)
+        {
+            rawData.forEach(sheet => {
+                sheet[1].forEach(birthday => {
+                    if(Number.isInteger(birthday[7]))
+                    {
+                        data[parseInt(birthday[2].substring(5,7))-1].push(birthday);
+                    }
+                });
+                
+                loadMonth(currentDate.getFullYear(), currentDate.getMonth());
+            });
+        }
     });
 });
 //Database End
+
+//ToggleListMode
+function toggleListMode()
+{
+    document.getElementById("background").innerHTML = "";
+    document.getElementById("foreground").innerHTML = "<br/>List Mode<br/><br/>Event Name, Date, Age, First Name, Middle Name, Last Name, Generation<br/>";
+    data.forEach(month => {
+        month.forEach(birthday => {
+            document.getElementById("foreground").innerHTML += birthday[1] + ", " + birthday[2].split("-")[1] + "/" + birthday[2].split("-")[2].substring(0,2) + "/" + parseInt(birthday[2]) + ", " + birthday[3].toFixed(2) + ", " + birthday[4] + ", " + birthday[5] + ", " + birthday[6] + ", " + birthday[7] + "<br/>";
+        });
+    });
+}
+//ToggleListMode End
