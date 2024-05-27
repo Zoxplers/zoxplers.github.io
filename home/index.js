@@ -2,7 +2,7 @@
 
 //URL Parse
 showHidden = false;
-URLParams = document.URL.includes("?") ? document.URL.split("?")[1].replaceAll("?","&").split("&") : [];
+URLParams = document.URL.includes("?") ? document.URL.substring(document.URL.indexOf("?")+1).replaceAll("?","&").split("&") : [];
 URLParams.forEach(function(i)
 {
     if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")

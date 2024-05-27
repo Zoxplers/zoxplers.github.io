@@ -3,7 +3,7 @@
 //URL Parse
 listMode = false;
 showHidden = false;
-URLParams = document.URL.split("?")[1].replaceAll("?","&").split("&");
+URLParams = document.URL.includes("?") ? document.URL.substring(document.URL.indexOf("?")+1).replaceAll("?","&").split("&") : [];
 URLParams.forEach(function(i)
 {
     if(i.toLowerCase() === "list=true" || i.toLowerCase() === "list")
