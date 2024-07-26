@@ -98,13 +98,15 @@ document.getElementsByTagName("logo")[0].onclick = logoClick;
 enabledTooltips = [];
 function tooltip(obj, parent, text, align)
 {
+    var anim;
     let tooltipElem = document.createElement("tooltip");
     tooltipParent = parent;
     tooltipElem.innerHTML = text;
     tooltipParent.append(tooltipElem);
+
     function enableTooltip()
     {
-        tooltipElem.classList.remove("invis");
+        tooltipElem.classList.remove("hidden");
         objRect = obj.getBoundingClientRect();
         if(align == "left")
         {
@@ -131,11 +133,34 @@ function tooltip(obj, parent, text, align)
             tooltipElem.style.setProperty("left", objRect.left + "px");
             tooltipElem.style.setProperty("top", objRect.top + "px");
         }
+        tooltipElem.style.setProperty("--visibility", "1");
+        clearInterval(anim);
+        anim = setInterval(animFunc, 5);
     }
 
     function disableTooltip()
     {
-        tooltipElem.classList.add("invis");
+        tooltipElem.style.setProperty("--visibility", "0");
+        clearInterval(anim);
+        anim = setInterval(animFunc, 5);
+    }
+
+    function animFunc()
+    {
+        alpha = 0.2;
+        opacity = Number(tooltipElem.style.getPropertyValue("opacity"));
+        visibility = Number(tooltipElem.style.getPropertyValue("--visibility"));
+        opacity = opacity + alpha * (visibility - opacity);
+        tooltipElem.style.setProperty("opacity", opacity);
+        if(opacity > 0.9 || opacity < 0.1)
+        {
+            tooltipElem.style.setProperty("opacity", visibility);
+            if(opacity < 0.1)
+            {
+                tooltipElem.classList.add("hidden");
+            }
+            clearInterval(anim);
+        }
     }
 
     obj.onmouseover = enableTooltip;
