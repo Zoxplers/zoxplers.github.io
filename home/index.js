@@ -184,6 +184,7 @@ function updateStatus(data)
             if(activity.name == "Twitch")
             {
                 twitch = true;
+                hasActivity = true;
                 string = "Streaming " +  activity.state + " on Twitch: " + activity.details;
                 document.documentElement.style.setProperty("--statusColor", "purple");
             }
