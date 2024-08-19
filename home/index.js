@@ -175,58 +175,68 @@ tooltip(document.getElementById("background").getElementsByTagName("heading")[0]
 //Status
 function updateStatus(data)
 {
+    twitch = false;
     hasActivity = false;
     if(data["discord_status"] == "online")
     {
-        string = data["discord_status"];
+        document.documentElement.style.setProperty("--statusColor", "green");
         data["activities"].forEach(activity => {
-            if(hasActivity)
+            if(activity.name == "Twitch")
             {
-                string += " and on ";
+                twitch = true;
+                string = "Streaming " +  activity.state + " on Twitch: " + activity.details;
+                document.documentElement.style.setProperty("--statusColor", "purple");
             }
-            else
+            if(!twitch)
             {
-                hasActivity = true;
-                string += " on ";
-            }
-            if(activity.name == "Custom Status")
-            {
-                string += "Discord: "
-                if(activity.hasOwnProperty("emoji"))
+                if(hasActivity)
                 {
-                    if(activity["emoji"].hasOwnProperty("id"))
-                    {
-                        string += "<img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\">"
-                    }
-                    else
-                    {
-                        string += activity["emoji"]["name"];
-                    }                    
-                }
-                string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
-            }
-            else if(activity.name == "Hang Status")
-            {
-                string += "Discord: "
-                if(activity.state == "custom")
-                {
-                    string = activity.hasOwnProperty("details") ? string + " " + activity["details"] : string;
+                    string += " and on ";
                 }
                 else
                 {
-                    string += " " + activity["state"];
+                    hasActivity = true;
+                    string = "Online on Discord: ";
                 }
-            }
-            else
-            {
-                string += activity.name;
+                if(activity.name == "Custom Status")
+                {
+                    
+                    if(activity.hasOwnProperty("emoji"))
+                    {
+                        if(activity["emoji"].hasOwnProperty("id"))
+                        {
+                            string += "<img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\">"
+                        }
+                        else
+                        {
+                            string += activity["emoji"]["name"];
+                        }                    
+                    }
+                    string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
+                    
+                }
+                else if(activity.name == "Hang Status")
+                {
+                    string += "Discord: "
+                    if(activity.state == "custom")
+                    {
+                        string = activity.hasOwnProperty("details") ? string + " " + activity["details"] : string;
+                    }
+                    else
+                    {
+                        string += " " + activity["state"];
+                    }
+                }
+                else
+                {
+                    string += activity.name;
+                }
             }
         });
         if(!hasActivity)
         {
             string = data["discord_status"] + " on Discord";
         }
-        document.documentElement.style.setProperty("--statusColor", "green");
     }
     else if(data["discord_status"] == "dnd")
     {

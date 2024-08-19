@@ -57,4 +57,9 @@ function assetsFix()
         }
     });
 }
+
+function loadAssets()
+{
+    assetsFix();
+}
 //AssetsFix End
