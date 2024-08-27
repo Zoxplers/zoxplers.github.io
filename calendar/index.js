@@ -51,7 +51,7 @@ function loadMonth(year, month)
             {
                 gray = !gray;
             }
-            fg += gray ? "<td style=\"color: rgb(222, 222, 222); text-shadow: 0 0 2px rgb(160, 160, 160)\">" : "<td>";
+            fg += gray ? "<td current=\"0\" style=\"color: rgb(222, 222, 222); text-shadow: 0 0 2px rgb(160, 160, 160)\">" : "<td>";
             bg += "<td>";
 
             fg += currentDay.getDate();
@@ -66,10 +66,11 @@ function loadMonth(year, month)
             });
             if(hasBday > 1)
             {
+                code = String(month+1).padStart(2, "0") + String(currentDay.getDate()).padStart(2, "0");
                 temp = bg.toLowerCase().lastIndexOf("<td");
-                bg = bg.slice(0, temp) + bg.slice(temp).replace(new RegExp("<td", 'i'), "<td style=\"box-shadow: inset 0 0 7px 3px white; cursor: pointer;\"");
+                bg = bg.slice(0, temp) + bg.slice(temp).replace(new RegExp("<td", 'i'), "<td class=\"" + code + "\"style=\"box-shadow: inset 0 0 7px 3px white; cursor: pointer;\"");
                 temp = fg.toLowerCase().lastIndexOf("<td");
-                fg = fg.slice(0, temp) + fg.slice(temp).replace(new RegExp("<td", 'i'), "<td onhover=\"\" onclick=\"\" class=\"click\"");//here
+                fg = fg.slice(0, temp) + fg.slice(temp).replace(new RegExp("<td", 'i'), "<td onhover=\"\" onclick=\"changeEvent(this)\" class=\"click " + code + "\"");
             }
 
             currentDay.setDate(currentDay.getDate() + 1);
@@ -121,3 +122,29 @@ function toggleListMode()
     });
 }
 //ToggleListMode End
+
+//ChangeEvent
+function changeEvent(element)
+{
+    Array.from(document.getElementsByClassName(element.className.slice(-4))).forEach(td => {
+        if(td != element)
+        {
+            node = td.firstElementChild;
+            while(node != null && (node.classList.contains("hidden") || node.tagName.toLowerCase() != "text"))
+            {
+                node = node.nextElementSibling;
+            }
+            node = node.nextElementSibling;
+            if(node == null)
+            {
+                node = td.firstElementChild;
+            }
+            console.log(node);
+            Array.from(td.children).forEach(child => {
+                child.classList.add("hidden");
+            });
+            node.classList.remove("hidden");
+        }
+    });
+}
+//ChangeEvent End
