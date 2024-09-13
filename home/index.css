@@ -182,6 +182,25 @@ homebutton
     display: none;
 }
 
+@property --bar
+{
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #000000;
+}
+
+a
+{
+    cursor: pointer;
+    transition: --bar 0.12s ease-in-out;
+    background-image: linear-gradient(black 70%, var(--bar) 79%, black 81%);
+}
+
+a:hover
+{
+    --bar: #ffffff;
+}
+
 /*IDs*/
 #foreground
 {
