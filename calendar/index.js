@@ -56,7 +56,7 @@ function loadMonth(year, month)
 
             fg += currentDay.getDate();
 
-            if(!gray && currentDay.getDate() == (new Date()).getDate() && month == (new Date()).getMonth)
+            if(!gray && currentDay.getDate() == (new Date()).getDate() && month == (new Date()).getMonth())
             {
                 fg = "<td style=\"background: rgba(255,255,255,0.125);\">";
             }
