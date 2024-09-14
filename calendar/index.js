@@ -51,10 +51,16 @@ function loadMonth(year, month)
             {
                 gray = !gray;
             }
-            fg += gray ? "<td current=\"0\" style=\"color: rgb(222, 222, 222); text-shadow: 0 0 2px rgb(160, 160, 160)\">" : "<td>";
+            fg += gray ? "<td current=\"0\" style=\"color: rgb(180, 180, 180); text-shadow: 0 0 2px rgb(80, 80, 80)\">" : "<td>";
             bg += "<td>";
 
             fg += currentDay.getDate();
+
+            if(!gray && currentDay.getDate() == (new Date()).getDate() && month == (new Date()).getMonth)
+            {
+                fg = "<td style=\"background: rgba(255,255,255,0.125);\">";
+            }
+
             data[month].forEach(birthday => {
                 if(!gray && birthday[2].split('-')[2].substring(0,2) == currentDay.getDate() && (birthday[7] >= 0 || (birthday[7] < 0 && showHidden)))
                 {
