@@ -1,0 +1,103 @@
+main
+{
+    text-align: center;
+}
+
+#background > *
+{
+    visibility: hidden;
+}
+
+#background links
+{
+    opacity: 100%;
+}
+
+#foreground links
+{
+    opacity: 0;
+}
+
+heading1
+{   
+    padding: 1vh 0;
+}
+
+.landscape > section
+{
+    margin: 2vh 25vw;
+}
+
+.portrait > section
+{
+    margin: 2vh 12vw;
+}
+
+section
+{
+    display: block;
+    text-align: left;
+    position: relative;
+}
+
+section imgcontainer
+{
+    float: left;
+    width: 10%;
+    text-align: center;
+    margin: 1vh 1vw;
+}
+
+imgcontainer img
+{
+    object-fit: contain;
+    width: 100%;
+}
+
+
+section textcontainer
+{
+    display: inline-block;
+    width: calc(90% - 2.01vw);
+    height: 100%;
+}
+
+textcontainer > *
+{
+    display: block;
+}
+
+heading2
+{
+    font-size: calc(var(--fontSize) * 0.85);
+}
+
+desc
+{
+    font-size: calc(var(--fontSize) * 0.6);
+    padding: 1vh 0;
+}
+
+links
+{
+    visibility: visible;
+    font-size: calc(var(--fontSize) * 0.57);
+}
+
+links item
+{
+    float: left;
+    padding: 0 0.6vw 0 0;
+}
+
+item:first-child
+{
+    margin-left: -0.25vw;
+}
+
+links a > span
+{
+    float: left;
+    font-size: calc(var(--fontSize));
+    padding: 0 1px 0 0;
+}

@@ -11,7 +11,7 @@ resize = false;
 
 function resizeBody()
 {
-    if(window.innerHeight > window.innerWidth)
+    if(window.innerHeight > (window.innerWidth * 0.74))
     {
         Array.from(document.getElementsByTagName("main")).forEach(main => {
             main.className = "portrait";
