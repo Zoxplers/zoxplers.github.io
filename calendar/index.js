@@ -58,7 +58,8 @@ function loadMonth(year, month)
 
             if(!gray && currentDay.getDate() == (new Date()).getDate() && month == (new Date()).getMonth())
             {
-                fg = "<td style=\"background: rgba(255,255,255,0.125);\">";
+                temp = fg.toLowerCase().lastIndexOf("<td");
+                fg = fg.slice(0, temp) + fg.slice(temp).replace(new RegExp("<td", 'i'), "<td style=\"background: rgba(255,255,255,0.125);\"");
             }
 
             data[month].forEach(birthday => {
