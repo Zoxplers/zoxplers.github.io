@@ -56,7 +56,8 @@ function loadMonth(year, month)
 
             fg += currentDay.getDate();
 
-            if(!gray && currentDay.getDate() == (new Date()).getDate() && month == (new Date()).getMonth())
+            temp = new Date();
+            if(!gray && currentDay.getDate() == temp.getDate() && month == temp.getMonth() && year == temp.getFullYear())
             {
                 temp = fg.toLowerCase().lastIndexOf("<td");
                 fg = fg.slice(0, temp) + fg.slice(temp).replace(new RegExp("<td", 'i'), "<td style=\"background: rgba(255,255,255,0.125);\"");

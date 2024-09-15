@@ -1,5 +1,8 @@
 /*Made by Zoxplers*/
 
+//Main Patch
+document.getElementById("foreground").innerHTML = document.getElementById("background") .innerHTML;
+
 //URL Parse
 showHidden = false;
 URLParams = document.URL.includes("?") ? document.URL.substring(document.URL.indexOf("?")+1).replaceAll("?","&").split("&") : [];
@@ -51,25 +54,24 @@ function stopAudio()
 //Audio End
 
 //NameClick
-nameToggle = true;
-nameElem = document.getElementsByTagName("name")[0];
+nameToggle = false;
+nameElem = document.getElementsByTagName("name")[1];
+nameBackElem = document.getElementsByTagName("name")[0];
 
 function nameClick()
 {
     nameToggle = !nameToggle;
     if(nameToggle)
     {
-        document.getElementById("foreground").prepend(nameElem);
-        nameElem.style.removeProperty("text-shadow");
-        nameElem.style.removeProperty("color");
-        stopAudio();
+        nameElem.style.setProperty("opacity", "0%");
+        nameBackElem.style.setProperty("opacity", "100%");
+        playAudio();
     }
     else
     {
-        document.getElementById("background").prepend(nameElem);
-        nameElem.style.setProperty("text-shadow", "0 0 2px white");
-        nameElem.style.setProperty("color", "white");
-        playAudio();
+        nameElem.style.setProperty("opacity", "100%");
+        nameBackElem.style.setProperty("opacity", "0%");
+        stopAudio();
     }
 }
 
@@ -78,20 +80,21 @@ nameElem.onclick = nameClick;
 
 //Logo
 logoAmount = 6;
+document.getElementsByTagName("topbar")[0].getElementsByTagName("img")[0].setAttribute("src", "/assets/logowhite.png");
 
 function logoClick()
 {
     randInt = Math.ceil(Math.random() * logoAmount);
-    while ("/assets/logo"+randInt+".png" == document.getElementsByTagName("logo")[1].children.item(0).getAttribute("src"))
+    while ("/assets/logo"+randInt+".png" == document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].getAttribute("src"))
     {
         randInt = Math.ceil(Math.random() * logoAmount);
     }
-    document.getElementsByTagName("logo")[1].children.item(0).setAttribute("src", "/assets/logo"+randInt+".png");
+    document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].setAttribute("src", "/assets/logo"+randInt+".png");
 }
 
 logoClick();
 
-document.getElementsByTagName("logo")[0].onclick = logoClick;
+document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].onclick = logoClick;
 //Logo End
 
 //Tooltips
@@ -100,9 +103,8 @@ function tooltip(obj, parent, text, align)
 {
     var anim;
     let tooltipElem = document.createElement("tooltip");
-    tooltipParent = parent;
     tooltipElem.innerHTML = text;
-    tooltipParent.append(tooltipElem);
+    parent.append(tooltipElem);
 
     function enableTooltip()
     {
@@ -168,8 +170,8 @@ function tooltip(obj, parent, text, align)
     obj.onmouseout = disableTooltip;
     disableTooltip();
 }
-tooltip(document.getElementById("background").getElementsByTagName("heading")[0].getElementsByTagName("line")[0], document.getElementById("background"), "<span style = \"left: 1vw\">Welcome to my website!</span>", "right");
-tooltip(document.getElementById("background").getElementsByTagName("heading")[0].getElementsByTagName("line")[1], document.getElementById("foreground"), "<img style = \"height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)\" src = \"/assets/wave.png\"/>", "right");
+tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[0], document.getElementById("background"), "<span style = \"left: 1vw\">Welcome to my website!</span>", "right");
+tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[1], document.getElementById("foreground"), "<img style = \"height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)\" src = \"/assets/wave.png\"/>", "right");
 //Tooltips End
 
 //Status
@@ -253,7 +255,8 @@ function updateStatus(data)
             document.documentElement.style.setProperty("--statusColor", "orange");
         }
     }
-    document.getElementsByTagName("footer")[0].innerHTML = "<indicator></indicator><p>"+string.charAt(0).toUpperCase() + string.slice(1) + "</p>";
+    document.getElementsByTagName("statusbar")[0].innerHTML = "<indicator></indicator><p>"+string.charAt(0).toUpperCase() + string.slice(1) + "</p>";
+    document.getElementsByTagName("statusbar")[1].innerHTML = "<indicator></indicator><p>"+string.charAt(0).toUpperCase() + string.slice(1) + "</p>";
 }
 
 
@@ -267,14 +270,12 @@ lanyard(
 
 //Socials
 //make socials jump randomly
-document.getElementsByTagName("socials")[0].innerHTML = "Unable to fetch data.";
+document.getElementsByTagName("socials")[1].innerHTML = "Unable to fetch data.";
 
 fetch("https://zoxplers.com/home/socials").then(response => {
-    document.getElementsByTagName("socials")[0].style.setProperty("transition", "2s");
-    document.getElementsByTagName("socials")[0].style.setProperty("height", "120%");
     response.text().then(content => {
-        document.getElementsByTagName("socials")[0].innerHTML = content;
-        Array.from(document.getElementsByTagName("socials")[0].children).forEach(socialItem => {
+        document.getElementsByTagName("socials")[1].innerHTML = content;
+        Array.from(document.getElementsByTagName("socials")[1].children).forEach(socialItem => {
             socialImage = document.createElement("img");
             socialImage.setAttribute("src", "/assets/"+socialItem.getAttribute("src"));
             socialItem.appendChild(socialImage);
@@ -294,3 +295,29 @@ fetch("https://zoxplers.com/home/socials").then(response => {
     });
 });
 //Socials End
+
+//Page
+current = 0;
+function toggleItems()
+{
+    Array.from(document.getElementsByTagName("page")[0].children).forEach(item => {
+        item.style.setProperty("opacity", "0%");
+    });
+    Array.from(document.getElementsByTagName("page")[1].children).forEach(item => {
+        item.style.setProperty("opacity", "0%");
+    });
+    document.getElementsByTagName("page")[0].children[current].style.setProperty("opacity", "100%");
+    document.getElementsByTagName("page")[1].children[current].style.setProperty("opacity", "100%");
+    current++;
+    if(current >= document.getElementsByTagName("page")[0].children.length)
+    {
+        current = 0;
+    }
+}
+
+toggleItems();
+setInterval(toggleItems, 6969);
+
+document.getElementsByTagName("age")[0].innerHTML = ("" + (new Date() - new Date("September 01, 2001")) / 3.154e+10).substring(0,10);
+document.getElementsByTagName("age")[1].innerHTML = ("" + (new Date() - new Date("September 01, 2001")) / 3.154e+10).substring(0,10);
+//Page End
