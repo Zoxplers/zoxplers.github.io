@@ -47,7 +47,7 @@ section imgcontainer
     float: left;
     width: 10%;
     text-align: center;
-    margin: 1vh 1vw;
+    margin: 0 1vw;
 }
 
 imgcontainer img
@@ -72,12 +72,14 @@ textcontainer > *
 heading2
 {
     font-size: calc(var(--fontSize) * 0.85);
+    font-family: "Bubblegum Sans"
 }
 
 desc
 {
     font-size: calc(var(--fontSize) * 0.6);
     padding: 1vh 0;
+    font-family: "Gochi Hand";
 }
 
 links
