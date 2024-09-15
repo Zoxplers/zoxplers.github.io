@@ -102,4 +102,5 @@ links a > span
     float: left;
     font-size: calc(var(--fontSize));
     padding: 0 1px 0 0;
+    margin-left: 0.2vw;
 }

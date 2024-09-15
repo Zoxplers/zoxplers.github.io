@@ -108,6 +108,13 @@ infoitem
     margin: 0 0.8vw 0 0;
 }
 
+#background infoitem
+{
+    visibility: visible;
+    --hoverColor: black;
+    background-image: linear-gradient(black 80%, var(--hoverColor) 95%, black 95%);
+}
+
 a > span
 {
     font-size: calc(var(--fontSize) * 0.9);

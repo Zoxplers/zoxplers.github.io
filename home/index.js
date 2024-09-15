@@ -297,6 +297,7 @@ fetch("https://zoxplers.com/home/socials").then(response => {
 //Socials End
 
 //Page
+/*
 current = 0;
 function toggleItems()
 {
@@ -317,7 +318,27 @@ function toggleItems()
 
 toggleItems();
 setInterval(toggleItems, 6969);
-
-document.getElementsByTagName("age")[0].innerHTML = ("" + (new Date() - new Date("September 01, 2001")) / 3.154e+10).substring(0,10);
-document.getElementsByTagName("age")[1].innerHTML = ("" + (new Date() - new Date("September 01, 2001")) / 3.154e+10).substring(0,10);
+*/
 //Page End
+
+//InfoItems
+/*
+for (i = 0; i < document.getElementsByTagName("infobar")[1].children.length; i++)
+{
+    document.getElementsByTagName("infobar")[1].children[i].onmouseover = function()
+    {
+        document.getElementsByTagName("infobar")[0].children.item(i).style.setProperty("hoverColor", white);
+    }
+}
+*/
+
+Array.from(document.getElementsByTagName("infobar")[1].children).forEach(infoItem => {
+    infoItem.onmouseover = function()
+    {
+        document.getElementsByTagName("infobar")[0].children[Array.from(document.getElementsByTagName("infobar")[1].children).indexOf(infoItem)].style.setProperty("--hoverColor", "white");
+    }
+    infoItem.onmouseout = function()
+    {
+        document.getElementsByTagName("infobar")[0].children[Array.from(document.getElementsByTagName("infobar")[1].children).indexOf(infoItem)].style.setProperty("--hoverColor", "black");
+    }
+});
