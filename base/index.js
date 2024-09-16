@@ -63,3 +63,7 @@ function loadAssets()
     assetsFix();
 }
 //AssetsFix End
+
+//Main
+document.getElementById("foreground").addEventListener( 'scroll', e => document.getElementById("background").scrollTop = document.getElementById("foreground").scrollTop)
+//Main End

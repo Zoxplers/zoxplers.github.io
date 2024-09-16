@@ -10,27 +10,17 @@ main
     visibility: hidden;
 }
 
-#background links
-{
-    opacity: 100%;
-}
-
-#foreground links
-{
-    opacity: 0;
-}
-
 heading1
 {   
     padding: 1vh 0;
 }
 
-.landscape > section
+.landscape > *
 {
     margin: 2vh 25vw;
 }
 
-.portrait > section
+.portrait > *
 {
     margin: 2vh 12vw;
 }
@@ -40,6 +30,8 @@ section
     display: block;
     text-align: left;
     position: relative;
+    overflow: auto;
+    --indicatorColor: rgba(0,0,0,0);
 }
 
 section imgcontainer
@@ -78,14 +70,46 @@ heading2
 desc
 {
     font-size: calc(var(--fontSize) * 0.6);
-    padding: 1vh 0;
     font-family: "Gochi Hand";
+    padding: 1vh 0;
+}
+
+#background indicator::before
+{
+    content: "";
+    height: calc(var(--fontSize) * 0.8);
+    width: calc(var(--fontSize) * 0.8);
+    border-radius: 50%;
+    float: left;
+    margin: -0.3vh 0.2vw 0 0;
+    background: white;
+    opacity: 0.5;
+}
+
+#foreground indicator::before
+{
+    content: "";
+    height: calc(var(--fontSize) * 0.8);
+    width: calc(var(--fontSize) * 0.8);
+    border-radius: 50%;
+    float: left;
+    margin: -0.3vh 0.2vw 0 0;
+    background: var(--indicatorColor);
+    opacity: 0.85;
+}
+
+indicator
+{
+    font-size: calc(var(--fontSize) * 0.6);
+    font-family: "Gochi Hand";
+    padding-bottom: 1vh;
 }
 
 links
 {
     visibility: visible;
     font-size: calc(var(--fontSize) * 0.57);
+    overflow: auto;
 }
 
 links item
@@ -105,4 +129,14 @@ links a > span
     font-size: calc(var(--fontSize));
     padding: 0 1px 0 0;
     margin-left: 0.2vw;
+}
+
+#background links
+{
+    opacity: 100%;
+}
+
+#foreground links
+{
+    opacity: 0;
 }

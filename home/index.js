@@ -342,3 +342,4 @@ Array.from(document.getElementsByTagName("infobar")[1].children).forEach(infoIte
         document.getElementsByTagName("infobar")[0].children[Array.from(document.getElementsByTagName("infobar")[1].children).indexOf(infoItem)].style.setProperty("--hoverColor", "black");
     }
 });
+// InfoItems End
