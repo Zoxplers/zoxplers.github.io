@@ -46,6 +46,7 @@ imgcontainer img
 {
     object-fit: contain;
     width: 100%;
+    border-radius: calc((1vw + 1vh) / 2);
 }
 
 
