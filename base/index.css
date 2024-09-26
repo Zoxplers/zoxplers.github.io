@@ -76,8 +76,8 @@ body
     height: max(100vh, var(--minHeight));
     margin: 0;
     background: white;
-    animation: background 16s linear infinite;
-    overflow: scroll;
+    animation: background 16s linear infinite;  
+    overflow-y: hidden;
 }
 
 a
@@ -103,7 +103,6 @@ main
     position: absolute;
     left: 0;
     top: 0;
-    overflow: scroll;
 }
 
 homebutton
