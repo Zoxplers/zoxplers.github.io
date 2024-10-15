@@ -110,7 +110,7 @@ links
 {
     visibility: visible;
     font-size: calc(var(--fontSize) * 0.57);
-    overflow: auto;
+    overflow: hidden;
 }
 
 links item
