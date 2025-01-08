@@ -4,17 +4,40 @@
     <head>
         <title>Zoxplers - Site</title>
         <meta charset="utf-8"/>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> -->
         <link rel="icon" type="image/gif" href="/assets/favicon.gif"/>
-        <link rel="stylesheet" href="/base/index.css"/>
+        <link rel="stylesheet" type="text/css" href="/base/index.css"/>
         <style>
-            main {text-align: center;}
+            #redirectbutton
+            {
+                display: inline-block;
+            }
+            
+            #redirectbutton::after
+            {
+                display: block;
+                content: '';
+                border-bottom: solid 2px white;
+                transform: scaleX(0);
+                transition: transform 120ms ease-in-out;
+            }
+
+            #redirectbutton:hover::after
+            {
+                transform: scaleX(1.1);
+            }
+
+            #redirectcontainer
+            {
+                display: block;
+                flex-grow: 1;
+            }
         </style>
     </head>
     <body>
         <blur></blur>
-        <main id="background"><br/><br/>Page not found.</main>
-        <main id="foreground"><br/>Error 404</main>
+        <main id="background"><div class="flexbr"></div><div class="flexbr"></div>Page not found.</main>
+        <main id="foreground"><div class="flexbr"></div>Error 404<div class="flexspacer"></div><div id="redirectcontainer"><a id="redirectbutton" href="/home">Redirect Home</a></div></main>
         <iframe style="display: none;" src="https://iplogger.org/2scVd5"></iframe>
         <script src="/base/index.js"></script>
     </body>
