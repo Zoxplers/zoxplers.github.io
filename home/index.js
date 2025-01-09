@@ -187,9 +187,10 @@ function updateStatus(data)
     }
     else
     {
-        string += data["discord_status"];
+        let status = data["discord_status"];
+        string += status.charAt(0).toUpperCase() + status.slice(1);
         document.documentElement.style.setProperty("--statusColor", "white");
-        if(string == "idle")
+        if(status == "idle")
         {
             document.documentElement.style.setProperty("--statusColor", "orange");
         }
