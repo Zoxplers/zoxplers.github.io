@@ -22,11 +22,6 @@ main
     margin-right: 10vw;
 }
 
-#foreground
-{
-    text-shadow: none;
-}
-
 line
 {
     display: block;
@@ -145,6 +140,11 @@ page
     flex-direction: column;
     text-align: center;
 }
+
+#background page
+{
+    opacity: 0;
+}
 /*page End*/
 
 /*statusBar*/
@@ -228,4 +228,3 @@ socialsBar
         opacity: 50%;
     }
 }
-
