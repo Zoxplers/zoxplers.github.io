@@ -1,37 +1,23 @@
 /*Made by Zoxplers*/
 
 //DiscordInvites
-
 document.getElementById("background").innerHTML = "";
-inviteCodes = ["NPmFdsn", "FaJmtnJ"];
-invitesRemaining = inviteCodes.length;
-backgroundElems = [];
-foregroundElems = [];
+let invites = ["NPmFdsn", "FaJmtnJ"];
+let invitesRemaining = invites.length;
 
-function finishedLoading()
+
+for(let i = 0; i < invites.length; i++)
 {
-    backgroundElems.forEach(backgroundElem => {
-        document.getElementById("background").innerHTML += backgroundElem;
-    });
-
-    foregroundElems.forEach(foregroundElem => {
-        document.getElementById("foreground").innerHTML += foregroundElem;
-    });
-}
-
-inviteCodes.forEach(invite => {
-    fetch("https://discordapp.com/api/v9/invites/" + invite)
+    fetch("https://discordapp.com/api/v9/invites/" + invites[i])
     .then((response) => response.json())
     .then((data) => {
-        backgroundElems[inviteCodes.indexOf(invite)] = "<br/> " + data.guild.name + "<br/>";
-        foregroundElems[inviteCodes.indexOf(invite)] = "<br/><a href=\"https://discord.com/invite/" + invite + "\"> Join the <span>" + data.guild.name + "</span> Discord </a><br/>";
-        invitesRemaining -= 1;
-        if(invitesRemaining == 0)
+        document.getElementsByTagName("main")[0].innerHTML += "<a href=\"https://discord.com/invite/" + invites[i] + "\"><text>Join the </text><span>" + data.guild.name + "</span><text> discord.</text></a>";
+        invitesRemaining--;
+        if(invitesRemaining < 1)
         {
-            finishedLoading();
+            document.getElementsByTagName("main")[0].innerHTML = "<div class=\"flexspacer\"></div>" + document.getElementsByTagName("main")[0].innerHTML;
+            document.getElementsByTagName("main")[0].innerHTML += "<div class=\"flexspacer\"></div>";
+            document.getElementsByTagName("main")[1].innerHTML = document.getElementsByTagName("main")[0].innerHTML;
         }
     });
-});
-
-
-//DiscordInvites End
+}

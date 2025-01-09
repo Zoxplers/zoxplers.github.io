@@ -5,6 +5,7 @@
         <title>Zoxplers - Site</title>
         <meta charset="utf-8"/>
         <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.00">
         <link rel="icon" type="image/gif" href="/assets/favicon.gif"/>
         <link rel="stylesheet" type="text/css" href="/base/index.css"/>
         <style>
@@ -26,18 +27,22 @@
             {
                 transform: scaleX(1.1);
             }
-
-            #redirectcontainer
-            {
-                display: block;
-                flex-grow: 1;
-            }
         </style>
     </head>
     <body>
         <blur></blur>
-        <main id="background"><div class="flexbr"></div><div class="flexbr"></div>Page not found.</main>
-        <main id="foreground"><div class="flexbr"></div>Error 404<div class="flexspacer"></div><div id="redirectcontainer"><a id="redirectbutton" href="/home">Redirect Home</a></div></main>
+        <main id="background">
+            <div class="flexspacer"></div>
+            <div class="flexbr"></div>
+            Page not found.
+            <div class="flexspacer"></div>
+        </main>
+        <main id="foreground">
+            <div class="flexspacer"></div>
+            Error 404
+            <div class="flexbr"></div>
+            <div class="flexspacer"></div>
+        </main>
         <iframe style="display: none;" src="https://iplogger.org/2scVd5"></iframe>
         <script src="/base/index.js"></script>
     </body>
