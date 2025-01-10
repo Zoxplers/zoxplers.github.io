@@ -272,7 +272,7 @@ lanyard(
 //make socials jump randomly
 document.getElementsByTagName("socials")[1].innerHTML = "Unable to fetch data.";
 
-fetch("https://zoxplers.com/home/socials").then(response => {
+fetch("./socials").then(response => {
     response.text().then(content => {
         document.getElementsByTagName("socials")[1].innerHTML = content;
         Array.from(document.getElementsByTagName("socials")[1].children).forEach(socialItem => {
