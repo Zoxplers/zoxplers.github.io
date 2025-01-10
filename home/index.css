@@ -1,230 +1,236 @@
 /*Made by Zoxplers*/
-homebutton
+
+/*Fonts*/
+@font-face
 {
-    display: none;
+    font-family: 'Bubblegum Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/bubblegumsans/v16/AYCSpXb_Z9EORv1M5QTjEzMEteaAxII.woff2) format('woff2'), url(../fonts/bubblegum_sansv16.woff2);
+}
+
+@font-face
+{
+    font-family: 'Nerko One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/nerkoone/v15/m8JQjfZSc7OXlB3ZMOjDd5RA.woff2), url(../fonts/nerko_onev15.woff2);
+}
+
+@font-face
+{
+    font-family: 'Gochi Hand';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/gochi_handv19.woff2), url(https://fonts.gstatic.com/s/gochihand/v19/hES06XlsOjtJsgCkx1Pkfon_-w.woff2) format('woff2');
+}
+
+@font-face
+{
+    font-family: 'Carter One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2) format('woff2'), url(../fonts/carter_onev17.woff2);
+}
+
+@font-face 
+{
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v75/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDJ_vb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rNmlXxc.woff2) format('woff2');
+}
+
+/*Pseudo*/
+a:link
+{
+    color: unset;
+    text-decoration: unset;
+}
+
+a:visited
+{
+    color: unset;
+    text-decoration: unset;
+}
+
+a:hover
+{
+    color: var(--yena);
+    text-shadow: unset;
+}
+
+:root
+{
+    --nako: #b7d3e9;
+    --yujin: #567ace;
+    --chaewon: #cee5d5;
+    --sakura: #f1d2e7;
+    --minju: #ffffff;
+    --yuri: #f3aa51;
+    --hitomi: #f1c3aa;
+    --hyewon: #db706c;
+    --yena: #fcf695;
+    --chaeyeon: #a6dcde;
+    --wonyoung: #d9598c;
+    --eunbi: #bbb0dc;
+
+    --headingglow: 8px;
+
+    color: var(--minju);
+    text-shadow: 20px var(--eunbi);  
+    font-family: sans-serif;
+    white-space: nowrap;
+}
+
+/*Classes*/
+.material-symbols-rounded 
+{
+    font-family: "Material Symbols Rounded";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*Tags*/
+wrap
+{
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    user-select: none;
+    pointer-events: none; 
+}
+
+body
+{
+    height: 100vh;
+    background: repeating-conic-gradient(var(--chaewon), var(--chaeyeon), var(--yujin), var(--yujin), var(--yujin), var(--chaeyeon), var(--chaewon));
+    margin: 0;
+}
+
+body > wrap
+{
+    background: rgba(0,0,0,0.3);
+    height: 100vh;
 }
 
 main
 {
-    text-align: unset;
-    align-items: unset;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 70vw;
+    height: 84vh;
+    left: 15vw;
+    top: 8vh;
+    border-radius: calc((1vw + 1vh) / 2);
+    background: rgba(0,0,0,0.6);
 }
 
-.landscape > *
+main wrap
 {
-    margin-left: 21vw;
-    margin-right: 21vw;
+    background: linear-gradient(to right, transparent, var(--eunbi), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--nako), var(--eunbi), transparent);
+    opacity: 0.2;
 }
 
-.portrait > *
-{
-    margin-left: 10vw;
-    margin-right: 10vw;
-}
-
-line
+heading
 {
     display: block;
-}
-
-/*topbar*/
-topbar
-{
-    display: flex;
-    margin-bottom: 5vh;
-}
-
-#nameContainer
-{
-    flex-grow: 1;
+    position: relative;
     font-family: "Bubblegum Sans";
+    height: 12.5vh;
+    padding-bottom: 1vh;
+    box-shadow: 0px 3px var(--headingglow) var(--wonyoung);
 }
 
-#background name
+heading *
 {
-    opacity: 0%;
+    padding-left: 2.5vw;
+    text-shadow: 2px 1px var(--hitomi);
 }
 
-name
+heading > wrap
 {
-    float: right;
+    background-color: var(--sakura);
+    opacity: 0.45;
 }
 
-topbar img
+heading1
 {
-    height: 12vh;
-    border-radius: 50%;
-    box-shadow: inset 0 0 calc(1vw + 1vh) black;
+    display: block;
+    font-size: min(6vh, 5vw);
+    padding-top: calc(12.5vh / 2 - (min(6.9vh, 5vw) / 2 + min(3vh, 2vw) / 2));
 }
-/*topbar End*/
 
-/*heading*/
-#background heading
+heading2
 {
-    visibility: hidden;
+    display: block;
+    font-size: min(3vh, 2vw);
 }
 
-#foreground heading span
-{
-    visibility: hidden;
-}
-
-#background heading span
-{
-    visibility: visible;
-}
-/*heading End*/
-
-/*navbar*/
 navbar
 {
-    font-size: calc(var(--fontSize) * 0.7);
+    display: flex;
+    margin-top: var(--headingglow);
+    height: 5vh;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    --selectBarX: 0px;
+    --selectBarY: 0px;
+    --selectBarW: 0px;
+    --selectBarH: 0px;
 }
 
-navitem:first-child
-{
-    padding-left: unset;
-}
-
-navitem
+navbar a
 {
     display: inline-block;
-    padding-left: 0.5vw;
+    font-family: "Nerko One";
+    font-size: min(2.5vh, 2vw);
+    cursor: pointer;
+    color: var(--minju);
+    text-shadow: 0.5px 0.25px var(--hyewon);
+    margin: 0 1vw;
 }
 
-navitem a span
+navbar::before
 {
-    position: relative;
-    top: 0.7vh;
-    padding-right: 0.1vw;
-    font-size: calc(var(--fontSize) * 0.9);
+    display: inline-block;
+    position: fixed;
+    content: "";
+    width: var(--selectBarW);
+    height: var(--selectBarH);
+    left: var(--selectBarX);
+    top: var(--selectBarY);
+    background: var(--yuri);
+    transition: 0.5s;
+    box-shadow: 1px 1px 2px var(--yuri);
 }
 
-navitem::after
+pages
 {
     display: block;
-    content: '';
-    border-bottom: solid 2px white;
-    transform: scaleX(0);
-    transition: transform 120ms ease-in-out;
+    height: 60vh;
+    padding: 1vh 2.5vw;
+    overflow: scroll;
+    font-size: 20px;
 }
 
-#background navitem.hover::after
+pages *:first-child
 {
-    transform: scaleX(1.1);
+    margin-bottom: 1.75vh;
 }
-
-#background a
-{
-    visibility: hidden;
-}
-
-
-#background navItem span
-{
-    visibility: visible;
-}
-
-#foreground navItem span
-{
-    opacity: 0;
-}
-
-/*navbar End*/
-
-/*page*/
-page
-{
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    text-align: center;
-}
-
-#background page
-{
-    opacity: 0;
-}
-/*page End*/
-
-/*statusBar*/
-statusBar
-{
-    display: flex;
-    font-size: calc(var(--fontSize) * 0.75);
-    font-family: "Bubblegum Sans";
-}
-
-statusBar indicator
-{
-    display: inline-block;
-    content: "";
-    height: var(--fontSize);
-    width: var(--fontSize);
-    background: white;
-    border-radius: 50%;
-    opacity: 80%;
-    margin: auto 0;
-}
-
-#foreground statusBar indicator
-{
-    opacity: 50%;
-    animation: glow 3s ease infinite;
-    background: var(--statusColor);
-}
-
-label
-{
-    display: inline-flex;
-    padding-top: 1px;
-    padding-left: 0.25vw;
-}
-
-label > *
-{
-    margin: auto 0;
-}
-
-label img
-{
-    max-height: max(5vh, 3vw);
-    border-radius: 0.5vw;
-    padding: 0 0.5vw;
-}
-
-#background label
-{
-    opacity: 0;
-}
-/*statusBar End*/
-
-/*socialsBar*/
-socialsBar
-{
-    display: flex;
-    justify-content: right;
-}
-
-#background socialsBar
-{
-    opacity: 0;
-}
-/*socialsBar End*/
 
 /*Animations*/
-@keyframes glow
-{
-    0%
-    {
-        opacity: 50%;
-    }
-    50%
-    {
-        opacity: 100%;
-    }
-    100%
-    {
-        opacity: 50%;
-    }
-}

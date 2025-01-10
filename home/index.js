@@ -1,209 +1,87 @@
 /*Made by Zoxplers*/
 
-//Main Patch
-document.getElementById("foreground").innerHTML = document.getElementById("background") .innerHTML;
-
-//URL Parse
+//Variables
+subheaders = ["omgitsasubheader","verycoolsubheader","subheadergoeshere","justanotherpersonalsite"];
 showHidden = false;
-URLParams = document.URL.includes("?") ? document.URL.substring(document.URL.indexOf("?")+1).replaceAll("?","&").split("&") : [];
-URLParams.forEach(function(i)
+altColors = false;
+
+//Parse URL
+document.URL.split('?').forEach(function(i)
 {
     if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")
     {
         showHidden = true;
     }
-});
-//URL Parse End
-
-//Audio
-audioAmount = 5;
-audioArray = [];
-currentAudio = 0;
-
-while(audioArray.length < audioAmount)
-{
-    randInt = Math.ceil(Math.random() * audioAmount);
-    if(!(randInt == 1 && audioArray.length == 0) && !audioArray.includes(document.getElementById("audio" + randInt)))
+    else if(i.toLowerCase() === "altcolors=true" || i.toLowerCase() ==="altcolors")
     {
-        audioArray.push(document.getElementById("audio" + randInt));
-    }
-}
-
-Array.from(document.getElementsByTagName("audio")).forEach(audio => {
-    audio.volume = 0.2;
-    audio.onended = function()
-    {
-        currentAudio++;
-        if(currentAudio > audioArray.length)
-        {
-            currentAudio = 0;
-        }
-        playAudio();
+        altColors = true;
     }
 });
 
-function playAudio()
+//Generate subheader
+document.getElementsByTagName("heading2")[0].innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
+
+//Tracker
+document.getElementsByTagName("iframe")[0].onload = function() {document.getElementsByTagName("iframe")[0].remove();};
+
+//Pages handler
+Array.from(document.getElementsByTagName("pages")[0].children).forEach(page => {
+    //Navbar buttons
+    let button = document.createElement("a");
+    button.onclick = function(){pageSelect(page, button);};
+    button.innerHTML = "<span class = \"material-symbols-rounded\">" + page.getAttribute("icon") + "</span>\n<span>"+page.getAttribute("name") + "</span>";
+    document.getElementsByTagName("navbar")[0].appendChild(button);
+
+    //Page content
+    page.innerHTML = "Unable to fetch data.";
+    fetch("./"+page.tagName.toLowerCase()).then(response => {
+        response.text().then(content => {
+            page.innerHTML = showHidden ? content.replace("<!--","").replace("-->","") : content;
+            Array.from(page.getElementsByClassName("image")).forEach(element => {
+                //fix line below
+                element.style = "margin-top: 10px; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
+                element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
+            });
+        })
+    });
+});
+
+//Selection bar
+function moveSelBar()
 {
-    audioArray.at(currentAudio).play();
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarX", selectedButton.getBoundingClientRect().left-3 + "px");
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarY", selectedButton.getBoundingClientRect().bottom + "px");
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarW", selectedButton.getBoundingClientRect().width+10 + "px");
+    document.getElementsByTagName("navbar")[0].style.setProperty("--selectBarH", "1px");
 }
 
-function stopAudio()
+function pageSelect(page, button)
 {
-    Array.from(document.getElementsByTagName("audio")).forEach(audio => audio.pause());
-}
-//Audio End
+    Array.from(document.getElementsByTagName("pages")[0].children).forEach(element => {
+        element.style.display = "none";
+    });
+    Array.from(document.getElementsByTagName("navbar")[0].children).forEach(element => {
+        element.style.color = null;
+        
+    });
 
-//NameClick
-nameToggle = false;
-nameElem = document.getElementsByTagName("name")[1];
-nameBackElem = document.getElementsByTagName("name")[0];
-
-function nameClick()
-{
-    nameToggle = !nameToggle;
-    if(nameToggle)
-    {
-        nameElem.style.setProperty("opacity", "0%");
-        nameBackElem.style.setProperty("opacity", "100%");
-        playAudio();
-    }
-    else
-    {
-        nameElem.style.setProperty("opacity", "100%");
-        nameBackElem.style.setProperty("opacity", "0%");
-        stopAudio();
-    }
+    button.style.color = "var(--yuri)";
+    button.style.textShadow = "unset";
+    page.style.display = "initial";
+    selectedButton = button;    
+    moveSelBar();
 }
 
-nameElem.onclick = nameClick;
-//NameClick End
+pageSelect(document.getElementsByTagName("pages")[0].firstElementChild, document.getElementsByTagName("navbar")[0].firstElementChild);
 
-//Logo
-logoAmount = 6;
-document.getElementsByTagName("topbar")[0].getElementsByTagName("img")[0].setAttribute("src", "/assets/logowhite.png");
-
-function logoClick()
+//Resize function
+window.onresize = function()
 {
-    randInt = Math.ceil(Math.random() * logoAmount);
-    while ("/assets/logo"+randInt+".png" == document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].getAttribute("src"))
-    {
-        randInt = Math.ceil(Math.random() * logoAmount);
-    }
-    document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].setAttribute("src", "/assets/logo"+randInt+".png");
-}
+    moveSelBar();
+};
 
-logoClick();
-
-document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].onclick = logoClick;
-//Logo End
-
-//NavItems
-let navItems = Array.from(document.getElementsByTagName("navbar")[1].children);
-for(let i = 0; i < navItems.length; i++)
+//Load function
+window.onload = function()
 {
-    navItems[i].onmouseover = function()
-    {
-        document.getElementsByTagName("navbar")[0].children[i].classList.add("hover");
-    }
-    navItems[i].onmouseout = function()
-    {
-        document.getElementsByTagName("navbar")[0].children[i].classList.remove("hover");
-    }
-}
-//NavItems End
-
-//Status
-function updateStatus(data)
-{
-    let twitch = false;
-    let hasActivity = false;
-    let string = "<text>";
-    if(data["discord_status"] == "online")
-    {
-        document.documentElement.style.setProperty("--statusColor", "green");
-        data["activities"].forEach(activity => {
-            if(activity.name == "Twitch")
-            {
-                twitch = true;
-                hasActivity = true;
-                string += "Streaming " +  activity.state + " on Twitch: " + activity.details;
-                document.documentElement.style.setProperty("--statusColor", "purple");
-            }
-            if(!twitch)
-            {
-                if(hasActivity)
-                {
-                    string += " and on ";
-                }
-                else
-                {
-                    hasActivity = true;
-                    string += "Online on Discord: ";
-                }
-                if(activity.name == "Custom Status")
-                {
-                    
-                    if(activity.hasOwnProperty("emoji"))
-                    {
-                        if(activity["emoji"].hasOwnProperty("id"))
-                        {
-                            string += "</text><img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\"\/><text>"
-                        }
-                        else
-                        {
-                            string += activity["emoji"]["name"];
-                        }                    
-                    }
-                    string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
-                    
-                }
-                else if(activity.name == "Hang Status")
-                {
-                    string += "Discord: "
-                    if(activity.state == "custom")
-                    {
-                        string = activity.hasOwnProperty("details") ? string + " " + activity["details"] : string;
-                    }
-                    else
-                    {
-                        string += " " + activity["state"];
-                    }
-                }
-                else
-                {
-                    string += activity.name;
-                }
-            }
-        });
-        if(!hasActivity)
-        {
-            string += data["discord_status"] + " on Discord";
-        }
-    }
-    else if(data["discord_status"] == "dnd")
-    {
-        string += "Do Not Disturb";
-        document.documentElement.style.setProperty("--statusColor", "red");
-    }
-    else
-    {
-        let status = data["discord_status"];
-        string += status.charAt(0).toUpperCase() + status.slice(1);
-        document.documentElement.style.setProperty("--statusColor", "white");
-        if(status == "idle")
-        {
-            document.documentElement.style.setProperty("--statusColor", "orange");
-        }
-    }
-    document.getElementsByTagName("statusbar")[0].getElementsByTagName("label")[0].innerHTML = string + "</text>";
-    document.getElementsByTagName("statusbar")[1].getElementsByTagName("label")[0].innerHTML = string + "</text>";
-}
-
-
-lanyard(
-{
-    userId: "224288033950662656",
-    socket: true,
-    onPresenceUpdate: updateStatus
-})
-//Status End
+    moveSelBar();
+};
