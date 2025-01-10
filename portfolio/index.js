@@ -1,0 +1,1 @@
+document.getElementById("foreground").innerHTML = document.getElementById("background").innerHTML;

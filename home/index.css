@@ -1,43 +1,43 @@
 /*Made by Zoxplers*/
+
 homebutton
 {
     display: none;
 }
 
-main
-{
-    text-align: unset;
-    align-items: unset;
-}
-
-.landscape > *
-{
-    margin-left: 21vw;
-    margin-right: 21vw;
-}
-
-.portrait > *
-{
-    margin-left: 10vw;
-    margin-right: 10vw;
-}
-
-line
+main > *
 {
     display: block;
 }
 
-/*topbar*/
-topbar
+.landscape > *
 {
-    display: flex;
-    margin-bottom: 5vh;
+    margin: 1vh 21vw;
 }
 
-#nameContainer
+.portrait > *
 {
-    flex-grow: 1;
-    font-family: "Bubblegum Sans";
+    margin: 1vh 10vw;
+}
+
+#background *
+{
+    visibility: hidden;
+}
+
+#background span
+{
+    visibility: visible;
+}
+
+#foreground
+{
+    text-shadow: none;
+}
+
+#foreground span
+{
+    visibility: hidden;
 }
 
 #background name
@@ -45,172 +45,215 @@ topbar
     opacity: 0%;
 }
 
-name
+#foreground heading span
 {
-    float: right;
+    visibility: visible;
+    opacity: 0;
+}
+
+
+topbar
+{
+    margin-top: 5vh !important;
+    overflow: hidden;
 }
 
 topbar img
 {
-    height: 12vh;
+    visibility: visible !important;
     border-radius: 50%;
     box-shadow: inset 0 0 calc(1vw + 1vh) black;
-}
-/*topbar End*/
-
-/*heading*/
-#background heading
-{
-    visibility: hidden;
+    height: 100%;
 }
 
-#foreground heading span
+topbar name
 {
-    visibility: hidden;
+    visibility: visible !important;
 }
 
-#background heading span
+topbar imgcontainer
 {
-    visibility: visible;
-}
-/*heading End*/
-
-/*navbar*/
-navbar
-{
-    font-size: calc(var(--fontSize) * 0.7);
+    visibility: visible !important;
+    float: left;
+    height: 12vh;
 }
 
-navitem:first-child
+topbar name
 {
-    padding-left: unset;
-}
-
-navitem
-{
-    display: inline-block;
-    padding-left: 0.5vw;
-}
-
-navitem a span
-{
-    position: relative;
-    top: 0.7vh;
-    padding-right: 0.1vw;
-    font-size: calc(var(--fontSize) * 0.9);
-}
-
-navitem::after
-{
-    display: block;
-    content: '';
-    border-bottom: solid 2px white;
-    transform: scaleX(0);
-    transition: transform 120ms ease-in-out;
-}
-
-#background navitem.hover::after
-{
-    transform: scaleX(1.1);
-}
-
-#background a
-{
-    visibility: hidden;
-}
-
-
-#background navItem span
-{
-    visibility: visible;
-}
-
-#foreground navItem span
-{
-    opacity: 0;
-}
-
-/*navbar End*/
-
-/*page*/
-page
-{
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    text-align: center;
-}
-
-#background page
-{
-    opacity: 0;
-}
-/*page End*/
-
-/*statusBar*/
-statusBar
-{
-    display: flex;
-    font-size: calc(var(--fontSize) * 0.75);
+    float: right;
     font-family: "Bubblegum Sans";
 }
 
-statusBar indicator
+heading
+{
+    margin-top: 5vh !important;
+    margin-bottom: 0 !important;
+}
+
+heading line
+{
+    display: block;
+}
+
+infobar
+{
+    margin-top: 0 !important;
+    font-size: calc(var(--fontSize) * 0.7);
+    overflow: auto;
+}
+
+infoitem
+{
+    float: left;
+    margin: 0 0.8vw 0 0;
+}
+
+#background infoitem
+{
+    visibility: visible;
+    --hoverColor: black;
+    background-image: linear-gradient(black 80%, var(--hoverColor) 95%, black 95%);
+}
+
+a > span
+{
+    font-size: calc(var(--fontSize) * 0.9);
+    float: left;
+    margin: 0.3vh 0.15vw 0 0;
+}
+
+a
+{
+    float: left;
+}
+
+page
+{
+    min-height: 8vh;
+    margin-top: 3vh !important;
+}
+
+page:first-child
+{
+    opacity: 100%;
+}
+
+page *
+{
+    font-size: calc(var(--fontSize) * 0.7);
+    font-family: "Bubblegum Sans";
+    transition: opacity 1s;
+}
+
+statusbar
+{
+    display: flex;
+    align-items: center;
+    font-size: calc(var(--fontSize) * 0.7);
+    font-family: "Bubblegum Sans";
+}
+
+#background indicator::before
 {
     display: inline-block;
     content: "";
     height: var(--fontSize);
     width: var(--fontSize);
     background: white;
-    border-radius: 50%;
     opacity: 80%;
-    margin: auto 0;
+    border-radius: 50%;
+    visibility: visible !important;
 }
 
-#foreground statusBar indicator
+#foreground indicator::before
 {
-    opacity: 50%;
-    animation: glow 3s ease infinite;
+    display: inline-block;
+    content: "";
+    height: var(--fontSize);
+    width: var(--fontSize);
     background: var(--statusColor);
+    opacity: 50%;
+    border-radius: 50%;
+    animation: glow 3s ease infinite;
 }
 
-label
+statusbar indicator
 {
-    display: inline-flex;
-    padding-top: 1px;
-    padding-left: 0.25vw;
+    float: left;
+    margin: -0.4vh 0.5vw 0 0;
+    margin-top: 0vh;
 }
 
-label > *
-{
-    margin: auto 0;
-}
-
-label img
-{
-    max-height: max(5vh, 3vw);
-    border-radius: 0.5vw;
-    padding: 0 0.5vw;
-}
-
-#background label
-{
-    opacity: 0;
-}
-/*statusBar End*/
-
-/*socialsBar*/
-socialsBar
+statusbar p
 {
     display: flex;
-    justify-content: right;
+    align-items: center;
 }
 
-#background socialsBar
+statusbar p > img
 {
-    opacity: 0;
+    position: relative;
+    top: -3px;
+    border-radius: 12px;
+    padding: 0 0.5vw;
+    height: 5vh;
 }
-/*socialsBar End*/
+
+socialsbar
+{
+    text-align: right;
+    max-height: calc(var(--fontSize) * 1.1);
+}
+
+socials
+{
+    display: block;
+    max-height: inherit;
+}
+
+socials *
+{
+    max-height: inherit;
+}
+
+socialitem img
+{
+    top: 0;
+    position: relative;
+    transition: top 0.25s;
+    height: 100%;
+}
+
+socialitem:hover img
+{
+    top: -1vh;
+}
+
+tooltip
+{
+    display: inline;
+    --visibility: 0;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    font-size: calc(var(--fontSize) * 0.69);
+    font-family: "Gochi Hand";
+    white-space: nowrap;
+    margin: 0 !important;
+    overflow: visible;
+    opacity: var(--visibility);
+}
+
+tooltip *
+{
+    position: relative;
+}
+
+item
+{
+    display: block;
+}
+
 
 /*Animations*/
 @keyframes glow

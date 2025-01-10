@@ -4,42 +4,19 @@
     <head>
         <title>Zoxplers - Site</title>
         <meta charset="utf-8"/>
-        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.00">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
         <meta http-equiv="Refresh" content="0; url=/home"/>
         <link rel="icon" type="image/gif" href="/assets/favicon.gif"/>
-        <link rel="stylesheet" type="text/css" href="/base/index.css"/>
+        <link rel="stylesheet" href="/base/index.css"/>
         <style>
-            #redirectbutton
-            {
-                display: inline-block;
-            }
-            
-            #redirectbutton::after
-            {
-                display: block;
-                content: '';
-                border-bottom: solid 2px white;
-                transform: scaleX(0);
-                transition: transform 120ms ease-in-out;
-            }
-
-            #redirectbutton:hover::after
-            {
-                transform: scaleX(1.1);
-            }
-
-            #redirectcontainer
-            {
-                display: block;
-                flex-grow: 1;
-            }
+            main {text-align: center;}
+            a {color: white; text-shadow: 0 0 8px black;}
         </style>
     </head>
     <body>
         <blur></blur>
-        <main id="background"></main>
-        <main id="foreground"><div class="flexspacer"></div><div id="redirectcontainer"><a id="redirectbutton" href="/home">Redirect Home</a></div></main>
+        <main id="background" class="landscape"></main>
+        <main id="foreground"><br/><a href="/home">Redirect Home</a></main>
         <iframe style="display: none;" src="https://iplogger.org/2scVd5"></iframe>
         <script src="/base/index.js"></script>
     </body>

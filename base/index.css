@@ -1,5 +1,7 @@
+/*Made by Zoxplers*/
+
 /*Fonts*/
-@font-face
+@font-face 
 {
     font-family: "Material Symbols Outlined";
     font-style: normal;
@@ -46,53 +48,36 @@
     --hyewon: #db706c;
     --wonyoung: #d9598c;
     --eunbi: #bbb0dc;
-    --fontSize: max(min(3vh, 1.5vw), 18px);
-    --textShadow: max(min(0.25vh, 0.2vw), 1px);
 
-    -webkit-user-select: none;
+    --minWidth: 600px;
+    --minHeight: 450px;
+    --fontSize: max(1.5vw, 2.9vh, 18px);
     -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+
 
     color: white;
     user-select: none;
-    font-family: "Carter One", sans-serif;
     font-size: var(--fontSize);
+    font-family: "Carter One", sans-serif;
+    text-shadow: 0 0 3px white;
+}
+
+homebutton a:hover
+{
+    text-decoration: solid underline white 0.225vh;
 }
 
 /*Tags*/
 body
 {
     display: block;
-    width: 100vw;
-    height: 100vh;
+    width: max(100vw, var(--minWidth));
+    height: max(100vh, var(--minHeight));
     margin: 0;
     background: white;
     animation: background 16s linear infinite;  
     overflow-y: hidden;
-}
-
-main
-{
-    display: flex;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    overflow: auto;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-blur
-{
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    backdrop-filter: blur(69px);
 }
 
 a
@@ -102,35 +87,43 @@ a
     text-underline-offset: 0.35vh;
 }
 
+blur
+{
+    display: block;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(69px);
+}
+
+main
+{
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: auto;
+}
 
 homebutton
 {
-    display: inline-block;
-    position: relative;
+    position: absolute;
     z-index: 1;
-    margin: 1vmin 0 0 1vmin;
-    font-size: 2vh;
+    top: 1vh;
+    left: 0.5vw;
 }
 
 homebutton span
 {
-    position: relative;
-    font-size: 2.7vh;
-    top: 0.55vh;
+    position:absolute;
+    margin-top: calc(var(--fontSize) * 0.35);
 }
 
-homebutton::after
+homebutton a
 {
-    display: block;
-    content: '';
-    border-bottom: solid 2px white;
-    transform: scaleX(0);
-    transition: transform 120ms ease-in-out;
-}
-
-homebutton:hover::after
-{
-    transform: scaleX(1.1);
+    white-space: pre;
+    font-size: calc(var(--fontSize) * 0.7);
 }
 
 /*IDs*/
@@ -140,12 +133,11 @@ homebutton:hover::after
     background: black;
     box-shadow: 0 0 calc((1vh + 1vw) / 5) calc((1vh + 1vw) / 10) black;
     mix-blend-mode: multiply;
-    text-shadow: 0 0 calc(var(--textShadow)*1.5) white;
 }
 
-#foreground
+#midground
 {
-    text-shadow: 0 0 var(--textShadow) white;
+    background: none;
 }
 
 /*Classes*/
@@ -155,6 +147,8 @@ homebutton:hover::after
     top: 0;
     width: 97%;
     height: 100%; 
+    min-width: calc(0.97 * var(--minWidth));
+    min-height: var(--minHeight);
 }
 
 .landscape
@@ -163,6 +157,8 @@ homebutton:hover::after
     top: 1.5%;
     width: 100%;
     height: 97%;
+    min-width: var(--minWidth);
+    min-height: calc(0.97 * var(--minHeight));
 }
 
 .hidden
@@ -205,17 +201,6 @@ homebutton:hover::after
     font-feature-settings: "liga";
     -moz-font-feature-settings: 'liga';
     -moz-osx-font-smoothing: grayscale;
-}
-
-.flexbr
-{
-    width: 100%;
-    height: 1.25em; /*default line-height?*/
-}
-
-.flexspacer
-{
-    flex-grow: 1;
 }
 
 /*Animations*/

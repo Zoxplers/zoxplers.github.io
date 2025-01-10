@@ -4,50 +4,46 @@
     <head>
         <title>Zoxplers - Site</title>
         <meta charset="utf-8"/>
-        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=2.00">
         <link rel="icon" type="image/gif" href="/assets/favicon.gif"/>
-        <link rel="stylesheet" type="text/css" href="/base/index.css"/>
-        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <link rel="stylesheet" href="/base/index.css"/>
+        <link rel="stylesheet" href="index.css"/>
     </head>
     <body>
         <blur></blur>
         <main id="background">
-            <flexspacer class="flexspacer" style="flex-grow: 1"></flexspacer>
             <topbar>
-                <img/>
-                <div id="nameContainer">
-                    <name>Zoxplers</name>
-                </div>
+                <name>Zoxplers</name>
+                <imgcontainer>
+                    <img/>
+                </imgcontainer>
             </topbar>
             <heading>
                 <line><span>Hello!</span></line> 
                 <line>I'm <span>Zoxplers.</span></line>
             </heading>
-            <navbar>
-                <navitem>
+            <infobar>
+                <infoitem>
                     <a href="https://uccs.edu"><span class="material-symbols-outlined">School</span>UCCS Graduate</a>
-                </navitem>
-                <navitem>
+                </infoitem>
+                <infoitem>
                     <a href="https://mhs.mcsd.org"><span class="material-symbols-outlined">School</span>MHS Graduate</a>
-                </navitem>
-                <navitem>
+                </infoitem>
+                <infoitem>
                     <a href="/portfolio"><span class="material-symbols-outlined">folder_open</span>Portfolio</a>
-                </navitem>
-            </navbar>
-            <page style="flex-grow: 3">
-                <flexspacer class="flexspacer" style="flex-grow: 1"></flexspacer>
-                Website updating, check back soon!
-                <flexspacer class="flexspacer" style="flex-grow: 1"></flexspacer>
+                </infoitem>
+            </infobar>
+            <page>
+                
             </page>
             <statusbar>
                 <indicator></indicator>
-                <label>Unknown Status</label>
+                <p>Unknown Status</p>
             </statusbar>
             <socialsbar>
-                <!-- <socials>Please enable javascript.</socials> -->
+                <socials>Please enable javascript.</socials>
             </socialsbar>
-            <flexspacer class="flexspacer" style="flex-grow: 3"></flexspacer>
         </main>
         <main id="foreground"></main>
         <audio id="audio1" preload="auto">

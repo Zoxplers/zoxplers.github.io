@@ -6,12 +6,9 @@ document.body.style.background = "no-repeat linear-gradient(to bottom left, var(
 document.body.style.backgroundSize = "316% 316%"; //Random numbers?
 //Background End
 
-//HomeButton
-document.body.innerHTML = "<homebutton><span class=\"material-symbols-outlined\">House</span><a href=\"/\">Home</a></homebutton>" + document.body.innerHTML;
-//HomeButton End
-
 //Resize
 resize = false;
+
 function resizeBody()
 {
     if(window.innerHeight > (window.innerWidth * 0.74))
@@ -19,16 +16,15 @@ function resizeBody()
         Array.from(document.getElementsByTagName("main")).forEach(main => {
             main.className = "portrait";
         });
-        document.getElementsByTagName("homebutton")[0].style = "left: 1vw; top: 0;";
     }
     else
     {
         Array.from(document.getElementsByTagName("main")).forEach(main => {
             main.className = "landscape";
         });
-        document.getElementsByTagName("homebutton")[0].style = "left: 0; top: 1vh;";
     }
 }
+//Resize End
 
 resizeBody();
 
@@ -45,6 +41,28 @@ if(window.location.protocol == "http:" || window.location.protocol == "https:")
     document.title = "Zoxplers - " + window.location.pathname.split("/")[1].charAt(0).toUpperCase() + window.location.pathname.split("/")[1].slice(1);
 }
 //Title End
+
+//HomeButton
+document.body.innerHTML = "<homebutton><span class=\"material-symbols-outlined\">House</span><a href=\"/\">       Home </a></homebutton>" + document.body.innerHTML;
+//HomeButton End
+
+//AssetsFix
+function assetsFix()
+{
+    //if(window.location.protocol != "https:" || window.location.protocol != "http:")
+    Array.from(document.body.getElementsByTagName("*")).forEach(element => {
+        if(element.getAttribute("src") != null && element.getAttribute("src").substring(0, 8) == "/assets/")
+        {
+            element.setAttribute("src", "https://zoxplers.com" + element.getAttribute("src"));
+        }
+    });
+}
+
+function loadAssets()
+{
+    assetsFix();
+}
+//AssetsFix End
 
 //Main
 document.getElementById("foreground").addEventListener( 'scroll', e => document.getElementById("background").scrollTop = document.getElementById("foreground").scrollTop)

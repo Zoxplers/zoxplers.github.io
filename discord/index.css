@@ -1,34 +1,27 @@
 /*Made by Zoxplers*/
-#foreground span
+
+/*Pseudo*/
+a:hover
 {
-    visibility: hidden;
+    text-decoration: solid underline white 0.225vh;
 }
 
-main *
+/*Tags*/
+main
 {
-    padding: 1vh 0;
+    text-align: center;
+    white-space: pre;
 }
 
-main a::after
+a
 {
-    display: block;
-    content: '';
-    border-bottom: solid 2px white;
-    transform: scaleX(0);
-    transition: transform 120ms ease-in-out;
+    color: white;
+    text-decoration: unset;
+    text-underline-offset: 0.35vh;
 }
 
-#background a:hover::after
+a span
 {
-    transform: scaleX(1.1);
-}
-
-#foreground
-{
-    pointer-events: none;
-}
-
-#background text
-{
-    visibility: hidden;
+    color: #00000000;
+    text-shadow: none !important;
 }
