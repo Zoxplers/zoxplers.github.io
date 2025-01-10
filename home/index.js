@@ -1,209 +1,104 @@
-/*Made by Zoxplers*/
+/*Made by Matthew Amurao*/
+//Maybe add soundcloud and/or artstation? in projects
+//Make website look better on phone with separate css activate via javascript and website useragent
 
-//Main Patch
-document.getElementById("foreground").innerHTML = document.getElementById("background") .innerHTML;
+//Change all id to tagname patch
+document.body.querySelectorAll("*").forEach(function(node)
+{
+    node.id = node.tagName.toLowerCase();
+});
 
-//URL Parse
-showHidden = false;
-URLParams = document.URL.includes("?") ? document.URL.substring(document.URL.indexOf("?")+1).replaceAll("?","&").split("&") : [];
-URLParams.forEach(function(i)
+//Variables
+subheaders = ["omgitsasubheader","verycoolsubheader","subheadergoeshere","justanotherpersonalsite"];
+page = 0;
+cache = 0;
+lockHeading = true, showHidden = false, altColors = false;
+
+//Parse URL
+document.URL.split('?').forEach(function(i)
 {
     if(i.toLowerCase() === "showhidden=true" || i.toLowerCase() === "showhidden")
     {
         showHidden = true;
     }
-});
-//URL Parse End
-
-//Audio
-audioAmount = 5;
-audioArray = [];
-currentAudio = 0;
-
-while(audioArray.length < audioAmount)
-{
-    randInt = Math.ceil(Math.random() * audioAmount);
-    if(!(randInt == 1 && audioArray.length == 0) && !audioArray.includes(document.getElementById("audio" + randInt)))
+    else if(i.toLowerCase() === "altcolors=true" || i.toLowerCase() ==="altcolors")
     {
-        audioArray.push(document.getElementById("audio" + randInt));
-    }
-}
-
-Array.from(document.getElementsByTagName("audio")).forEach(audio => {
-    audio.volume = 0.2;
-    audio.onended = function()
-    {
-        currentAudio++;
-        if(currentAudio > audioArray.length)
-        {
-            currentAudio = 0;
-        }
-        playAudio();
+        altColors = true;
     }
 });
 
-function playAudio()
+//Startup
+if(lockHeading)
 {
-    audioArray.at(currentAudio).play();
+    document.body.insertBefore(document.getElementById("heading"), document.getElementById("main"));
+    document.body.insertBefore(document.getElementById("navbar"), document.getElementById("main"));
 }
 
-function stopAudio()
+if(altColors)
 {
-    Array.from(document.getElementsByTagName("audio")).forEach(audio => audio.pause());
-}
-//Audio End
-
-//NameClick
-nameToggle = false;
-nameElem = document.getElementsByTagName("name")[1];
-nameBackElem = document.getElementsByTagName("name")[0];
-
-function nameClick()
-{
-    nameToggle = !nameToggle;
-    if(nameToggle)
-    {
-        nameElem.style.setProperty("opacity", "0%");
-        nameBackElem.style.setProperty("opacity", "100%");
-        playAudio();
-    }
-    else
-    {
-        nameElem.style.setProperty("opacity", "100%");
-        nameBackElem.style.setProperty("opacity", "0%");
-        stopAudio();
-    }
+    document.getElementById("navmenu").style.backgroundColor = "var(--nakodark)";
+    document.getElementById("navmenu").style.color = "var(--chaewon)";
 }
 
-nameElem.onclick = nameClick;
-//NameClick End
+document.getElementById("heading2").innerHTML = subheaders[Math.floor(Math.random() * subheaders.length)]
+document.getElementById("iframe").onload = function() {document.getElementById("iframe").remove();};
 
-//Logo
-logoAmount = 6;
-document.getElementsByTagName("topbar")[0].getElementsByTagName("img")[0].setAttribute("src", "/assets/logowhite.png");
-
-function logoClick()
+//Handle pages
+function loadPage(page, data)
 {
-    randInt = Math.ceil(Math.random() * logoAmount);
-    while ("/assets/logo"+randInt+".png" == document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].getAttribute("src"))
-    {
-        randInt = Math.ceil(Math.random() * logoAmount);
-    }
-    document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].setAttribute("src", "/assets/logo"+randInt+".png");
+    page.innerHTML = showHidden ? data.replace("<!--","").replace("-->","") : data;
+    Array.from(page.getElementsByClassName("image")).forEach(element => {
+        element.style = "margin: auto; height: 30px; padding: 3px 0 0 50px; display: inline-block; background: url(\"../images/"+element.id+"\") no-repeat;";
+        element.style.backgroundSize = parseInt(element.style.paddingLeft)-20+"px";
+    });
 }
 
-logoClick();
-
-document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].onclick = logoClick;
-//Logo End
-
-//NavItems
-let navItems = Array.from(document.getElementsByTagName("navbar")[1].children);
-for(let i = 0; i < navItems.length; i++)
-{
-    navItems[i].onmouseover = function()
-    {
-        document.getElementsByTagName("navbar")[0].children[i].classList.add("hover");
-    }
-    navItems[i].onmouseout = function()
-    {
-        document.getElementsByTagName("navbar")[0].children[i].classList.remove("hover");
-    }
-}
-//NavItems End
-
-//Status
-function updateStatus(data)
-{
-    let twitch = false;
-    let hasActivity = false;
-    let string = "<text>";
-    if(data["discord_status"] == "online")
-    {
-        document.documentElement.style.setProperty("--statusColor", "green");
-        data["activities"].forEach(activity => {
-            if(activity.name == "Twitch")
-            {
-                twitch = true;
-                hasActivity = true;
-                string += "Streaming " +  activity.state + " on Twitch: " + activity.details;
-                document.documentElement.style.setProperty("--statusColor", "purple");
-            }
-            if(!twitch)
-            {
-                if(hasActivity)
-                {
-                    string += " and on ";
-                }
-                else
-                {
-                    hasActivity = true;
-                    string += "Online on Discord: ";
-                }
-                if(activity.name == "Custom Status")
-                {
-                    
-                    if(activity.hasOwnProperty("emoji"))
-                    {
-                        if(activity["emoji"].hasOwnProperty("id"))
-                        {
-                            string += "</text><img src=\"https://cdn.discordapp.com/emojis/" + activity["emoji"]["id"] + "?size=56\"\/><text>"
-                        }
-                        else
-                        {
-                            string += activity["emoji"]["name"];
-                        }                    
-                    }
-                    string = activity.hasOwnProperty("state") ? string + " " + activity["state"] : string;
-                    
-                }
-                else if(activity.name == "Hang Status")
-                {
-                    string += "Discord: "
-                    if(activity.state == "custom")
-                    {
-                        string = activity.hasOwnProperty("details") ? string + " " + activity["details"] : string;
-                    }
-                    else
-                    {
-                        string += " " + activity["state"];
-                    }
-                }
-                else
-                {
-                    string += activity.name;
-                }
-            }
+Array.from(document.getElementById("pages").children).forEach(element => {
+    fetch(element.id).then(response => response.text()).then(textString => loadPage(element, textString)).catch(function() {
+        fetch("http://zoxplers.com/home/"+element.id).then(response => response.text()).then(textString => loadPage(element, textString)).catch(function() {
+            element.innerHTML = "Unable to fetch data.";
         });
-        if(!hasActivity)
-        {
-            string += data["discord_status"] + " on Discord";
-        }
-    }
-    else if(data["discord_status"] == "dnd")
-    {
-        string += "Do Not Disturb";
-        document.documentElement.style.setProperty("--statusColor", "red");
-    }
-    else
-    {
-        let status = data["discord_status"];
-        string += status.charAt(0).toUpperCase() + status.slice(1);
-        document.documentElement.style.setProperty("--statusColor", "white");
-        if(status == "idle")
-        {
-            document.documentElement.style.setProperty("--statusColor", "orange");
-        }
-    }
-    document.getElementsByTagName("statusbar")[0].getElementsByTagName("label")[0].innerHTML = string + "</text>";
-    document.getElementsByTagName("statusbar")[1].getElementsByTagName("label")[0].innerHTML = string + "</text>";
+    });
+    page = document.createElement("a");
+    page.onclick = function(){pageSelect(Array.from(document.getElementById("navbar").children).indexOf(this))};
+    page.innerHTML = "<span style = \"padding: initial\" class = \"material-symbols-rounded\">" + element.getAttribute("icon") + "</span> " + element.getAttribute("name");
+    document.getElementById("navbar").appendChild(page);
+});
+
+function pageSelect(page)
+{
+    Array.from(document.getElementById("navbar").children).forEach(element => {
+        element.style.backgroundColor = "initial";
+    });
+    Array.from(document.getElementById("pages").children).forEach(element => {
+        element.style.display = "none";
+    });
+    document.getElementById("pages").children.item(page).style.display = "initial";
+    document.getElementById("navbar").children.item(page).style.backgroundColor = "var(--minjudarkT)";
 }
 
+pageSelect(page);
 
-lanyard(
+//Handle sites
+async function loadSites()
 {
-    userId: "224288033950662656",
-    socket: true,
-    onPresenceUpdate: updateStatus
-})
-//Status End
+    cache = await fetch("../zwebsite.json").then(response => response.json());
+    try{
+        cache.zwebsite.sites.forEach(site => {
+            cache = document.createElement("a");
+            cache.innerHTML = site;
+            cache.style.display = "none";
+            cache.onclick = function() {location.href = "../"+site.toLowerCase()};
+            document.getElementById("navmenu").appendChild(cache);
+        });
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+}
+loadSites();
+
+document.getElementById("navmenu").addEventListener("click", function() {
+    this.classList.toggle("animate");
+});

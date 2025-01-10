@@ -1,230 +1,245 @@
-/*Made by Zoxplers*/
-homebutton
+/*Made by Matthew Amurao*/
+
+/*Fonts*/
+@font-face
 {
-    display: none;
+    font-family: 'Bubblegum Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/bubblegumsans/v16/AYCSpXb_Z9EORv1M5QTjEzMEteaAxII.woff2) format('woff2'), url(../fonts/bubblegum_sansv16.woff2);
 }
 
-main
+@font-face
 {
-    text-align: unset;
-    align-items: unset;
+    font-family: 'Nerko One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/nerkoone/v15/m8JQjfZSc7OXlB3ZMOjDd5RA.woff2), url(../fonts/nerko_onev15.woff2);
 }
 
-.landscape > *
+@font-face
 {
-    margin-left: 21vw;
-    margin-right: 21vw;
+    font-family: 'Gochi Hand';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/gochi_handv19.woff2), url(https://fonts.gstatic.com/s/gochihand/v19/hES06XlsOjtJsgCkx1Pkfon_-w.woff2) format('woff2');
 }
 
-.portrait > *
+@font-face
 {
-    margin-left: 10vw;
-    margin-right: 10vw;
+    font-family: 'Carter One';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2) format('woff2'), url(../fonts/carter_onev17.woff2);
 }
 
-line
+@font-face 
+{
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v75/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDJ_vb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rNmlXxc.woff2) format('woff2');
+}
+
+/*Pseudo*/
+a:link
+{
+    color: unset;
+    text-decoration: unset;
+}
+
+a:visited
+{
+    color: unset;
+    text-decoration: unset;
+}
+
+:root
+{
+    --color1: rgb(146, 205, 137);
+    --color2: rgb(55, 150, 110);
+    --nako: #B7D3E9;
+    --yujin: #567ace;
+    --chaewon: #CEE5D5;
+    --sakura: #f1d2e7;
+    --minju: #ffffff;
+    --yuri: #f3Aaa51;
+    --hitomi: #f1c3aa;
+    --hyewon: #db706c;
+    --yena: #fcf695;
+    --chaeyeon: #a6dcde;
+    --wonyoung: #d9598c;
+    --eunbi: #bbb0dc;
+
+
+    --nakodark: rgb(53, 88, 114);
+    --yujindark: rgb(69, 89, 136);
+    --sakuradark: rgb(120, 113, 118);
+    --minjudarkT: rgba(53, 53, 53, 0.53);
+
+    color: var(--minju);  
+    font-family: sans-serif;
+    white-space: nowrap;
+}
+
+/*Classes*/
+.material-symbols-rounded 
+{
+    font-family: "Material Symbols Rounded";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*Tags*/
+a
+{
+    font-size: 20px; /*Change me, also change pages * font size too both have to be synced */
+}
+a:hover
+{
+    text-decoration: underline;
+}
+br
+{
+    margin-bottom: 10px; /*fix me*/
+    content: "";
+}
+body
+{
+    margin: 0;
+    background-image: linear-gradient(var(--nakodark), var(--nakodark), var(--nakodark), var(--nakodark), var(--yujindark));
+    overflow-y: scroll;
+    min-width: 386px;
+}
+navmenu
+{
+    position: absolute;
+    display: block;
+    height: max(3.7vh, 19.5333px);
+    background-color: var(--sakuradark);
+    font-family: "Carter One";
+    font-size: calc(max(3.7vh, 19.5333px)/2);
+    cursor: pointer;
+    width: 100%;
+    z-index: 1;
+    transition: 1s;
+}
+heading
 {
     display: block;
-}
-
-/*topbar*/
-topbar
-{
-    display: flex;
-    margin-bottom: 5vh;
-}
-
-#nameContainer
-{
-    flex-grow: 1;
+    height: max(17vh, 88.5px);
+    background-color: var(--color1);
     font-family: "Bubblegum Sans";
+    text-shadow: 5px 2px var(--minjudarkT);
+    padding-top: max(3.7vh, 19.5333px);
 }
-
-#background name
+heading *
 {
-    opacity: 0%;
+    display: block;
+    margin-left: 5vw;
 }
-
-name
+heading1
 {
-    float: right;
+    font-size: clamp(38px, 6.9vh, 9.5vw);
+    padding-top: 1.2vh;
 }
-
-topbar img
+heading2
 {
-    height: 12vh;
-    border-radius: 50%;
-    box-shadow: inset 0 0 calc(1vw + 1vh) black;
+    font-size: clamp(15px, 3vh, 6vw);
 }
-/*topbar End*/
-
-/*heading*/
-#background heading
-{
-    visibility: hidden;
-}
-
-#foreground heading span
-{
-    visibility: hidden;
-}
-
-#background heading span
-{
-    visibility: visible;
-}
-/*heading End*/
-
-/*navbar*/
 navbar
 {
-    font-size: calc(var(--fontSize) * 0.7);
+    display: block;
+    height: max(4.5vh, 23.4333px);
+    border-top: 4px solid var(--chaewon);
+    border-bottom: 1px solid var(--color2);
+    background-color: var(--color2);
 }
-
-navitem:first-child
-{
-    padding-left: unset;
-}
-
-navitem
+navbar *
 {
     display: inline-block;
-    padding-left: 0.5vw;
+    font-family: "Nerko One";
+    font-size: max(2vh, 10.2333px);
+    padding: max(1vh, 5.5px) max(2vh, 5.5px);
+    min-height: 13px;
+    cursor: pointer;
+    color: var(--minju);
+    margin-left: -0.25vh;
 }
-
-navitem a span
+navbar a:hover
 {
-    position: relative;
-    top: 0.7vh;
-    padding-right: 0.1vw;
-    font-size: calc(var(--fontSize) * 0.9);
+    color: var(--nako);
 }
-
-navitem::after
+navbar a:first-child
+{
+    margin-left: max(3vw, 2vw);
+}
+main
 {
     display: block;
-    content: '';
-    border-bottom: solid 2px white;
-    transform: scaleX(0);
-    transition: transform 120ms ease-in-out;
+    min-height: 75vh;
+    background-color: var(--minjudarkT);
+    width: max(88vw, 339.667px);
+    left: max(6vw, 23.15px);
+    position: relative;
 }
-
-#background navitem.hover::after
+titlebar
 {
-    transform: scaleX(1.1);
-}
-
-#background a
-{
-    visibility: hidden;
-}
-
-
-#background navItem span
-{
-    visibility: visible;
-}
-
-#foreground navItem span
-{
-    opacity: 0;
-}
-
-/*navbar End*/
-
-/*page*/
-page
-{
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
+    display: block;
+    width: 100%;
     text-align: center;
+    padding-top: calc(max(3.7vh, 19.5333px)/8);
 }
-
-#background page
+pages
 {
-    opacity: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    white-space: normal !important;
+    padding: min(1.5vw, 25px);
 }
-/*page End*/
-
-/*statusBar*/
-statusBar
+pages *
 {
-    display: flex;
-    font-size: calc(var(--fontSize) * 0.75);
-    font-family: "Bubblegum Sans";
+    display: block;
+    font-size: 25px; /*fix me, not responsive*/
 }
-
-statusBar indicator
+pages *:first-child
 {
-    display: inline-block;
-    content: "";
-    height: var(--fontSize);
-    width: var(--fontSize);
-    background: white;
-    border-radius: 50%;
-    opacity: 80%;
-    margin: auto 0;
+    margin-bottom: 30px; /*fix me*/
 }
-
-#foreground statusBar indicator
+pages a
 {
-    opacity: 50%;
-    animation: glow 3s ease infinite;
-    background: var(--statusColor);
+    font-size: 20px; /*fix me, not responsive*/
 }
-
-label
-{
-    display: inline-flex;
-    padding-top: 1px;
-    padding-left: 0.25vw;
-}
-
-label > *
-{
-    margin: auto 0;
-}
-
-label img
-{
-    max-height: max(5vh, 3vw);
-    border-radius: 0.5vw;
-    padding: 0 0.5vw;
-}
-
-#background label
-{
-    opacity: 0;
-}
-/*statusBar End*/
-
-/*socialsBar*/
-socialsBar
-{
-    display: flex;
-    justify-content: right;
-}
-
-#background socialsBar
-{
-    opacity: 0;
-}
-/*socialsBar End*/
 
 /*Animations*/
-@keyframes glow
+navmenu.animate
 {
-    0%
-    {
-        opacity: 50%;
-    }
-    50%
-    {
-        opacity: 100%;
-    }
-    100%
-    {
-        opacity: 50%;
-    }
+    text-align: center;
+    transition: 1s;
+    height: 100%;
+}
+navmenu.animate *
+{
+    display: block !important;
+    font-size: max(2.5vh, 19.5333px);
+}
+navmenu.animate *:nth-child(2)
+{
+    margin-top: 24%;
+    transition: 1s;
+}
+navmenu.animate *:first-child
+{
+    display: none !important;
 }
