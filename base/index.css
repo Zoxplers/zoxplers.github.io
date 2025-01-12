@@ -46,7 +46,7 @@
     --hyewon: #db706c;
     --wonyoung: #d9598c;
     --eunbi: #bbb0dc;
-    --fontSize: max(min(3vh, 1.5vw), 18px);
+    --fontSize: max(min(3vh, 1.5vw), 22px);
     --textShadow: max(min(0.25vh, 0.2vw), 1px);
 
     -webkit-user-select: none;
@@ -106,7 +106,7 @@ a
 homebutton
 {
     display: inline-block;
-    position: relative;
+    position: absolute;
     z-index: 1;
     margin: 1vmin 0 0 1vmin;
     font-size: 2vh;

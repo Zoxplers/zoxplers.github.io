@@ -207,3 +207,115 @@ lanyard(
     onPresenceUpdate: updateStatus
 })
 //Status End
+
+//Socials
+//Switch icons to npm package at some point
+fetch("./socials").then(response => {
+    response.text().then(content => {
+        let socials = document.getElementsByTagName("socials")[1];
+        socials.innerHTML = content;
+        Array.from(socials.children).forEach(socialItem => {
+            let socialImg = document.createElement("img");
+            if(socialItem.getAttribute("icon") != null)
+            {
+                socialItem.innerHTML = "";
+                socialImg.setAttribute("src", socialItem.getAttribute("icon"));
+                socialItem.appendChild(socialImg);
+            }
+            if(showHidden)
+            {
+                socialItem.classList.remove("hidden");
+            }
+            if(socialItem.getAttribute("href") != null)
+            {
+                socialItem.onclick = function()
+                {
+                    window.open(socialItem.getAttribute("href"));
+                }
+            }
+            tooltip(socialItem, document.getElementById("background"), `<span style = "vertical-align: text-top;">${socialItem.getAttribute("text")} </span>`, "bottom");
+        });
+        document.getElementsByTagName("socials")[0].innerHTML = socials.innerHTML;
+    });
+})
+//Socials End
+
+
+//Tooltips
+enabledTooltips = [];
+function tooltip(obj, backgroundBool, text, align)
+{
+    var anim;
+    let tooltipElem = document.createElement("tooltip");
+    tooltipElem.innerHTML = text;
+    (backgroundBool ? document.getElementById("background") : document.getElementById("foreground")).append(tooltipElem);
+
+    function enableTooltip()
+    {
+        tooltipElem.classList.remove("hidden");
+        objRect = obj.getBoundingClientRect();
+        if(align == "left")
+        {
+            tooltipElem.style.setProperty("left", (objRect.left - tooltipElem.offsetWidth) + "px");
+            tooltipElem.style.setProperty("top", objRect.top + "px");
+        }
+        else if(align == "right")
+        {
+            tooltipElem.style.setProperty("left", objRect.right + "px");
+            tooltipElem.style.setProperty("top", objRect.top + "px");
+        }
+        else if(align == "top")
+        {
+            tooltipElem.style.setProperty("left", (objRect.left + objRect.width / 2 - tooltipElem.offsetWidth / 2) + "px");
+            tooltipElem.style.setProperty("top", (objRect.top - tooltipElem.offsetHeight) + "px");
+        }
+        else if(align == "bottom")
+        {
+            tooltipElem.style.setProperty("left", (objRect.left + objRect.width / 2 - tooltipElem.offsetWidth / 2) + "px");
+            tooltipElem.style.setProperty("top", objRect.bottom + "px");
+        }
+        else
+        {
+            tooltipElem.style.setProperty("left", objRect.left + "px");
+            tooltipElem.style.setProperty("top", objRect.top + "px");
+        }
+        tooltipElem.style.setProperty("--visibility", "1");
+        clearInterval(anim);
+        anim = setInterval(animFunc, 5);
+    }
+
+    function disableTooltip()
+    {
+        tooltipElem.style.setProperty("--visibility", "0");
+        clearInterval(anim);
+        anim = setInterval(animFunc, 5);
+    }
+
+    function animFunc()
+    {
+        alpha = 0.2;
+        opacity = Number(tooltipElem.style.getPropertyValue("opacity"));
+        visibility = Number(tooltipElem.style.getPropertyValue("--visibility"));
+        opacity = opacity + alpha * (visibility - opacity);
+        tooltipElem.style.setProperty("opacity", opacity);
+        if(opacity > 0.9 || opacity < 0.1)
+        {
+            tooltipElem.style.setProperty("opacity", visibility);
+            if(opacity < 0.1)
+            {
+                tooltipElem.classList.add("hidden");
+            }
+            clearInterval(anim);
+        }
+    }
+
+    obj.onmouseover = enableTooltip;
+    obj.onfocus = enableTooltip;
+    obj.onmouseout = disableTooltip;
+    disableTooltip();
+
+    console.log(text);
+}
+tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[0], true, `<span style = "left: 1vw; top: 1vh">Welcome to my website!</span>`, "right");
+tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[1], false, `<img style = "height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)" src="/assets/wave.png"/>`, "right");
+//Tooltips End
