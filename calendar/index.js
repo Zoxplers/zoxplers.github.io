@@ -23,7 +23,7 @@ let data = [[],[],[],[],[],[],[],[],[],[],[],[]];
 
 fetch(calendarDB).then(response => {
     response.json().then(data => {
-        if(rawData[0] != null)
+        if(data[0] != null)
         {
             console.log(data)
             // rawData.forEach(sheet => {
