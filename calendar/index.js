@@ -41,7 +41,7 @@ fetch(calendarDB).then(response => {
         {
             data.forEach(sheet => {
                 sheet[1].forEach(calendarEvent => {
-                    if(Number.isInteger(calendarEvent[7]))
+                    if(Number.isInteger(calendarEvent[7]) && (showHidden || calendarEvent[7] >= 0))
                     {
                         let date = calendarEvent[2];
                         let year = date.substring(0,date.indexOf("-"));
