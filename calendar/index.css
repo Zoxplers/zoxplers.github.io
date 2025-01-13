@@ -2,60 +2,42 @@
 
 :root
 {
-    --borderRadius: calc((1vw + 1vh) * 0.6);;
+    --borderRadius: calc((1vw + 1vh) * 0.6);
+}
+
+main
+{
+    align-items: center;
+    justify-content: center;
 }
 
 page
 {
     display: flex;
-    flex-grow: 10;
     width: 95vw;
+    height: 90vh;
 }
 
-page > *
+page > * > div
+{
+    border-radius: var(--borderRadius);
+}
+
+#foreground page > * > div
+{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+widgets
 {
     display: flex;
     flex-grow: 1;
 }
 
-page > * > *
+widgets > div
 {
     flex-grow: 1;
-    border-radius: var(--borderRadius);
-    overflow: scroll;
 }
-
-#foreground page > * > *
-{
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Landscape */
-.landscape page
-{
-    gap: 1vw;
-}
-
-.landscape widgets
-{
-    flex-direction: column;
-    gap: 2vh;
-}
-/* Landscape End */
-
-/* Portrait */
-.portrait page
-{
-    flex-direction: column;
-    gap: 1vh;
-}
-
-.portrait widgets
-{
-    gap: 1vw;
-}
-
-/* Portrait End */
 
 /* Headers */
 header
@@ -73,25 +55,61 @@ header
 }
 /* Headers End */
 
-/* Calendar */
-calendar
+/* Landscape */
+/* .landscape calendar > div
 {
-    flex-grow: 5;
+    min-height: 90vh;
+} */
+
+.landscape table
+{
+    height: calc(85vh - (var(--borderRadius) * 2));
+    width: 75vw;
 }
 
+.landscape page
+{
+    gap: 1vw;
+}
+
+.landscape widgets
+{
+    flex-direction: column;
+    gap: 2vh;
+}
+/* Landscape End */
+
+/* Portrait */
+.portrait table
+{
+    height: calc(85vh - (var(--borderRadius) * 2));
+    width: calc(95vw - var(--borderRadius) * 2);
+}
+
+.portrait page
+{
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.portrait widgets
+{
+    gap: 1vw;
+}
+/* Portrait End */
+
+/* Calendar */
 calendar > div
 {
-    display: flex;
-    flex-direction: column;
+    min-height: 90vh;
 }
-
 
 calendar table
 {
     font-family: "Bubblegum Sans";
-    flex-grow: 1;
     margin: var(--borderRadius);
     border: calc(var(--borderRadius) * 0.2) white solid;
+    table-layout: fixed;
     border-collapse: collapse;
     border-radius: 5px;
 }
@@ -101,39 +119,16 @@ calendar thead
     font-size: calc(var(--fontSize)*1.4);
 }
 
-calendar thead tr
-{
-    height: 10vh;
-}
-
-calendar .daysofweek
-{
-    height: 5vh;
-    font-size: 0.7em;
-}
-
 calendar th
 {
     outline: calc(var(--borderRadius) * 0.1) white solid;
-}
-
-calendar tbody tr
-{
-    flex-grow: 1;
-}
-
-calendar td
-{
-    outline: calc(var(--borderRadius) * 0.1) white solid;
-    width: calc(100% / 7);
-    padding: calc(var(--borderRadius) * 0.3);
-    font-size: 0.7em;
+    padding: 1vh 0;
 }
 
 calendar thead th *
 {
     display: inline-block;
-    width: 40%;
+    width: 35%;
     cursor: pointer;
 }
 
@@ -143,6 +138,23 @@ calendar thead th * > *
     top: 0.5vh;
 }
 
+calendar .daysofweek
+{
+    height: 5vh;
+    font-size: 0.7em;
+}
+
+calendar td
+{
+    outline: calc(var(--borderRadius) * 0.1) white solid;
+    padding: calc(var(--borderRadius) * 0.3);
+    height: calc(83vh / 8);
+}
+
+calendar td > div
+{
+    height: 100%;
+}
 
 #foreground calendar tbody tr
 {
@@ -154,6 +166,11 @@ calendar thead th * > *
 {
     outline-color: rgba(0, 0, 0, 0) !important;
     border-color: rgba(0, 0, 0, 0) !important;
+}
+
+#foreground calendar td
+{
+    text-shadow: none;
 }
 
 #background calendar th
@@ -177,4 +194,39 @@ calendar thead th * > *
     box-shadow: 0 0 0.05em 0.05em white;
 }
 
-/* Calendar End */
+#background calendar td > div
+{
+    align-content: center;
+}
+/* Calendar End
+
+/* Widgets */
+.landscape widgets > div
+{
+    height: 100%;
+}
+
+.portrait widgets > div
+{
+    min-height: 25vh;
+    width: 50%;
+}
+
+widgets > div > header
+{
+    text-shadow: unset;
+    font-size: unset;
+}
+
+widgets > div > *
+{
+    align-content: center;
+    text-shadow: none;
+    font-size: calc(var(--fontSize) * 0.75);
+}
+
+#background widgets div > eventinfo
+{
+    opacity: 0;
+}
+/* Widgets End */
