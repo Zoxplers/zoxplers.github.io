@@ -1,0 +1,11 @@
+/*Made by Zoxplers*/
+
+page
+{
+    min-height: 85vh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vh;
+}
