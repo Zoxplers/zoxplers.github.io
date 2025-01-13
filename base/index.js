@@ -10,6 +10,15 @@ document.body.style.backgroundSize = "316% 316%"; //Random numbers?
 document.body.innerHTML = "<homebutton><span class=\"material-symbols-outlined\">House</span><a href=\"/\">Home</a></homebutton>" + document.body.innerHTML;
 //HomeButton End
 
+//Main
+let background = document.getElementById("background");
+let foreground = document.getElementById("foreground");
+foreground.addEventListener("scroll", e => {
+    background.scrollTop = foreground.scrollTop
+    background.scrollLeft = foreground.scrollLeft
+});
+//Main End
+
 //Resize
 resize = false;
 function resizeBody()
@@ -45,7 +54,3 @@ if(window.location.protocol == "http:" || window.location.protocol == "https:")
     document.title = "Zoxplers - " + window.location.pathname.split("/")[1].charAt(0).toUpperCase() + window.location.pathname.split("/")[1].slice(1);
 }
 //Title End
-
-//Main
-document.getElementById("foreground").addEventListener( 'scroll', e => document.getElementById("background").scrollTop = document.getElementById("foreground").scrollTop)
-//Main End

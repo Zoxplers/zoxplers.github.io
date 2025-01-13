@@ -1,7 +1,9 @@
 /*Made by Zoxplers*/
 
 //Main Patch
-document.getElementById("foreground").innerHTML = document.getElementById("background") .innerHTML;
+foreground.innerHTML = background.innerHTML;
+console.log(foreground.innerHTML);
+console.log(foreground);
 
 //URL Parse
 showHidden = false;
@@ -233,7 +235,7 @@ fetch("./socials").then(response => {
                     window.open(socialItem.getAttribute("href"));
                 }
             }
-            tooltip(socialItem, document.getElementById("background"), `<span style = "vertical-align: text-top;">${socialItem.getAttribute("text")} </span>`, "bottom");
+            tooltip(socialItem, background, `<span style = "top: -1vh; vertical-align: text-top;">${socialItem.getAttribute("text")} </span>`, "bottom");
         });
         document.getElementsByTagName("socials")[0].innerHTML = socials.innerHTML;
     });
@@ -248,7 +250,7 @@ function tooltip(obj, backgroundBool, text, align)
     var anim;
     let tooltipElem = document.createElement("tooltip");
     tooltipElem.innerHTML = text;
-    (backgroundBool ? document.getElementById("background") : document.getElementById("foreground")).append(tooltipElem);
+    (backgroundBool ? background : foreground).append(tooltipElem);
 
     function enableTooltip()
     {
@@ -316,6 +318,6 @@ function tooltip(obj, backgroundBool, text, align)
 
     console.log(text);
 }
-tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[0], true, `<span style = "left: 1vw; top: 1vh">Welcome to my website!</span>`, "right");
+tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[0], true, `<span style = "left: 1vw;">Welcome to my website!</span>`, "right");
 tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[1], false, `<img style = "height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)" src="/assets/wave.png"/>`, "right");
 //Tooltips End
