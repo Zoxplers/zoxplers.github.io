@@ -9,7 +9,7 @@
 
 @font-face
 {
-    font-family: 'Bubblegum Sans';
+    font-family: "Bubblegum Sans";
     font-style: normal;
     font-weight: 400;
     src: url(https://fonts.gstatic.com/s/bubblegumsans/v20/AYCSpXb_Z9EORv1M5QTjEzMEteaAxII.woff2) format('woff2'), url(../assets/bubblegum_sansv20.woff2);
@@ -17,7 +17,7 @@
 
 @font-face
 {
-    font-family: 'Gochi Hand';
+    font-family: "Gochi Hand";
     font-style: normal;
     font-weight: 400;
     src: url(https://fonts.gstatic.com/s/gochihand/v23/hES06XlsOjtJsgCkx1Pkfon_-w.woff2) format('woff2'), url(../assets/gochi_handv23.woff2);
@@ -25,13 +25,30 @@
 
 @font-face
 {
-    font-family: 'Carter One';
+    font-family: "Carter One";
     font-style: normal;
     font-weight: 400;
     src: url(https://fonts.gstatic.com/s/carterone/v17/q5uCsoe5IOB2-pXv9UcNExN8hA.woff2) format('woff2'), url(../fonts/carter_onev17.woff2);
 }
 
-/*Pseudo*/
+@font-face
+{
+    font-family: "Itim";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/itim/v14/0nknC9ziJOYe8ANAkA.woff2) format('woff2');
+}
+
+@font-face
+{
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/poppins/v22/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+}
+/* Fonts End */
+
+/* Pseudo */
 :root
 {
     --nako: #b7d3e9;
@@ -56,9 +73,13 @@
     user-select: none;
     font-family: "Carter One", sans-serif;
     font-size: var(--fontSize);
+    font-weight: normal;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+/* Pseudo End */
 
-/*Tags*/
+/* Tags */
 body
 {
     display: block;
@@ -78,7 +99,7 @@ main
     position: absolute;
     left: 0;
     top: 0;
-    overflow: auto;
+    overflow-x: hidden;
     text-align: center;
     align-items: center;
     flex-direction: column;
@@ -110,6 +131,7 @@ homebutton
     z-index: 1;
     margin: 1vmin 0 0 1vmin;
     font-size: 2vh;
+    font-family: "Carter One"
 }
 
 homebutton span
@@ -132,8 +154,9 @@ homebutton:hover::after
 {
     transform: scaleX(1.1);
 }
+/* Tags End */
 
-/*IDs*/
+/* IDs */
 #background
 {
 
@@ -147,8 +170,9 @@ homebutton:hover::after
 {
     text-shadow: 0 0 var(--textShadow) white;
 }
+/* IDs End */
 
-/*Classes*/
+/* Classes */
 .portrait
 {
     left: 1.5%;
@@ -217,6 +241,29 @@ homebutton:hover::after
 {
     flex-grow: 1;
 }
+/* Classes End */
+
+/* Tooltips */
+tooltip
+{
+    --visibility: 0;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    font-size: calc(var(--fontSize) * 0.8);
+    font-family: "Gochi Hand";
+    white-space: nowrap;
+    overflow: visible;
+    margin: 0 !important;
+    opacity: var(--visibility);
+}
+
+tooltip *
+{
+    position: relative;
+}
+/* Tooltips End */
 
 /*Animations*/
 @keyframes background
