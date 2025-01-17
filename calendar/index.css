@@ -16,8 +16,6 @@ page
     display: flex;
     width: 95vw;
     height: 90vh;
-    position: relative;
-    top: -1vh;
 }
 
 page > * > div
@@ -92,6 +90,8 @@ header
 {
     flex-direction: column;
     gap: 1vh;
+    position: relative;
+    top: -1vh;
 }
 
 .portrait page > *:first-child

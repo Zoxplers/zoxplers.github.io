@@ -141,6 +141,7 @@ page
     flex-grow: 10;
     flex-direction: column;
     text-align: center;
+    font-family: "Itim";
 }
 
 #background page
@@ -242,28 +243,6 @@ socialitem:hover img
     top: -1vh;
 }
 /*socialsBar End*/
-
-/* Tooltips */
-tooltip
-{
-    --visibility: 0;
-    display: inline-block;
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    font-size: calc(var(--fontSize) * 0.8);
-    font-family: "Gochi Hand";
-    white-space: nowrap;
-    overflow: visible;
-    margin: 0 !important;
-    opacity: var(--visibility);
-}
-
-tooltip *
-{
-    position: relative;
-}
-/* Tooltips End */
 
 /*Animations*/
 @keyframes glow
