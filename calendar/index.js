@@ -35,7 +35,9 @@ function CalendarEvent(eventName, eventMonth, eventDay, eventYear, firstName, mi
     this.category = category;
 }
 
-fetch(calendarDB).then(response => {
+
+fetch(calendarDB)
+.then(response => {
     response.json().then(data => {
         if(data[0] != null)
         {
@@ -53,12 +55,36 @@ fetch(calendarDB).then(response => {
                     }
                 })
             })
+            database = sortDatabase();
+            loadMonth(currentDate);
         }
-        database = sortDatabase();
-        console.log(database);
-        loadMonth(currentDate);
     });
-});
+})
+.catch(err => {
+    database = [[
+        {
+            eventName: "New Year's Day",
+            eventMonth: "01",
+            eventDay: "01",
+            eventYear: "0000"
+        }
+    ],[],[],[],[],[],[],[],[
+        {
+            eventName: "My Birthday",
+            eventMonth: "09",
+            eventDay: "01",
+            eventYear: "2001"
+        }
+    ],[],[],[
+        {
+            eventName: "Christmas Day",
+            eventMonth: "12",
+            eventDay: "25",
+            eventYear: "0000"
+        }
+    ]];
+    loadMonth(currentDate);
+})
 
 function sortDatabase()
 {
@@ -241,14 +267,23 @@ function loadEvent(event)
 {
     if(event != null)
     {
-        document.getElementsByTagName("eventinfo")[0].innerHTML = `
-        <p>Event: ${event.eventName}</p>
-        <p>Date: ${event.eventMonth}/${event.eventDay}/${event.eventYear}</p>
-        <p>First Name: ${event.firstName}</p>
-        <p>Middle Name: ${event.middleName}</p>
-        <p>Last Name: ${event.lastName}</p>
-        <p>Age: ${event.age.toString().slice(0,5)}</p>
-        <p>Category: ${event.category}</p>`;
+        if(event.category)
+        {
+            document.getElementsByTagName("eventinfo")[0].innerHTML = `
+            <p>Event: ${event.eventName}</p>
+            <p>Date: ${event.eventMonth}/${event.eventDay}/${event.eventYear}</p>
+            <p>First Name: ${event.firstName}</p>
+            <p>Middle Name: ${event.middleName}</p>
+            <p>Last Name: ${event.lastName}</p>
+            <p>Age: ${event.age.toString().slice(0,5)}</p>
+            <p>Category: ${event.category}</p>`;
+        }
+        else
+        {
+            document.getElementsByTagName("eventinfo")[0].innerHTML = `
+            <p>Event: ${event.eventName}</p>
+            <p>Date: ${event.eventMonth}/${event.eventDay}/${event.eventYear}</p>`;
+        }
     }
     document.getElementsByTagName("eventinfo")[1].innerHTML = document.getElementsByTagName("eventinfo")[0].innerHTML;
 }

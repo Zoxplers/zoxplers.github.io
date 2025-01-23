@@ -1,54 +1,19 @@
 {
     "colors":{
-        "Front End":{
-            "r": 252,
-            "g": 247,
-            "b": 149
-        },
-        "Back End":{
-            "r": 206,
-            "g": 229,
-            "b": 213
-        },
-        "Full Stack":{
-            "r": 217,
-            "g": 89,
-            "b": 89
-        },
-        "Java":{
-            "r": 243,
-            "g": 170,
-            "b": 81
-        },
-        "C#":{
-            "r": 187,
-            "g": 176,
-            "b": 220
-        },
-        "C++":{
-            "r": 255,
-            "g": 255,
-            "b": 255
-        },
-        "Python":{
-            "r": 166,
-            "g": 220,
-            "b": 222
-        },
-        "Game Dev":{
-            "r": 86,
-            "g": 122,
-            "b": 206
-        },
-        "Sound Design":{
-            "r": 241,
-            "g": 195,
-            "b": 175
-        },
-        "Visual Arts":{
-            "r": 241,
-            "g": 210,
-            "b": 231
-        }
+        "skillset_Front End":[252, 247, 149],
+        "skillset_Back End":[206, 229, 213],
+        "skillset_Full Stack":[217, 89, 89],
+        "skillset_Java":[243, 170, 81],
+        "skillset_C#":[187, 176, 220],
+        "skillset_C++":[255, 255, 255],
+        "skillset_Python":[166, 220, 222],
+        "skillset_Game Dev":[86, 122, 206],
+        "skillset_Sound Design":[241, 195, 175],
+        "skillset_Visual Arts":[241, 210, 231],
+        "language_HTML":[255, 255, 255],
+        "language_Javascript":[252, 246, 149],
+        "language_CSS":[187, 176, 220],
+        "language_Java":[243, 170, 81],
+        "language_C#":[206, 229, 213]
     }
 }

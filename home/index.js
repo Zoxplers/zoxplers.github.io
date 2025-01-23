@@ -82,16 +82,16 @@ nameElem.onclick = nameClick;
 
 //Logo
 logoAmount = 6;
-document.getElementsByTagName("topbar")[0].getElementsByTagName("img")[0].setAttribute("src", "/assets/logowhite.png");
+document.getElementsByTagName("topbar")[0].getElementsByTagName("img")[0].setAttribute("src", "/assets/home/logowhite.png");
 
 function logoClick()
 {
     randInt = Math.ceil(Math.random() * logoAmount);
-    while ("/assets/logo"+randInt+".png" == document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].getAttribute("src"))
+    while ("/assets/home/logo"+randInt+".png" == document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].getAttribute("src"))
     {
         randInt = Math.ceil(Math.random() * logoAmount);
     }
-    document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].setAttribute("src", "/assets/logo"+randInt+".png");
+    document.getElementsByTagName("topbar")[1].getElementsByTagName("img")[0].setAttribute("src", "/assets/home/logo"+randInt+".png");
 }
 
 logoClick();
@@ -212,6 +212,7 @@ lanyard(
 
 //Socials
 //Switch icons to npm package at some point
+//Switch to socials.json at some point
 fetch("./socials").then(response => {
     response.text().then(content => {
         let socials = document.getElementsByTagName("socials")[1];
@@ -245,5 +246,5 @@ fetch("./socials").then(response => {
 
 //Tooltips
 tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[0], true, `<span style = "top: -0.3vh; left: 1vw;">Welcome to my website!</span>`, "right");
-tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[1], false, `<img style = "height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)" src="/assets/wave.png"/>`, "right");
+tooltip(document.getElementsByTagName("heading")[1].getElementsByTagName("span")[1], false, `<img style = "height: 18vh; left: 1vw; top: -9vh; border-radius: 50%; background: radial-gradient(#ffffff, #00000000 80%)" src="/assets/home/wave.png"/>`, "right");
 //Tooltips End
