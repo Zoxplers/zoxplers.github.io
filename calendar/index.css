@@ -45,7 +45,7 @@ header
     display: block;
     background: rgba(255, 255, 255, 0.2);
     font-family: "Carter One";
-    border-radius: 0;
+    border-radius: var(--borderRadius) var(--borderRadius) 0 0;
 }
 
 #background header
@@ -56,10 +56,10 @@ header
 /* Headers End */
 
 /* Landscape */
-/* .landscape calendar > div
+.landscape calendar > div
 {
-    min-height: 90vh;
-} */
+    padding-bottom: 0.1vh;
+}
 
 .landscape table
 {

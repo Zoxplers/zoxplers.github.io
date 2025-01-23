@@ -140,13 +140,18 @@ page
     display: flex;
     flex-grow: 10;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     font-family: "Itim";
 }
 
 #background page
 {
     opacity: 0;
+}
+
+page p
+{
+    text-indent: 1em;
 }
 /*page End*/
 

@@ -36,6 +36,7 @@ page div header
     font-size: calc(var(--fontSize) * 1);
 }
 
+/* Skills */
 skills > header
 {
     text-align: center;
@@ -133,3 +134,168 @@ skillitem img
     height: 100%;
     filter: invert(1);
 }
+/* Skills End */
+
+/* Projects */
+projects > header
+{
+    padding-bottom: 1vh;
+}
+
+projects > div
+{
+    display: flex;
+    justify-content: center;
+}
+
+projects > div > div
+{
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    max-width: 33vw;
+    background: rgba(183, 211, 233, 0.5);
+    border-radius: 1em;
+    padding: 0.2em;
+    margin: 1vw;
+    border: 2px solid rgba(183, 211, 233, 0.7);
+}
+
+projects > div > div:hover
+{
+    background: rgba(183, 211, 233, 0.6);
+}
+
+projects imgcontainer
+{
+    display: block;
+    height: 8em;
+    overflow: hidden;
+    border-radius: 1em 1em 0 0;
+}
+
+projects imgcontainer > img
+{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+projects description
+{
+    flex-grow: 1;
+    text-shadow: none;
+    font-family: "bubblegum sans";
+}
+
+projects languages
+{
+    display: flex;
+    text-shadow: none;
+    font-family: "itim";
+    gap: 1vw;
+    justify-content: center;
+}
+
+projects languages span::before
+{
+    content: "";
+    display: inline-block;
+    margin: 0 0.2vw -0.25vh 0;
+    height: calc(var(--fontSize) * 0.8);
+    width: calc(var(--fontSize) * 0.8);
+    border-radius: 50%;
+    background: rgb(var(--r), var(--g), var(--b));
+}
+
+projects links
+{
+    padding-bottom: 0.5vh;
+}
+
+projects links > *:first-child
+{
+    margin-left: 1vw;
+    float: left;
+}
+
+projects links > *:last-child
+{
+    margin-right: 1vw;
+    float: right;
+}
+
+projects links > *::after
+{
+    display: block;
+    content: '';
+    border-bottom: solid 2px white;
+    margin-top: -0.5vh;
+    transform: scaleX(0);
+    transition: transform 120ms ease-in-out;
+}
+
+projects links > *:hover::after
+{
+    transform: scaleX(1.1);
+}
+/* Projects End */
+
+/* Resume */
+resume > header
+{
+    text-align: center;
+    padding: 3vh 0;
+}
+
+resume > div
+{
+    font-family: "bubblegum sans";
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+resume a
+{
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.25vh 2vw;
+    border-radius: 0.5em;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+resume a:hover
+{
+    background: rgba(255, 255, 255, 0.2);
+}
+
+resume a::after
+{
+    display: block;
+    content: '';
+    border-bottom: solid 2px white;
+    transform: scaleX(0);
+    transition: transform 120ms ease-in-out;
+}
+
+resume a:hover::after
+{
+    transform: scaleX(1.1);
+}
+
+resume a > span
+{
+    position: relative;
+    bottom: -0.4vh;
+    right: -0.1vw;
+}
+
+resume a > img
+{
+    margin-bottom: -0.3vh;;
+    width: 1em;
+    filter: invert(1);
+}
+/* Resume End */
