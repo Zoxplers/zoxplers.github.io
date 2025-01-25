@@ -2,7 +2,7 @@
 
 header
 {
-    font-size: calc(var(--fontSize) * 1.5);
+    font-size: calc(var(--fontSize) * 1.6);
 }
 
 page
@@ -28,12 +28,12 @@ page > *
 
 page header
 {
-    font-size: calc(var(--fontSize) * 1.2);
+    font-size: calc(var(--fontSize) * 1.25);
 }
 
 page div header
 {
-    font-size: calc(var(--fontSize) * 1);
+    font-size: calc(var(--fontSize) * 0.85);
 }
 
 /* Skills */
@@ -52,6 +52,7 @@ skills > div > header
 {
     display: block;
     text-align: left;
+    margin-left: 1vw;
 }
 
 skillset
@@ -62,7 +63,7 @@ skillset
     align-items: center;
     font-family: "itim";
     gap: 1vw;
-    margin: 5vh 0;
+    margin: 2.5vh 0 5vh 0;
 }
 
 skillset > div
@@ -137,6 +138,12 @@ skillitem img
 /* Skills End */
 
 /* Projects */
+projects
+{
+    left: 2.5vw;
+    width: 95vw;
+}
+
 projects > header
 {
     padding-bottom: 1vh;
@@ -146,19 +153,21 @@ projects > div
 {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 projects > div > div
 {
     display: flex;
     flex-direction: column;
-    width: 20em;
+    width: 19em;
     max-width: 33vw;
     background: rgba(183, 211, 233, 0.5);
     border-radius: 1em;
     padding: 0.2em;
     margin: 1vw;
     border: 2px solid rgba(183, 211, 233, 0.7);
+    min-width: 320px;
 }
 
 projects > div > div:hover
@@ -213,6 +222,11 @@ projects links
     padding-bottom: 0.5vh;
 }
 
+projects links > *
+{
+    display: inline-block;
+}
+
 projects links > *:first-child
 {
     margin-left: 1vw;
@@ -223,6 +237,12 @@ projects links > *:last-child
 {
     margin-right: 1vw;
     float: right;
+}
+
+projects links > *:first-child:nth-last-child(1)
+{
+    margin: 0;
+    float: unset;
 }
 
 projects links > *::after

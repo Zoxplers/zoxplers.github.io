@@ -2,8 +2,6 @@
 
 //Main Patch
 foreground.innerHTML = background.innerHTML;
-console.log(foreground.innerHTML);
-console.log(foreground);
 
 //URL Parse
 showHidden = false;
