@@ -57,6 +57,40 @@
                     }
                 ]
             }
+        },
+        {
+            "Earthland":{
+                "headerimg":"/assets/portfolio/Earthland.png",
+                "description":"My first game, created as a freshman. Sprint time of 1 month.",
+                "languages":[
+                    "GameMaker"
+                ],
+                "links":[
+                    {
+                        "label":"Download",
+                        "href":"https://zoxplers.itch.io/earthland"
+                    }
+                ]
+            }
+        },
+        {
+            "C# Games":{
+                "headerimg":"/assets/portfolio/csharpgames.png",
+                "description":"A collection of games coded in C#.",
+                "languages":[
+                    "C#"
+                ],
+                "links":[
+                    {
+                        "label":"Downloads",
+                        "href":"https://github.com/Zoxplers/csharpgames/releases"
+                    },
+                    {
+                        "label":"Source",
+                        "href":"https://github.com/Zoxplers/csharpgames"
+                    }
+                ]
+            }
         }
     ]
 }
