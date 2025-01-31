@@ -172,6 +172,10 @@ function loadMonth(date)
             {
                 backgroundtd.getElementsByTagName("div")[0].classList.remove("hidden");
             }
+            if(backgroundtd.children.length > 1)
+            {
+                backgroundtd.style.boxShadow = "white 0px 0px 0.3em 0.15em inset";
+            }
         }
     });
 
@@ -189,12 +193,14 @@ function loadMonth(date)
 
 function prevMonth()
 {
+    currentDate.setDate(1);
     currentDate.setMonth(currentDate.getMonth() - 1);
     loadMonth(currentDate);
 }
 
 function nextMonth()
 {
+    currentDate.setDate(1);
     currentDate.setMonth(currentDate.getMonth() + 1);
     loadMonth(currentDate);
 }
