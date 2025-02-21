@@ -1,6 +1,7 @@
 <socialitem href="https://ko-fi.com/zoxplers" text="Buy me a coffee" icon="https://simpleicons.org/icons/kofi.svg">Kofi</socialitem>
 <socialitem href="https://instagram.com/zoxplers" text="Follow me on instagram" icon="https://simpleicons.org/icons/instagram.svg">Instagram</socialitem>
-<socialitem href="https://myanimelist.net/animelist/Zoxplers" text="A list of anime" class="hidden" icon="https://simpleicons.org/icons/myanimelist.svg">MAL</socialitem>
+<socialitem href="https://anilist.co/user/Zoxplers/animelist" text="A list of anime" class="hidden" icon="https://simpleicons.org/icons/anilist.svg">AL</socialitem>
+<socialitem href="https://anilist.co/user/Zoxplers/mangalist" text="A list of manga" class="hidden" icon="https://simpleicons.org/icons/anilist.svg">AL</socialitem>
 <socialitem href="https://mydramalist.com/dramalist/Zoxplers" text="A list of dramas" class="hidden">MDL</socialitem>
 <socialitem href="https://www.twitch.tv/zoxplers" text="Join the twitch stream" icon="https://simpleicons.org/icons/twitch.svg">Twitch</socialitem>
 <socialitem href="https://soundcloud.com/zoxplers" text="My soundcloud" class="hidden" icon="https://simpleicons.org/icons/soundcloud.svg">Soundcloud</socialitem>
