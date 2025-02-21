@@ -22,7 +22,7 @@ let calendarDB = "https://script.google.com/macros/s/AKfycbw0SksuJ1su75zfo7DLwwm
 let database = [[],[],[],[],[],[],[],[],[],[],[],[]];
 
 
-function CalendarEvent(eventName, eventMonth, eventDay, eventYear, firstName, middleName, lastName, age, category)
+function CalendarEvent(eventName, eventMonth, eventDay, eventYear, firstName, middleName, lastName, age, category, zodiac, chineseZodiac)
 {
     this.eventName = eventName;
     this.eventMonth = eventMonth;
@@ -33,17 +33,20 @@ function CalendarEvent(eventName, eventMonth, eventDay, eventYear, firstName, mi
     this.lastName = lastName;
     this.age = age;
     this.category = category;
+    this.zodiac = zodiac;
+    this.chineseZodiac = chineseZodiac;
 }
 
 
 fetch(calendarDB)
 .then(response => {
     response.json().then(data => {
+        console.log(data);
         if(data[0] != null)
         {
             data.forEach(sheet => {
                 sheet[1].forEach(calendarEvent => {
-                    if(Number.isInteger(calendarEvent[7]) && (showHidden || calendarEvent[7] >= 0))
+                    if(Number.isInteger(calendarEvent[8]) && (showHidden || calendarEvent[8] >= 0))
                     {
                         let date = calendarEvent[2];
                         let year = date.substring(0,date.indexOf("-"));
@@ -51,7 +54,7 @@ fetch(calendarDB)
                         let month = date.substring(0,date.indexOf("-"));
                         date = date.slice(date.indexOf("-")+1);
                         let day = date.substring(0,date.indexOf("T"));
-                        database[parseInt(month)-1].push(new CalendarEvent(calendarEvent[1], month, day, year, calendarEvent[4], calendarEvent[5], calendarEvent[6], calendarEvent[3], sheet[0]));
+                        database[parseInt(month)-1].push(new CalendarEvent(calendarEvent[1], month, day, year, calendarEvent[4], calendarEvent[5], calendarEvent[6], calendarEvent[3], sheet[0], calendarEvent[9], calendarEvent[10]));
                     }
                 })
             })
@@ -75,7 +78,14 @@ fetch(calendarDB)
             eventDay: "01",
             eventYear: "2001"
         }
-    ],[],[],[
+    ],[
+        {
+            eventName: "Halloween Day",
+            eventMonth: "10",
+            eventDay: "31",
+            eventYear: "0000"
+        }
+    ],[],[
         {
             eventName: "Christmas Day",
             eventMonth: "12",
@@ -282,6 +292,8 @@ function loadEvent(event)
             <p>Middle Name: ${event.middleName}</p>
             <p>Last Name: ${event.lastName}</p>
             <p>Age: ${event.age.toString().slice(0,5)}</p>
+            <p>Zodiac: ${event.zodiac}</p>
+            <p>Animal Year: ${event.chineseZodiac}</p>
             <p>Category: ${event.category}</p>`;
         }
         else

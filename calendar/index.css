@@ -234,7 +234,7 @@ widgets > div > *
 {
     align-content: center;
     text-shadow: none;
-    font-size: calc(var(--fontSize) * 0.75);
+    font-size: calc(var(--fontSize) * 0.65);
 }
 
 #background widgets div > eventinfo
