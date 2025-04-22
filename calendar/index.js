@@ -41,7 +41,6 @@ function CalendarEvent(eventName, eventMonth, eventDay, eventYear, firstName, mi
 fetch(calendarDB)
 .then(response => {
     response.json().then(data => {
-        console.log(data);
         if(data[0] != null)
         {
             data.forEach(sheet => {

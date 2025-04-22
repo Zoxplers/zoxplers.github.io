@@ -115,6 +115,7 @@ for(let i = 0; i < navItems.length; i++)
 //Status
 function updateStatus(data)
 {
+    console.log(data);
     let twitch = false;
     let hasActivity = false;
     let string = "<text>";
@@ -210,19 +211,18 @@ lanyard(
 
 //Socials
 //Switch icons to npm package at some point
-//Switch to socials.json at some point
-fetch("./socials").then(response => {
-    response.text().then(content => {
+fetch("socials.json").then(response => {
+    response.json().then(content => {
         let socials = document.getElementsByTagName("socials")[1];
-        socials.innerHTML = content;
+        socials.innerHTML = "";
+        content["socialitems"].forEach(socialItem => {
+            socials.innerHTML += 
+            `<socialitem class="${socialItem["classlist"]}" href="${socialItem["href"]}" text="${socialItem["text"]}">
+                ${socialItem["icon"] ? "<img src=\"\" />" : socialItem}
+            </socialitem>`;
+        });
+
         Array.from(socials.children).forEach(socialItem => {
-            let socialImg = document.createElement("img");
-            if(socialItem.getAttribute("icon") != null)
-            {
-                socialItem.innerHTML = "";
-                socialImg.setAttribute("src", socialItem.getAttribute("icon"));
-                socialItem.appendChild(socialImg);
-            }
             if(showHidden)
             {
                 socialItem.classList.remove("hidden");
