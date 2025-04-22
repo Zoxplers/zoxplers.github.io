@@ -2,6 +2,21 @@
     "projects":
     [
         {
+            "HighSchoolPlanner":{
+                "headerimg":"/assets/portfolio/HSP.png",
+                "description":"Plan your high school courses!",
+                "languages":[
+                    "Angular","Typescript","LESS"
+                ],
+                "links":[
+                    {
+                        "label":"Go to site",
+                        "href":"https://www.highschoolplanner.org/"
+                    }
+                ]
+            }
+        },
+        {
             "Calendar":{
                 "headerimg":"/assets/portfolio/Calendar.png",
                 "description":"A dashboard interface to manage schedules and events.",

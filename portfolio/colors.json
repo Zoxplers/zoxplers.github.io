@@ -15,6 +15,9 @@
         "language_CSS":[187, 176, 220],
         "language_Java":[243, 170, 81],
         "language_C#":[206, 229, 213],
-        "language_GameMaker":[63, 135, 58]
+        "language_GameMaker":[63, 135, 58],
+        "language_Angular":[217, 89, 89],
+        "language_Typescript":[252, 246, 149],
+        "language_LESS":[187, 176, 220]
     }
 }
