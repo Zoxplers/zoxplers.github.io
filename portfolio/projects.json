@@ -2,6 +2,21 @@
     "projects":
     [
         {
+            "HearthstoneCardGuide":{
+                "headerimg":"/assets/portfolio/HCG.png",
+                "description":"Browse and get information about hearthstone cards!",
+                "languages":[
+                    "React","Typescript","LESS"
+                ],
+                "links":[
+                    {
+                        "label":"Go to site",
+                        "href":"https://hcg.zoxplers.com/"
+                    }
+                ]
+            }
+        },
+        {
             "HighSchoolPlanner":{
                 "headerimg":"/assets/portfolio/HSP.png",
                 "description":"Plan your high school courses!",
