@@ -211,14 +211,14 @@ lanyard(
 
 //Socials
 //Switch icons to npm package at some point
-fetch("socials.json").then(response => {
+fetch("./socials.json").then(response => {
     response.json().then(content => {
         let socials = document.getElementsByTagName("socials")[1];
         socials.innerHTML = "";
         content["socialitems"].forEach(socialItem => {
             socials.innerHTML += 
             `<socialitem class="${socialItem["classlist"]}" href="${socialItem["href"]}" text="${socialItem["text"]}">
-                ${socialItem["icon"] ? "<img src=\"\" />" : socialItem}
+                ${socialItem["icon"] ? "<img src="+ socialItem["icon"] +" />" : socialItem}
             </socialitem>`;
         });
 
